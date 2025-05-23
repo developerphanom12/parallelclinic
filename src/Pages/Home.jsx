@@ -52,8 +52,8 @@ const Home = () => {
       />
 
       {/* Video Container - Optimized for all screen sizes */}
-      <div className="absolute top-[100px]  flex items-center justify-center sm:items-end sm:justify-start sm:pb-10 sm:pl-[10%]">
-        <div className="w-[100%] h-auto sm:w-[90%] sm:h-auto max-h-[40vh] sm:max-h-[70vh] overflow-hidden rounded-lg">
+      <div className="absolute top-[160px]  flex items-center justify-center sm:items-end sm:justify-center sm:pb-10 sm:pl-[10%]">
+        <div className="w-[100%] h-auto sm:w-[100%] sm:h-auto max-h-[50vh]  sm:max-h-[70vh] overflow-hidden rounded-lg">
           <video
             src={video}
             autoPlay
