@@ -2,12 +2,14 @@ import React, { useRef, useState } from "react";
 import { IoIosMusicalNote } from "react-icons/io";
 import { FaHeadphones } from "react-icons/fa6";
 import sampleAudio from "../assets/audio.wav";
-import waveStop from "../assets/waveStop.gif"; // your audio file
+import waveStop from "../assets/waveStop.gif";
+import wavePlaying from "../assets/wavePlaying.gif"; 
 
 const MusicPlayer = () => {
   const audioRef = useRef(null);
   const [showSlider, setShowSlider] = useState(false);
   const [volume, setVolume] = useState(0.3);
+   const [waveImage, setWaveImage] = useState(waveStop); // <-- Track current wave gif
 
   const handleTextClick = () => {
     const audio = audioRef.current;
@@ -15,6 +17,7 @@ const MusicPlayer = () => {
       audio.volume = 0.3;
       audio.currentTime = 0;
       audio.play();
+       setWaveImage(wavePlaying);
     }
   };
 
@@ -25,6 +28,7 @@ const MusicPlayer = () => {
       audio.currentTime = 0;
       audio.volume = volume;
       audio.play();
+       setWaveImage(wavePlaying);
     }
   };
 
@@ -63,7 +67,7 @@ const MusicPlayer = () => {
     
   />
   <img
-    src={waveStop}
+    src={waveImage}
     alt="wave"
     className="absolute bottom-0 "
   />
