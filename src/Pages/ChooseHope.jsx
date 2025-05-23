@@ -4,11 +4,11 @@ import gsap from "gsap";
 import menuGif from "../assets/MainMenuRing.gif";
 import { FaHeadphones } from "react-icons/fa6";
 import { IoIosMusicalNote } from "react-icons/io";
-import sound from "../assets/sound.gif";
+// import sound from "../assets/sound.gif";
 import flower1 from "../assets/flower1.png"; // Replace with your actual image
 import flower2 from "../assets/flower2.png"; // Replace with your actual image
 import flower3 from "../assets/flower3.png"; // Replace with your actual image
-import flower4 from "../assets/flower1.png"; // Replace with your actual image
+// import flower4 from "../assets/flower1.png"; // Replace with your actual image
 import { useNavigate } from "react-router-dom";
 
 const ChooseHope = () => {
@@ -165,7 +165,7 @@ const ChooseHope = () => {
                     className="relative w-38 h-38 cursor-pointer"
                     onClick={() => setShowMenu(!showMenu)}
                 >
-                    <img
+                    <img 
                         src={menuGif}
                         alt="sound gif"
                         className="w-full h-full object-cover rounded-full"
