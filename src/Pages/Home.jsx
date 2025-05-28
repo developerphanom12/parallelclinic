@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import MusicPlayer from "../components/MusicPlayer";
 import logoClinic from "../assets/logoClinic.png";
-import video from "../assets/fonts/video1.mp4";
+import video from "../assets/fonts/Flower_webm.webm";
 
 const Home = () => {
   const cursorRef = useRef(null);
