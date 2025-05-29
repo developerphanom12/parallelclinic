@@ -9,7 +9,7 @@ const JoinTeam = () => {
   useEffect(() => {
     const cursor = cursorRef.current;
 
-    const moveCircle = (e) => {
+    const moveCircle = (e) => {   
       gsap.to(cursor, {
         x: e.clientX,
         y: e.clientY,
