@@ -109,7 +109,7 @@ const ChooseHope = () => {
                         Renew Hope.
                     </h1>
                 </div>
-            </div>
+            </div>  
 
             {/* Flower Images */}
             <div className="absolute top-[5%] left-[50%] transform -translate-x-1/2 flex justify-center items-center">
