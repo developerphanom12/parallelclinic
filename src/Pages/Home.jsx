@@ -22,7 +22,7 @@ const Home = () => {
         ease: "power2.out",
       });
     };
-
+  
     const checkMouseLeaveDocument = (e) => {
       // If relatedTarget is null, mouse left viewport
       if (!e.relatedTarget && !e.toElement) {
