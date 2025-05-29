@@ -23,11 +23,11 @@ const Home = () => {
       });
     };
   
-    const checkMouseLeaveDocument = (e) => {
+    const checkMouseLeaveDocument = (e) => { 
       // If relatedTarget is null, mouse left viewport
       if (!e.relatedTarget && !e.toElement) {
         gsap.to(cursor, {
-          scale: 0,
+          scale: 0, 
           opacity: 0,
           duration: 0.5,
         });
