@@ -29,7 +29,7 @@ const Nav = () => {
       <nav className="bg-[#FDF8E5] w-full flex justify-between items-start px-8">
         <div className="flex sm:flex-row flex-col mt-10">
           {/* Logo */}
-          <img src={logoClinic} className="w-16 h-16 sm:absolute sm:top-3 cursor-pointer" alt="Parallel Clinic Logo"  onClick={()=>{navigate("/")}}/>
+          <img src={logoClinic} className="w-15 h-15 sm:absolute sm:top-3 cursor-pointer" alt="Parallel Clinic Logo"  onClick={()=>{navigate("/")}}/>
         </div>
 
         {/* Menu Icon + GIF */}
@@ -41,8 +41,10 @@ const Nav = () => {
             src={menuGif}
             alt="sound gif"
             className="w-full h-full object-cover rounded-full"
+            
+            
           />
-          <IoIosMenu size={35} className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-3xl text-[#C5A184]" />
+          <IoIosMenu size={35} onClick={()=>{navigate("/choose")}} className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-3xl text-[#C5A184]" />
         </div>
 
         <div
@@ -53,6 +55,7 @@ const Nav = () => {
             src={menuGif}
             alt="sound gif"
             className="w-full h-full object-cover rounded-full"
+            onClick={()=>{navigate("/choose")}}
           />
           <IoIosMenu size={35} className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-3xl text-[#C5A184]" />
         </div>

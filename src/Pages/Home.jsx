@@ -6,7 +6,6 @@ import video from "../assets/fonts/Flower_webm.webm";
 
 const Home = () => {
   const cursorRef = useRef(null);
- 
 
   // GSAP Mouse Follower
   useEffect(() => {
@@ -22,12 +21,12 @@ const Home = () => {
         ease: "power2.out",
       });
     };
-  
-    const checkMouseLeaveDocument = (e) => { 
+
+    const checkMouseLeaveDocument = (e) => {
       // If relatedTarget is null, mouse left viewport
       if (!e.relatedTarget && !e.toElement) {
         gsap.to(cursor, {
-          scale: 0, 
+          scale: 0,
           opacity: 0,
           duration: 0.5,
         });
@@ -51,9 +50,20 @@ const Home = () => {
         className="w-12 h-12 border border-[#C5A184] rounded-full fixed top-0 left-0 z-[999]"
       />
 
-      {/* Video Container - Optimized for all screen sizes */}
-      <div className="absolute top-[160px]  flex items-center justify-center sm:items-end sm:justify-center sm:pb-10 sm:pl-[10%]">
-        <div className="w-[100%] h-auto sm:w-[100%] sm:h-auto max-h-[50vh]  sm:max-h-[70vh] overflow-hidden rounded-lg">
+      {/* Main Content */}
+      <div className="relative z-10 flex flex-col px-6 sm:px-8 pt-0">
+        <h1
+          style={{ fontFamily: "MyFont" }}
+          className="text-4xl sm:text-5xl md:text-7xl sm:pl-16 w-full sm:w-[70%] text-[#C5A184] leading-tight"
+        >
+          Let's Make Your Health <br />
+          Sound!
+        </h1>
+      </div>
+
+      {/* Video Container - Fixed at bottom */}
+      <div className="absolute bottom-0 left-0 w-full flex justify-center items-end z-5">
+        <div className="w-full sm:w-[100%] md:w-[100%] h-[50vh] sm:h-[60vh] md:h-[80vh] overflow-hidden">
           <video
             src={video}
             autoPlay
@@ -61,26 +71,12 @@ const Home = () => {
             muted
             playsInline
             className="w-full h-full object-contain"
+            style={{ 
+              objectPosition: "center bottom",
+              mixBlendMode: "multiply" 
+            }}
           />
         </div>
-      </div>
-
-      {/* Main Content */}
-      <div className="relative z-10 flex flex-col sm:flex-row px-6 sm:px-8 ">
-        {/* Logo */}
-        <img 
-          src={logoClinic} 
-          alt="Parallel Clinic Logo"
-          className="w-16 h-16 mb-4 sm:mb-0 sm:absolute sm:top-4" 
-        />
-
-        {/* Heading */}
-        <h1 
-          style={{ fontFamily: 'MyFont' }} 
-          className="text-4xl sm:text-5xl md:text-7xl sm:pl-16 w-full sm:w-[70%] text-[#C5A184] leading-tight"
-        >
-          Let's Make Your Health Sound!
-        </h1>
       </div>
 
       <MusicPlayer />

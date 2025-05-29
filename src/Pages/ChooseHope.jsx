@@ -27,7 +27,7 @@ const ChooseHope = () => {
             if (img) {
                 gsap.set(img, { opacity: 0 });
                 if (index === 0) {
-                    gsap.to(img, { opacity: 1, duration: 9, ease: "power2.out" });
+                    gsap.to(img, { opacity: 1, duration: 2, ease: "power2.out" });
                 }
             }
         });
@@ -46,12 +46,12 @@ const ChooseHope = () => {
             });
             gsap.to(imageRefs.current[nextIndex], {
                 opacity: 1,
-                duration: 6,
+                duration: 2,
                 ease: "power2.out",
             });
 
             setCurrentIndex(nextIndex);
-        }, 30000);
+        }, 10000);
 
         return () => clearInterval(interval);
     }, [currentIndex]);
@@ -98,6 +98,20 @@ const ChooseHope = () => {
                 className="w-12 h-12 border border-[#C5A184] rounded-full fixed top-0 left-0 z-[999]"
             />
 
+            {/* Page Title */}
+            <div className="w-full flex justify-between items-start px-8 py-4">
+                <div className="flex sm:pl-16">
+                    <h1
+                        style={{ fontFamily: "MyFont" }}
+                        className="text-7xl w-[50%] text-[#C5A184]"
+                    >
+                        Choose Hope. 
+                        Renew Hope.
+                    </h1>
+                </div>
+            </div>
+
+            {/* Flower Images */}
             <div className="absolute top-[5%] left-[50%] transform -translate-x-1/2 flex justify-center items-center">
                 <div className="w-[120vw] h-[120vh] relative flex justify-center items-center">
                     <img
@@ -123,25 +137,23 @@ const ChooseHope = () => {
                 </div>
             </div>
 
-            {/* Page Title */}
-            <div className="w-full flex justify-between items-start px-8 py-4">
-                <div className="flex sm:pl-16">
-                    <h1
-                        style={{ fontFamily: "MyFont" }}
-                        className="text-7xl w-[50%] text-[#C5A184] "
-                    >
-                        Choose Hope Renew Hope
-                    </h1>
-                </div>
+            {/* Consult Doctors Text - Left Bottom */}
+            <div className="absolute bottom-32 left-8 sm:left-16 text-[#A37159]">
+                <h2 style={{ fontFamily: "MyFont" }} className="text-2xl sm:text-3xl">
+                    Consult Parallel Clinic Doctors<br />
+                    Without Leaving Your House
+                </h2>
             </div>
 
             {/* Bottom Right Text */}
             <div className="absolute bottom-4 right-6 text-sm text-gray-700">
                 <div className="flex flex-col gap-2 items-end mr-7">
                     <div style={{ fontFamily: "MyFont" }} className="sm:w-[38%]">
-                        <h1 className="text-[#C5A184] text-[24px] text-end">With Well Documented
-                            Assurance of Highly Safe,
-                            Highly Efficient Medicines*</h1>
+                        <h1 className="text-[#C5A184] text-[24px] text-end">
+                            With Well Documented 
+                            Science Based Assurance of 
+                            Highly Safe, Highly Efficient Medicines*
+                        </h1>
                     </div>
                     <FaHeadphones size={50} className="text-[#DAA57B]" />
                 </div>
@@ -150,4 +162,4 @@ const ChooseHope = () => {
     );
 }
 
-export default ChooseHope
+export default ChooseHope;
