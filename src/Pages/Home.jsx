@@ -51,8 +51,8 @@ const Home = () => {
         className="w-12 h-12 border border-[#C5A184] rounded-full fixed top-0 left-0 z-[999]"
       />
 
-      {/* Video Container - Optimized for all screen sizes */}
-      <div className="absolute top-[160px]  flex items-center justify-center sm:items-end sm:justify-center sm:pb-10 sm:pl-[10%]">
+        {/* Mam */}
+        {/* <div className="absolute top-[160px]  flex items-center justify-center sm:items-end sm:justify-center sm:pb-10 sm:pl-[10%]">
         <div className="w-[100%] h-auto sm:w-[100%] sm:h-auto max-h-[50vh]  sm:max-h-[70vh] overflow-hidden rounded-lg">
           <video
             src={video}
@@ -63,7 +63,22 @@ const Home = () => {
             className="w-full h-full object-contain"
           />
         </div>
+      </div> */}
+
+      {/* Video Container - Optimized for all screen sizes */}
+      <div className="absolute top-[160px]  flex items-center justify-center sm:items-end sm:justify-center sm:pb-10 sm:pl-[10%]">
+        <div className="w-[100%] h-auto sm:w-[70vw] sm:h-[90vh] max-h-[50vh]  sm:max-h-[70vh] rounded-lg">
+          <video
+            src={video}
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="w-full h-full object-contain"
+          />
+        </div>
       </div>
+
 
       {/* Main Content */}
       <div className="relative z-10 flex flex-col sm:flex-row px-6 sm:px-8 ">
