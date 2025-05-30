@@ -74,7 +74,7 @@ const AboutClinic = () => {
           </div>
         </div>
         
-        {/* Right Content - FAQ */}
+        {/* Right Content - FAQ */}   
         <div className="hidden sm:flex flex-col sm:w-[50%] px-8 py-4 text-[#5C8A8A] text-[20px] mt-[40px]">
           <p className="mb-2 hover:text-[#A37159] cursor-pointer">What is special about Parallel Clinic</p>
           <p className="mb-2 hover:text-[#A37159] cursor-pointer">What is the process of consultation</p>
