@@ -160,6 +160,6 @@ const ChooseHope = () => {
             </div>
         </div>
     );
-}
+}   
 
 export default ChooseHope;
