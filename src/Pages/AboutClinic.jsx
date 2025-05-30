@@ -72,7 +72,7 @@ const AboutClinic = () => {
           <div className="mt-8 w-24 h-24 rounded-full bg-[#C5A184] flex items-center justify-center">
             <span className="text-white text-5xl font-light">i</span>
           </div>
-        </div>
+        </div> 
         
         {/* Right Content - FAQ */}   
         <div className="hidden sm:flex flex-col sm:w-[50%] px-8 py-4 text-[#5C8A8A] text-[20px] mt-[40px]">
