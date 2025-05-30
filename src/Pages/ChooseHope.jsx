@@ -144,7 +144,7 @@ const ChooseHope = () => {
                     Without Leaving Your House
                 </h2>
             </div>
-
+                
             {/* Bottom Right Text */}
             <div className="absolute bottom-4 right-6 text-sm text-gray-700">
                 <div className="flex flex-col gap-2 items-end mr-7">
