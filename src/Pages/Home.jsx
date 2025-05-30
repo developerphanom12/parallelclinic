@@ -80,7 +80,7 @@ const Home = () => {
         </div>
       </div>
 
-      <MusicPlayer />
+      <MusicPlayer />     
     </div>
   );
 };
