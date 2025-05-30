@@ -43,7 +43,7 @@ const Home = () => {
   }, []);
 
   return (
-    <div className="relative w-full h-screen bg-[#FDF8E5] overflow-hidden">
+    <div className="relative w-full h-full sm:h-[84vh] bg-[#FDF8E5] overflow-hidden">
       {/* Cursor Follower */}
       <div
         ref={cursorRef}
@@ -62,8 +62,8 @@ const Home = () => {
       </div>
 
       {/* Video Container - Fixed at bottom */}
-      <div className="absolute bottom-0 left-0 w-full flex justify-center items-end z-5">
-        <div className="w-full sm:w-[100%] md:w-[100%] h-[50vh] sm:h-[60vh] md:h-[80vh] overflow-hidden">
+      <div className="absolute sm:bottom-0 bottom-60 sm:left-0 w-full flex justify-center items-end z-5">
+        <div className="w-full sm:w-[100%] md:w-[100%] h-[40vh] sm:h-[50vh] md:h-[70vh] overflow-hidden">
           <video
             src={video}
             autoPlay

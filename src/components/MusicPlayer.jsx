@@ -48,11 +48,11 @@ const MusicPlayer = () => {
           style={{ fontFamily: "MyFontNavbar" }}
           className="leading-none mb-5 text-end cursor-pointer"
         >
-          <h1 className="text-[#DAA57B] text-[25px] flex items-center justify-end gap-2">
+          <h1 className="text-[#DAA57B] text-[20px] sm:text-[25px] flex items-start sm:items-center sm:justify-end gap-1 justify-start">
             <IoIosMusicalNote size={45} className="text-[#DAA57B]" />
             Start With Adding Some Sound
           </h1>
-          <h1 className="text-[16px]">
+          <h1 className="text-[14px] sm-text-[16px]">
             Click to Create a Healthy & Immersive Aura
           </h1>
         </div>
