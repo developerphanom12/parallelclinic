@@ -138,7 +138,7 @@ const ChooseHope = () => {
             </div>
 
             {/* Consult Doctors Text - Left Bottom */}
-            <div className="absolute bottom-32 left-8 sm:left-16 text-[#A37159]">
+            <div className="absolute bottom-10 left-8 sm:left-16 text-[#A37159]">
                 <h2 style={{ fontFamily: "MyFont" }} className="text-2xl sm:text-3xl">
                     Consult Parallel Clinic Doctors<br />
                     Without Leaving Your House

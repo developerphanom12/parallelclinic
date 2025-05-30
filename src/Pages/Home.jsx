@@ -72,8 +72,9 @@ const Home = () => {
             playsInline
             className="w-full h-full object-contain"
             style={{ 
-              objectPosition: "center bottom",
-              mixBlendMode: "multiply" 
+              objectPosition: "left bottom",
+              mixBlendMode: "multiply" ,
+              paddingLeft:"40px"
             }}
           />
         </div>
