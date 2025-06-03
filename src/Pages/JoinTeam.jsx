@@ -51,8 +51,8 @@ const JoinTeam = () => {
       <div className="flex flex-col sm:pl-16 sm:w-[60%] px-8 py-4">
         {/* Heading */}
         <div className=" text-[#A37159] leading-0">
-          <h1 style={{ fontFamily: "MyFont" }} className="sm:text-[70px] text-5xl leading-none">Join Parallel Clinic</h1>
-          <h1 style={{ fontFamily: "MyFont" }} className="sm:text-[70px] text-5xl leading-none">Team</h1>
+          <h1 style={{ fontFamily: "MyFont" }} className="sm:text-[70px] text-5xl leading-none">Join </h1>
+          <h1 style={{ fontFamily: "MyFont" }} className="sm:text-[70px] text-5xl leading-none">Parallel Clinic Team</h1>
         </div>
       </div>
 

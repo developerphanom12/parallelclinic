@@ -26,23 +26,20 @@ const Nav = () => {
 
   return (
     <>
-      <nav className="bg-[#FDF8E5] w-full flex justify-between items-start px-8">
-        <div className="flex sm:flex-row flex-col mt-10">
-          {/* Logo */}
-          <img src={logoClinic} className="w-16 h-16 sm:absolute sm:top-3 cursor-pointer" alt="Parallel Clinic Logo"  onClick={()=>{navigate("/")}}/>
-        </div>
-
-        {/* Menu Icon + GIF */}
+      {/* <nav className="bg-[#FDF8E5] w-full flex justify-end items-start sm:px-8 ">
+        
         <div
-          className="hidden sm:block relative ml-60 w-38 h-38 cursor-pointer"
+          className="hidden sm:block relative ml-60 w-28 h-28 scale-150 cursor-pointer"
           onClick={() => setShowMenu(!showMenu)}
         >
           <img
             src={menuGif}
             alt="sound gif"
             className="w-full h-full object-cover rounded-full"
+            
+            
           />
-          <IoIosMenu size={35} className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-3xl text-[#C5A184]" />
+          <IoIosMenu size={35} onClick={()=>{navigate("/choose")}} className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-3xl text-[#C5A184]" />
         </div>
 
         <div
@@ -53,10 +50,77 @@ const Nav = () => {
             src={menuGif}
             alt="sound gif"
             className="w-full h-full object-cover rounded-full"
+            onClick={()=>{navigate("/choose")}}
           />
           <IoIosMenu size={35} className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-3xl text-[#C5A184]" />
         </div>
+      </nav> */}
+
+      <nav className="bg-[#FDF8E5] w-full sm:px-8 relative h-[16vh] ">
+        {location.pathname !== "/" ? (
+          // ✅ Show only when route is NOT "/"
+          <div className="absolute top-4 right-4 flex flex-col items-center z-50">
+            {/* Logo */}
+            <img
+              src={logoClinic}
+              className="w-[50px] h-[50px] sm:w-[60px] sm:h-[60px] mb-2 cursor-pointer"
+              alt="Parallel Clinic Logo"
+              onClick={() => navigate("/")}
+            />
+
+            {/* Desktop view Menu Icon + GIF */}
+            <div
+              className="sm:relative sm:block hidden w-28 h-28 cursor-pointer scale-150"
+              onClick={() => setShowMenu(!showMenu)}
+            >
+              <img
+                src={menuGif}
+                alt="sound gif"
+                className="w-full h-full object-cover rounded-full"
+              />
+              <IoIosMenu
+                size={30}
+                onClick={() => navigate("/choose")}
+                className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-[#C5A184]"
+              />
+            </div>
+
+            {/* Mobile View Menu Icon */}
+             <div
+          className="sm:hidden block relative w-20 h-20 cursor-pointer scale-150"
+          onClick={() => setOpen(!open)}
+        >
+          <img
+            src={menuGif}
+            alt="sound gif"
+            className="w-full h-full object-cover rounded-full"
+            onClick={()=>{navigate("/choose")}}
+          />
+          <IoIosMenu size={35} className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-3xl text-[#C5A184]" />
+        </div>
+          </div>
+
+        ) : (
+
+          // ✅ Show only on "/" route
+          <div
+            className="relative ml-auto  sm:w-28 sm:h-28 w-20 h-20 cursor-pointer scale-150"
+            onClick={() => setShowMenu(!showMenu)}
+          >
+            <img
+              src={menuGif}
+              alt="sound gif"
+              className="w-full h-full object-cover rounded-full"
+            />
+            <IoIosMenu
+              size={30}
+              onClick={() => navigate("/choose")}
+              className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-[#C5A184]"
+            />
+          </div>
+        )}
       </nav>
+
 
       {/* Mobile Menu */}
       <NavbarMobile open={open} setOpen={setOpen} />
@@ -69,9 +133,8 @@ const Nav = () => {
           {menuItems.map((item, index) => (
             <p
               key={index}
-              className={`cursor-pointer transition-opacity duration-300 ${
-                invisibleIndex === index ? "opacity-0" : "opacity-100"
-              }`}
+              className={`cursor-pointer transition-opacity duration-300 ${invisibleIndex === index ? "opacity-0" : "opacity-100"
+                }`}
               onClick={() => {
                 setInvisibleIndex(index);
                 navigate(item.path);
@@ -83,7 +146,7 @@ const Nav = () => {
         </div>
       )}
 
-      
+
     </>
   );
 };

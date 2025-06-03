@@ -3,9 +3,9 @@ import Nav from "./Nav";
 
 const Layout = ({ children }) => {
   return (
-    <div className="min-h-screen flex flex-col relative h-[100vh]">
-      <Nav />
-      <main className="flex-grow">{children}</main>
+    <div className=" flex flex-col relative h-[100vh] overflow-x-hidden overflow-y-hidden">
+      <Nav className="sm:h-[16vh]  h-[10vh]" />
+      <main className="sm:h-[84vh] h-[90vh] ">{children}</main>
     </div>
   );
 };

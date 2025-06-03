@@ -35,11 +35,11 @@ export default function NavbarMobile({ open, setOpen }) {
 
   return (
     <nav className="relative z-50">
-     <div
-  ref={menuRef}
-  style={{ fontFamily: "MyFontNavbar" }}
-  className="fixed top-0 right-0 h-full w-[75%] sm:w-[60%] bg-[#5C4033] text-white translate-x-full md:hidden z-[999]"
->
+      <div
+        ref={menuRef}
+        style={{ fontFamily: "MyFontNavbar" }}
+        className="fixed top-0 right-0 h-full w-[75%] sm:w-[60%] bg-[#5C4033] text-white translate-x-full md:hidden z-[999]"
+      >
         {/* Close Button */}
         <div className="flex justify-end p-4">
           <IoClose
@@ -49,7 +49,7 @@ export default function NavbarMobile({ open, setOpen }) {
           />
         </div>
 
-        <ul  className="flex flex-col items-end gap-6 px-6 text-2xl font-medium mt-10">
+        <ul className="flex flex-col items-end gap-6 px-6 text-2xl font-medium mt-10">
           {navLinks.map((link, idx) => (
             <li
               key={link.label}
