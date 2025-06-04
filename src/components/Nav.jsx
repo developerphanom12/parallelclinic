@@ -81,7 +81,7 @@ const Nav = () => {
               <IoIosMenu
                 size={30}
                 // onClick={() => navigate("/choose")}
-                className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-[#C5A184]"
+                className="absolute top-1/2 left-1/2 scale-75 sm:scale-none transform -translate-x-1/2 -translate-y-1/2 text-[#C5A184]"
               />
             </div>
 
@@ -96,7 +96,7 @@ const Nav = () => {
             className="w-full h-full object-cover rounded-full"
             // onClick={()=>{navigate("/choose")}}
           />
-          <IoIosMenu size={35} className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-3xl text-[#C5A184]" />
+          <IoIosMenu size={35} className="absolute top-1/2 left-1/2 scale-75 sm:scale-none transform -translate-x-1/2 -translate-y-1/2 text-3xl text-[#C5A184]" />
         </div>
           </div>
 
@@ -117,7 +117,7 @@ const Nav = () => {
             <IoIosMenu
               size={30}
               onClick={() => navigate("/choose")}
-              className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-[#C5A184]"
+              className="absolute top-1/2 left-1/2 scale-75 sm:scale-none transform -translate-x-1/2 -translate-y-1/2 text-[#C5A184]"
             />
           </div>
           </div>
