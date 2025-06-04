@@ -56,7 +56,7 @@ const Nav = () => {
         </div>
       </nav> */}
 
-      <nav className="bg-[#FDF8E5] w-full sm:px-8 relative h-[16vh] ">
+      <nav className="bg-[#FDF8E5] w-full sm:px-8 relative h-[10vh] ">
         {location.pathname !== "/" ? (
           // ✅ Show only when route is NOT "/"
           <div className="absolute top-4 right-4 flex flex-col items-center z-50">
@@ -80,7 +80,7 @@ const Nav = () => {
               />
               <IoIosMenu
                 size={30}
-                onClick={() => navigate("/choose")}
+                // onClick={() => navigate("/choose")}
                 className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-[#C5A184]"
               />
             </div>
@@ -94,7 +94,7 @@ const Nav = () => {
             src={menuGif}
             alt="sound gif"
             className="w-full h-full object-cover rounded-full"
-            onClick={()=>{navigate("/choose")}}
+            // onClick={()=>{navigate("/choose")}}
           />
           <IoIosMenu size={35} className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-3xl text-[#C5A184]" />
         </div>
@@ -103,6 +103,8 @@ const Nav = () => {
         ) : (
 
           // ✅ Show only on "/" route
+          <div className="absolute top-4 right-4 flex flex-col items-center z-50">
+
           <div
             className="relative ml-auto  sm:w-28 sm:h-28 w-20 h-20 cursor-pointer scale-150"
             onClick={() => setShowMenu(!showMenu)}
@@ -117,6 +119,7 @@ const Nav = () => {
               onClick={() => navigate("/choose")}
               className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-[#C5A184]"
             />
+          </div>
           </div>
         )}
       </nav>

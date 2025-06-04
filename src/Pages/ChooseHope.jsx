@@ -72,7 +72,7 @@ const ChooseHope = () => {
       });
 
       setCurrentIndex(nextIndex);
-    }, 10000);
+    }, 30000);
 
     return () => clearInterval(interval);
   }, [currentIndex]);
@@ -132,7 +132,7 @@ const ChooseHope = () => {
       </div>
 
       {/* Flower Images */}
-      <div className="absolute top-[25%] left-[50%] transform -translate-x-1/2 flex justify-center items-center">
+      <div className="absolute top-[40%] left-[50%] transform -translate-x-1/2 flex justify-center items-center">
         <div className="w-[300px] h-[200px] sm:w-[400px] sm:h-[300px] relative flex justify-bottom items-center">
           <img
             ref={(el) => (imageRefs.current[0] = el)}

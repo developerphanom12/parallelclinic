@@ -1,9 +1,80 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { FaHeadphones } from "react-icons/fa6";
 
+const jobData = [
+  {
+    title: "Parallel Clinic, an online clinic, is inviting medical & paramedical professionals to join our team!",
+    items: [
+      "We are looking for mature persons with",
+      "Outstanding articulation and communication skills",
+      "Outstanding MS Office capabilities",
+      "An eye for detail, attitude for compliance, with a temperament to understand and communicate nuanced issues",
+      "Experience of literature search, writing scientific research documents, publications, and blogs would be highly valued"
+    ]
+  },
+  {
+    title:"Professional Growth Opportunities include gaining experience of",
+    items: [
+      "Managing large, long term Effectiveness Clinical Trials for natural medicines to create a scientific evidence base in line with US FDA systems",
+      "Being part of a team that’s on the forefront of developing unique prescription medicines",
+      "Learning thought-leadership skills",
+      "Authoring publications and presenting in international fora"
+    ]
+  },
+  {
+    title:"Professional compensation ",
+    items: [
+      "shall match the best available in the industry, based on qualifications, experience and skills.  Besides, Parallel Clinic offers highly lucrative performance-linked incentives (depending upon personal & professional attributes). ",
+      "All positions offer long-term growth opportunities and expect a minimum 2 years engagement commitment. ",
+      "Please send your resume by Email to JoinOurTeam@Parallel.Clinic ",
+    ]
+  },
+  {
+    title:"Clinic Director ",
+    items: [
+      "Role Description: ",
+      "To manage and supervise everyday operations of the clinic with a focus on improving the quality of patient care by ensuring the facilities are well-staffed. ",
+      "Oversight of all operations of the clinic, including but not limited to ",
+      "a. Selection of medical, paramedical and support staff ",
+      "b. Responsible for the performance of medical, paramedical and support staff ",
+      "c. Setting SOPs, Treatment Protocols and Standards of Care to be followed in the clinic ",
+      "Coordinating the preparation of ",
+      "Treatment Protocols, and  ",
+      "Standards of Care for all medical conditions managed and treated at the Clinic.  ",
+      "Oversight of budget ",
+    ]
+  },
+  {
+    title:"Medical Consultants / Tele-Consultants",
+    items: [
+      "Role Description: ",
+      "Managing patients in an online clinic -providing medical consultations, prescribing medicines and following up with patients based on their online inputs. ",
+      "Developing protocols for management of various medical conditions ",
+      "Managing clinic & pharmacy operations in compliance with applicable regulations ",
+      "Developing & overseeing the implementation of clinical research protocols  ",
+      "Interacting with subject experts, clinicians/investigators on various therapeutic, scientific and patient care aspects ",
+    ]
+  },
+  {
+    title:"Pharmacists",
+    items: [
+      "Role Description: ",
+      "Managing Pharmacy operations, including",
+      "preparing and dispensing medicines (including making extractions & mixtures on natural products) ",
+      "storing medicines ",
+      "managing inventories",
+    ]
+  },
+ 
+];
+
+
+
 const JoinTeam = () => {
   const cursorRef = useRef(null);
+  const [displayData, setDisplayData] = useState(jobData.slice(0, 3));
+  const [activePosition, setActivePosition] = useState(0); // Default active position
 
   // Mouse follower
   useEffect(() => {
@@ -39,43 +110,133 @@ const JoinTeam = () => {
     };
   }, []);
 
+  const handleClick = (btnIndex) => {
+  if (btnIndex === 1) {
+    setDisplayData([jobData[3]]); 
+  } else if (btnIndex === 2) {
+    setDisplayData([jobData[4]]);
+  } else if (btnIndex === 3) {
+    setDisplayData([jobData[4]]);
+  } else if (btnIndex === 4) {
+    setDisplayData([jobData[5]]);
+  }
+  setActivePosition(btnIndex);
+};
+
+
   return (
-    <div className="relative w-full bg-[#FDF8E5] overflow-hidden h-full">
+    <div className="relative w-full bg-[#FDF8E5] sm:overflow-hidden h-full">
       {/* Cursor */}
       <div
         ref={cursorRef}
         className="w-12 h-12 border border-[#C5A184] rounded-full fixed top-0 left-0 z-[999]"
       />
-
+   
       {/* Content */}
-      <div className="flex flex-col sm:pl-16 sm:w-[60%] px-8 py-4">
-        {/* Heading */}
-        <div className=" text-[#A37159] leading-0">
-          <h1 style={{ fontFamily: "MyFont" }} className="sm:text-[70px] text-5xl leading-none">Join </h1>
-          <h1 style={{ fontFamily: "MyFont" }} className="sm:text-[70px] text-5xl leading-none">Parallel Clinic Team</h1>
+      <div className="w-full px-4 sm:px-16 grid grid-cols-1 lg:grid-cols-2 gap-8  sm:h-[70vh]">
+        {/* Left Column - Heading and Requirements */}
+        <div>
+          {/* Heading */}
+          <div className="text-[#A37159] mb-6 pl-[2%] w-[80%]">
+            <h1 className="sm:text-[55px] text-[33px] leading-none">Join <span className="text-[#C5A184]">Parallel Clinic Team</span></h1>
+          </div>
+          
+          {/* Requirements List */}
+          <div>
+      {displayData?.map((section, index) => (
+        <div key={index} className="">
+          <p className="text-[#A37159] text-[18px] font-semibold flex items-start gap-2">
+  <span className="">{section.index}</span>
+  <span className="flex-1">{section.title}</span>
+</p>
+          <ul className="ml-8 text-[#676F75] text-[12px]">
+            {section.items.map((item, i) => (
+              <li key={i}>
+                <span className="mr-2">{String.fromCharCode(97 + i)}.</span>
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+        </div>
+        
+        {/* Right Column - Inviting Doctors */}
+        <div className="flex flex-col  justify-end sm:h-[70vh]">
+          <div>
+            <h2 className="text-[#A37159] text-3xl mb-6">Inviting</h2>
+           <ul className="pl-4 text-[#A37159] text-2xl space-y-2">
+  <div className="flex items-start gap-3 ">
+    <div className="w-2 h-2 bg-[#A37159] my-auto"></div>
+    <span>Ayush Doctors &</span>
+  </div>
+  <div className="flex items-start gap-3 ">
+    <div className="w-2 h-2 bg-[#A37159] my-auto"></div>
+    <span>Conventional/Allopathic Doctors</span>
+  </div>
+</ul>
+
+            
+            <h3 className="text-[#A37159] text-2xl mt-8 mb-4">Join Our Team as:</h3>
+            <ol className="pl-4 space-y-2 text-xl">
+              <li 
+                className={`cursor-pointer ${activePosition === 1 ? 'text-[#A37159] font-bold' : 'text-[#676F75]'}`}
+                onClick={() => handleClick(1)}
+              >
+                1. Clinic Director
+              </li>
+              <li 
+                className={`cursor-pointer ${activePosition === 2 ? 'text-[#A37159] font-bold' : 'text-[#676F75]'}`}
+                onClick={() => handleClick(2)}
+              >
+                2. Medical Consultant
+              </li>
+              <li 
+                className={`cursor-pointer ${activePosition === 3 ? 'text-[#A37159] font-bold' : 'text-[#676F75]'}`}
+                onClick={() => handleClick(3)}
+              >
+                3. Medical Tele-Consultant
+              </li>
+              <li 
+                className={`cursor-pointer ${activePosition === 4 ? 'text-[#A37159] font-bold' : 'text-[#676F75]'}`}
+                onClick={() => handleClick(4)}
+              >
+                4. Pharmacist
+              </li>
+            </ol>
+            
+            <p className="text-[#676F75] mt-4">
+              Positions 1-4 are based at Gurugram, Haryana, India.
+            </p>
+          </div>
         </div>
       </div>
 
-      {/* Bottom Right Text */}
-      <div className="absolute bottom-6 right-8 text-sm text-gray-700">
-        <FaHeadphones size={50} className="text-[#DAA57B]" />
+      
+      {/* Bottom Text */}
+      <div className="sm:fixed sm:bottom-0 sm:left-0 w-full px-4 sm:px-0 flex flex-col items-center text-center space-y-0.5 z-50 mt-20 sm:mt-0 ">
+        <h2 className="text-[#A37159] text-2xl sm:text-[25px] font-bold">
+          Practice World Class Personalized, Molecular-Targeted Precision Medicine
+        </h2>
+        <h2 className="text-[#A37159] text-2xl sm:text-[25px] font-bold">
+          using Natural Pharmaceutical Ingredients
+        </h2>
+        <p className="text-[#676F75] text-base sm:text-[17px]">
+          Founded on a Deep Understanding of Molecular Basis of Pathophysiology of Medical Conditions
+        </p>
+        <p className="text-[#676F75] text-base sm:text-[17px]">
+          Using Botanical Medicines with Well Documented Molecular Level Mechanisms of Actions
+        </p>
       </div>
 
-      <div className="w-full absolute bottom-16 sm:bottom-8 left-0 flex flex-col items-center px-4 text-center leading-none">
-        <h1 style={{ fontFamily: "MyFont" }} className="text-[#A37159] sm:text-4xl text-xl font-bold">
-          Practice World Class - Protocols Based Medicine
-        </h1>
-        <h1 style={{ fontFamily: "MyFontNavbar" }} className="text-[#676F75] sm:text-[30px]">
-          Founded on a Clear Understanding of Molecular Basis of Pathophysiology of Medical Conditions
-        </h1>
-        <h1 style={{ fontFamily: "MyFontNavbar" }} className="text-[#676F75] sm:text-[30px]">
-          Using Botanical Medicines with Well Documented Molecular Level Mechanisms of Actions
-        </h1>
-      </div>
+      {/* Bottom Right Text */}
+     <div className="absolute bottom-0 right-8 text-sm text-gray-700">
+             <FaHeadphones size={50} className="text-[#DAA57B]" />
+           </div>
+   
     </div>
   );
 };
 
 export default JoinTeam;
-
-  
