@@ -106,7 +106,7 @@ const Home = () => {
         </div>
       </div> */}
 
-      <div className="absolute sm:bottom-[20%] bottom-[45%] w-full flex justify-center items-center z-5">
+      <div className="absolute sm:bottom-[15%] bottom-[45%] w-full flex justify-center items-center z-5">
   <div className="w-[300px] h-[200px] sm:w-[400px] sm:h-[300px] overflow-hidden">
     <video
       src={video}
