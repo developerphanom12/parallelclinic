@@ -195,7 +195,7 @@ const AboutClinic = () => {
       {/* Main Content */}
       <div className="flex flex-col w-full px-6 sm:px-16 gap-8 flex-grow">
         <div className="text-[#A37159] flex flex-col items-start w-full pl-[2%]">
-          <h1 className="sm:text-[60px] text-5xl leading-none">About <br className="block sm:hidden" /><span className="text-[#C5A184]">Parallel Clinic</span></h1>
+          <h1 className="sm:text-[55px] text-[33px] leading-none">About <br className="block sm:hidden" /><span className="text-[#C5A184]">Parallel Clinic</span></h1>
           <h2 className="text-[#A37159] text-2xl sm:text-3xl font-light pt-2">Information Hub: Your Questions. Our Answers.</h2>
         </div>
 

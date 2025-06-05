@@ -78,7 +78,7 @@ const Home = () => {
   </div>
 
   <h1
-    style={{ fontFamily: "MyFont" }}
+    // style={{ fontFamily: "MyFont" }}
     className="text-[38px] sm:text-5xl md:text-7xl text-[#C5A184] leading-tight"
   >
     Let's Make Your  <br />

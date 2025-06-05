@@ -39,7 +39,7 @@ const JoinTeam2 = () => {
     };
   }, []);
   return (
-    <div className="relative w-full bg-[#FDF8E5] sm:overflow-hidden h-full">
+    <div className="relative w-full bg-[#FDF8E5] sm:overflow-hidden sm:h-full">
          {/* Cursor */}
          <div
            ref={cursorRef}
@@ -51,7 +51,7 @@ const JoinTeam2 = () => {
              </div>
          
          {/* Bottom Text */}
-         <div className="sm:fixed sm:bottom-0 sm:left-0 w-full px-4 sm:px-0 flex flex-col items-center text-center space-y-0.5 z-50 mt-20 sm:mt-0 ">
+         <div className="fixed bottom-0 left-0 w-full px-4 sm:px-0 flex flex-col items-center text-center space-y-0.5 z-50 mt-20 sm:mt-0 ">
             <p className="text-[#676F75] text-base sm:text-[17px]">
              Managed With Therapies Evidenced In Prestigious International Publications
            </p>

@@ -50,7 +50,7 @@ const AboutClinic2 = () => {
             {/* Main Content */}
             <div className="w-[100vw]  flex flex-col items-center justify-center ">
                 <div  className="text-[#A37159] flex items-start w-full pl-[10%]">
-                    <h1 className="sm:text-[60px] text-5xl leading-none">About <br className="block sm:hidden" /><span className="text-[#C5A184]">Parallel Clinic</span></h1>
+                    <h1 className="sm:text-[55px] text-[33px] leading-none">About <br className="block sm:hidden" /><span className="text-[#C5A184]">Parallel Clinic</span></h1>
                 </div>
                 <div className="w-[90vw]  flex flex-col items-center text-center">
 
@@ -71,7 +71,7 @@ const AboutClinic2 = () => {
 
                     <div className="mt-6 text-[#A37159] leading-none">
                         <p style={{ fontFamily: "MyFont" }} className="text-[#A37159] text-[25px]">Parallel Clinic's therapeutic doctrine is founded on Physicians & Patients working in Parallel.</p>
-                        <div className="text-[17px] -space-y-2  flex flex-col justify-center items-center w-full">
+                        <div className="text-[17px] sm:-space-y-2  flex flex-col justify-center items-center w-full">
                             <p className="w-[90%] leading-0.5">
                                 Our Molecular-Targeted approach is based on a deep understanding of the molecular pathophysiology of diseases that we treat
                             </p>
