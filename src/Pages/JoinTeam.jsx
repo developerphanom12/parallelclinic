@@ -1,13 +1,13 @@
 import React, { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { FaHeadphones, FaSpinner } from "react-icons/fa6";
-import { FaTimes } from 'react-icons/fa';
+import { FaTimes } from "react-icons/fa";
 
 // Submit button component with loading state
 function SubmitButton({ pending }) {
   return (
-    <button 
-      type="submit" 
+    <button
+      type="submit"
       disabled={pending}
       className="bg-[#A37159] hover:bg-[#C5A184] text-white py-2 px-6 rounded-md transition-all duration-300 disabled:opacity-70 flex items-center justify-center"
     >
@@ -24,14 +24,15 @@ function SubmitButton({ pending }) {
 
 const jobData = [
   {
-    title: "Parallel Clinic, an online clinic, is inviting medical & paramedical professionals to join our team!",
+    title:
+      "Parallel Clinic, an online clinic, is inviting medical & paramedical professionals to join our team!",
     items: [
       "We are looking for mature persons with",
       "Outstanding articulation and communication skills",
       "Outstanding MS Office capabilities",
       "An eye for detail, attitude for compliance, with a temperament to understand and communicate nuanced issues",
-      "Experience of literature search, writing scientific research documents, publications, and blogs would be highly valued"
-    ]
+      "Experience of literature search, writing scientific research documents, publications, and blogs would be highly valued",
+    ],
   },
   {
     title: "Professional Growth Opportunities include gaining experience of",
@@ -39,8 +40,8 @@ const jobData = [
       "Managing large, long term Effectiveness Clinical Trials for natural medicines to create a scientific evidence base in line with US FDA systems",
       "Being part of a team that’s on the forefront of developing unique prescription medicines",
       "Learning thought-leadership skills",
-      "Authoring publications and presenting in international fora"
-    ]
+      "Authoring publications and presenting in international fora",
+    ],
   },
   {
     title: "Professional compensation ",
@@ -48,7 +49,7 @@ const jobData = [
       "shall match the best available in the industry, based on qualifications, experience and skills.  Besides, Parallel Clinic offers highly lucrative performance-linked incentives (depending upon personal & professional attributes). ",
       "All positions offer long-term growth opportunities and expect a minimum 2 years engagement commitment. ",
       "Please send your resume by Email to JoinOurTeam@Parallel.Clinic ",
-    ]
+    ],
   },
   {
     title: "Clinic Director ",
@@ -63,7 +64,7 @@ const jobData = [
       "Treatment Protocols, and  ",
       "Standards of Care for all medical conditions managed and treated at the Clinic.  ",
       "Oversight of budget ",
-    ]
+    ],
   },
   {
     title: "Medical Consultants / Tele-Consultants",
@@ -74,7 +75,7 @@ const jobData = [
       "Managing clinic & pharmacy operations in compliance with applicable regulations ",
       "Developing & overseeing the implementation of clinical research protocols  ",
       "Interacting with subject experts, clinicians/investigators on various therapeutic, scientific and patient care aspects ",
-    ]
+    ],
   },
   {
     title: "Pharmacists",
@@ -84,12 +85,9 @@ const jobData = [
       "preparing and dispensing medicines (including making extractions & mixtures on natural products) ",
       "storing medicines ",
       "managing inventories",
-    ]
+    ],
   },
-
 ];
-
-
 
 const JoinTeam = () => {
   const cursorRef = useRef(null);
@@ -99,14 +97,14 @@ const JoinTeam = () => {
   const [formPending, setFormPending] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
   const [submitError, setSubmitError] = useState("");
-  
+
   // Form state
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     contact: "",
     position: "Clinic Director",
-    description: ""
+    description: "",
   });
   const [resumeFile, setResumeFile] = useState(null);
 
@@ -147,65 +145,66 @@ const JoinTeam = () => {
   const handleClick = (btnIndex) => {
     if (btnIndex === 1) {
       setDisplayData([jobData[3]]);
-      setFormData(prev => ({ ...prev, position: "Clinic Director" }));
+      setFormData((prev) => ({ ...prev, position: "Clinic Director" }));
     } else if (btnIndex === 2) {
       setDisplayData([jobData[4]]);
-      setFormData(prev => ({ ...prev, position: "Medical Consultant" }));
+      setFormData((prev) => ({ ...prev, position: "Medical Consultant" }));
     } else if (btnIndex === 3) {
       setDisplayData([jobData[4]]);
-      setFormData(prev => ({ ...prev, position: "Medical Tele-Consultant" }));
+      setFormData((prev) => ({ ...prev, position: "Medical Tele-Consultant" }));
     } else if (btnIndex === 4) {
       setDisplayData([jobData[5]]);
-      setFormData(prev => ({ ...prev, position: "Pharmacist" }));
+      setFormData((prev) => ({ ...prev, position: "Pharmacist" }));
     }
     setActivePosition(btnIndex);
   };
-  
+
   // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
     setFormPending(true);
-    
+
     const submitData = new FormData();
     submitData.append("name", formData.name);
     submitData.append("email", formData.email);
     submitData.append("contact", formData.contact);
     submitData.append("position", formData.position);
     submitData.append("description", formData.description);
-    
+
     if (resumeFile) {
       submitData.append("resume", resumeFile);
     }
-    
+
     try {
       // Simulate API call with timeout
-      await new Promise(resolve => setTimeout(resolve, 1500));
-      
+      await new Promise((resolve) => setTimeout(resolve, 1500));
+
       setSubmitSuccess(true);
-      console.log("Application submitted successfully!" , formData);
+      console.log("Application submitted successfully!", formData);
       setSubmitError("");
-      
+
       // Reset form after successful submission
       setFormData({
         name: "",
         email: "",
         contact: "",
         position: formData.position, // Keep the current position
-        description: ""
+        description: "",
       });
       setResumeFile(null);
-      
+
       const fileInput = document.getElementById("resume");
       if (fileInput) fileInput.value = "";
-      
+
       //  3 seconds baad form close
       setTimeout(() => {
         setShowForm(false);
         setSubmitSuccess(false);
       }, 3000);
-      
     } catch (error) {
-      setSubmitError("Failed to submit your application. Please try again later.");
+      setSubmitError(
+        "Failed to submit your application. Please try again later."
+      );
       console.error("Application submission error:", error);
     } finally {
       setFormPending(false);
@@ -215,9 +214,9 @@ const JoinTeam = () => {
   // Handle input changes
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [name]: value
+      [name]: value,
     }));
   };
 
@@ -247,7 +246,9 @@ const JoinTeam = () => {
         <div>
           {/* Heading */}
           <div className="text-[#A37159] mb-6 pl-[2%] w-[80%] sm:w-full ">
-            <h1 className="sm:text-[55px] text-[33px] leading-none whitespace-nowrap">Join <span className="text-[#C5A184]">Parallel Clinic Team</span></h1>
+            <h1 className="sm:text-[55px] text-[33px] leading-none whitespace-nowrap">
+              Join <span className="text-[#C5A184]">Parallel Clinic Team</span>
+            </h1>
           </div>
 
           {/* Requirements List */}
@@ -261,24 +262,25 @@ const JoinTeam = () => {
                 <ul className="ml-8 text-[#676F75] text-[12px]">
                   {section.items.map((item, i) => (
                     <li key={i}>
-                      <span className="mr-2">{String.fromCharCode(97 + i)}.</span>
+                      <span className="mr-2">
+                        {String.fromCharCode(97 + i)}.
+                      </span>
                       {item}
                     </li>
                   ))}
                 </ul>
               </div>
             ))}
-            
           </div>
-            {/* Apply Now Button */}
-            <div className="mt-6 flex justify-start">
-              <button 
-                onClick={() => setShowForm(true)}
-                className="bg-[#A37159] hover:bg-[#C5A184] text-white py-2 px-4 rounded-md transition-all duration-300"
-              >
-                Apply Now
-              </button>
-            </div>
+          {/* Apply Now Button */}
+          <div className="mt-6 flex justify-start">
+            <button
+              onClick={() => setShowForm(true)}
+              className="bg-[#A37159] hover:bg-[#C5A184] text-white py-2 px-4 rounded-md transition-all duration-300"
+            >
+              Apply Now
+            </button>
+          </div>
         </div>
 
         {/* Right Column - Inviting Doctors */}
@@ -299,25 +301,41 @@ const JoinTeam = () => {
             <p className="text-[#A37159] text-2xl mt-2 ">Join Our Team as:</p>
             <ol className="pl-4 text-xl">
               <li
-                className={`cursor-pointer ${activePosition === 1 ? 'text-[#A37159] font-bold' : 'text-[#676F75]'}`}
+                className={`cursor-pointer ${
+                  activePosition === 1
+                    ? "text-[#A37159] font-bold"
+                    : "text-[#676F75]"
+                }`}
                 onClick={() => handleClick(1)}
               >
                 1. Clinic Director
               </li>
               <li
-                className={`cursor-pointer ${activePosition === 2 ? 'text-[#A37159] font-bold' : 'text-[#676F75]'}`}
+                className={`cursor-pointer ${
+                  activePosition === 2
+                    ? "text-[#A37159] font-bold"
+                    : "text-[#676F75]"
+                }`}
                 onClick={() => handleClick(2)}
               >
                 2. Medical Consultant
               </li>
               <li
-                className={`cursor-pointer ${activePosition === 3 ? 'text-[#A37159] font-bold' : 'text-[#676F75]'}`}
+                className={`cursor-pointer ${
+                  activePosition === 3
+                    ? "text-[#A37159] font-bold"
+                    : "text-[#676F75]"
+                }`}
                 onClick={() => handleClick(3)}
               >
                 3. Medical Tele-Consultant
               </li>
               <li
-                className={`cursor-pointer ${activePosition === 4 ? 'text-[#A37159] font-bold' : 'text-[#676F75]'}`}
+                className={`cursor-pointer ${
+                  activePosition === 4
+                    ? "text-[#A37159] font-bold"
+                    : "text-[#676F75]"
+                }`}
                 onClick={() => handleClick(4)}
               >
                 4. Pharmacist
@@ -334,16 +352,19 @@ const JoinTeam = () => {
       {/* Bottom Text */}
       <div className="sm:fixed sm:bottom-0 sm:left-0 w-full px-4 sm:px-0 flex flex-col items-center text-center space-y-0.5 z-50 mt-20 sm:mt-0 ">
         <h2 className="text-[#A37159] text-2xl sm:text-[25px] font-bold">
-          Practice World Class Personalized, Molecular-Targeted Precision Medicine
+          Practice World Class Personalized, Molecular-Targeted Precision
+          Medicine
         </h2>
         <h2 className="text-[#A37159] text-2xl sm:text-[25px] font-bold">
           using Natural Pharmaceutical Ingredients
         </h2>
         <p className="text-[#676F75] text-base sm:text-[17px]">
-          Founded on a Deep Understanding of Molecular Basis of Pathophysiology of Medical Conditions
+          Founded on a Deep Understanding of Molecular Basis of Pathophysiology
+          of Medical Conditions
         </p>
         <p className="text-[#676F75] text-base sm:text-[17px]">
-          Using Botanical Medicines with Well Documented Molecular Level Mechanisms of Actions
+          Using Botanical Medicines with Well Documented Molecular Level
+          Mechanisms of Actions
         </p>
         <div className="absolute bottom-4 right-8 text-sm text-gray-700">
           <FaHeadphones size={50} className="text-[#DAA57B]" />
@@ -353,24 +374,28 @@ const JoinTeam = () => {
       {/* Application Form Popup */}
       {showForm && (
         <div className="fixed inset-0 backdrop-blur-xs  bg-opacity-30 flex items-center justify-center z-[1000] p-4">
-          <div className="bg-[#FDF8E5] rounded-lg shadow-xl w-full max-w-3xl max-h-[90vh] overflow-y-auto">
+          <div className="bg-[#FDF8E5] rounded-lg shadow-xl w-full max-w-4xl max-h-[90vh] overflow-y-auto">
             {/* Form Header */}
-            <div className="flex justify-between items-center p-4 border-b border-[#C5A184]">
-              <h2 className="text-[#A37159] text-2xl font-semibold">Apply for {formData.position}</h2>
-              <button 
+            <div className="flex justify-between items-center p-6 border-b border-[#C5A184]">
+              <h2 className="text-[#A37159] text-2xl font-semibold">
+                Apply for {formData.position}
+              </h2>
+              <button
                 onClick={() => setShowForm(false)}
-                className="text-[#A37159] hover:text-[#C5A184] transition-colors"
+                className="text-[#A37159] hover:text-[#C5A184] transition-colors cursor-pointer"
               >
                 <FaTimes size={24} />
               </button>
             </div>
-            
+
             {/* Form Content */}
-            <div className="p-4">
+            <div className="p-6">
               {/* Success/Error Messages */}
               {submitSuccess && (
                 <div className="bg-green-50 border border-green-200 text-green-700 px-4 py-2 rounded mb-4 text-sm">
-                  <p className="font-medium">Application submitted successfully! We'll contact you soon.</p>
+                  <p className="font-medium">
+                    Application submitted successfully! We'll contact you soon.
+                  </p>
                 </div>
               )}
 
@@ -379,13 +404,16 @@ const JoinTeam = () => {
                   <p>{submitError}</p>
                 </div>
               )}
-              
+
               {/* Application Form */}
               <form onSubmit={handleSubmit}>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   {/* Name Field */}
                   <div className="sm:col-span-1 col-span-2">
-                    <label htmlFor="name" className="block text-[#A37159] text-sm font-medium mb-1">
+                    <label
+                      htmlFor="name"
+                      className="block text-[#A37159] text-sm font-medium mb-1"
+                    >
                       Full Name *
                     </label>
                     <input
@@ -402,7 +430,10 @@ const JoinTeam = () => {
 
                   {/* Email Field */}
                   <div className="sm:col-span-1 col-span-2">
-                    <label htmlFor="email" className="block text-[#A37159] text-sm font-medium mb-1">
+                    <label
+                      htmlFor="email"
+                      className="block text-[#A37159] text-sm font-medium mb-1"
+                    >
                       Email Address *
                     </label>
                     <input
@@ -419,7 +450,10 @@ const JoinTeam = () => {
 
                   {/* Contact Field */}
                   <div className="sm:col-span-1 col-span-2">
-                    <label htmlFor="contact" className="block text-[#A37159] text-sm font-medium mb-1">
+                    <label
+                      htmlFor="contact"
+                      className="block text-[#A37159] text-sm font-medium mb-1"
+                    >
                       Contact Number *
                     </label>
                     <input
@@ -436,7 +470,10 @@ const JoinTeam = () => {
 
                   {/* Position Field */}
                   <div className="sm:col-span-1 col-span-2">
-                    <label htmlFor="position" className="block text-[#A37159] text-sm font-medium mb-1">
+                    <label
+                      htmlFor="position"
+                      className="block text-[#A37159] text-sm font-medium mb-1"
+                    >
                       Position *
                     </label>
                     <select
@@ -448,15 +485,22 @@ const JoinTeam = () => {
                       className="w-full px-3 py-1.5 border border-[#C5A184] rounded-md focus:outline-none focus:ring-1 focus:ring-[#A37159] bg-white text-sm"
                     >
                       <option value="Clinic Director">Clinic Director</option>
-                      <option value="Medical Consultant">Medical Consultant</option>
-                      <option value="Medical Tele-Consultant">Medical Tele-Consultant</option>
+                      <option value="Medical Consultant">
+                        Medical Consultant
+                      </option>
+                      <option value="Medical Tele-Consultant">
+                        Medical Tele-Consultant
+                      </option>
                       <option value="Pharmacist">Pharmacist</option>
                     </select>
                   </div>
 
                   {/* Resume Upload */}
                   <div className="col-span-2">
-                    <label htmlFor="resume" className="block text-[#A37159] text-sm font-medium mb-1">
+                    <label
+                      htmlFor="resume"
+                      className="block text-[#A37159] text-sm font-medium mb-1"
+                    >
                       Resume (PDF) *
                     </label>
                     <input
@@ -477,7 +521,10 @@ const JoinTeam = () => {
 
                   {/* Description Field */}
                   <div className="col-span-2">
-                    <label htmlFor="description" className="block text-[#A37159] text-sm font-medium mb-1">
+                    <label
+                      htmlFor="description"
+                      className="block text-[#A37159] text-sm font-medium mb-1"
+                    >
                       Why do you want to join Parallel Clinic? *
                     </label>
                     <textarea
@@ -494,16 +541,19 @@ const JoinTeam = () => {
                 </div>
 
                 {/* Submit Button */}
-                <div className="mt-4 flex justify-center">
+                <div className="mt-4 flex justify-center cursor-pointer">
                   <SubmitButton pending={formPending} />
                 </div>
               </form>
-              
+
               {/* Additional Information */}
               <div className="mt-2 text-center text-[#676F75] text-xs">
                 <p>
                   For questions, email us at{" "}
-                  <a href="mailto:JoinOurTeam@Parallel.Clinic" className="text-[#A37159] hover:underline">
+                  <a
+                    href="mailto:JoinOurTeam@Parallel.Clinic"
+                    className="text-[#A37159] hover:underline"
+                  >
                     JoinOurTeam@Parallel.Clinic
                   </a>
                 </p>

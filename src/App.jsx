@@ -7,7 +7,7 @@ import JoinTeam from './Pages/JoinTeam'
 import Layout from './components/Layout'
 import AboutClinic2 from './Pages/AboutClinic2'
 import JoinTeam2 from './Pages/JoinTeam2'
-import JobApplication from './Pages/JobApplication'
+// import JobApplication from './Pages/JobApplication'
 
 function App() {
   return (
