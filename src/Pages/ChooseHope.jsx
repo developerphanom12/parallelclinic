@@ -112,7 +112,7 @@ const ChooseHope = () => {
   }, []);
 
   return (
-    <div className="relative w-full h-full sm:h-[84vh] bg-[#FDF8E5] overflow-hidden">
+    <div className="relative w-full h-full sm:h-[90vh] bg-[#FDF8E5] overflow-y-hidden ">
       {/* Cursor */}
       <div
         ref={cursorRef}
@@ -121,7 +121,7 @@ const ChooseHope = () => {
 
       {/* Page Title */}
       <div className="w-full flex justify-between items-start px-8 py-4">
-        <div className="flex sm:pl-16">
+        <div className="flex sm:pl-8">
           <h1
             style={{ fontFamily: "MyFont" }}
             className="sm:text-[55px] text-[33px] sm:w-[50%] w-[90%] text-[#C5A184]"
@@ -132,8 +132,8 @@ const ChooseHope = () => {
       </div>
 
       {/* Flower Images */}
-      <div className="absolute top-[40%] left-[50%] transform -translate-x-1/2 flex justify-center items-center">
-        <div className="w-[300px] h-[200px] sm:w-[400px] sm:h-[300px] relative flex justify-bottom items-center">
+      <div className="absolute top-[30%] left-[50%] transform -translate-x-1/2 flex justify-center items-center">
+        <div className="w-[300px] h-[200px] sm:w-[450px] sm:h-[350px] relative flex justify-bottom items-center">
           <img
             ref={(el) => (imageRefs.current[0] = el)}
             src={flower1}
@@ -158,7 +158,7 @@ const ChooseHope = () => {
       </div>
 
       {/* Consult Doctors Text - Left Bottom */}
-      <div className="absolute bottom-10 left-6 sm:left-16 text-[#A37159]">
+      <div className="absolute bottom-2 sm:bottom-10 left-6 sm:left-16 text-[#A37159] ">
         <h2 style={{ fontFamily: "MyFont" }} className="text-1xl sm:text-3xl">
           Consult Parallel Clinic Doctors
           <br />
@@ -169,14 +169,13 @@ const ChooseHope = () => {
       {/* Bottom Right Text */}
       <div className="absolute sm:bottom-8 bottom-5 sm:right-6 right-6 text-sm text-gray-700">
         <div className="flex flex-col gap-2 items-end mr-7">
-          <div style={{ fontFamily: "MyFont" }} className="sm:w-[38%]">
-            <h1 className="text-[#C5A184] sm:text-[24px]  text-[20px] sm:text-start text-center">
-              With Well Documented Science Based Assurance of Highly Safe,
-              Highly Efficient Medicines*
+          <div style={{ fontFamily: "MyFont" }} className="sm:w-[]">
+            <h1 className="text-[#C5A184] sm:text-[20px]  text-[20px] sm:text-end text-center">
+              With Well Documented <br/> Science Based Assurance of <br/>Highly Safe,Highly Efficient Medicines*
             </h1>
           </div>
-          {/* <FaHeadphones size={50} className="text-[#DAA57B]" /> */}
-          <div
+          <FaHeadphones size={50} className="text-[#DAA57B]" />
+          {/* <div
             onClick={handleHeadphoneClick}
             className="relative w-fit cursor-pointer"
           >
@@ -185,7 +184,7 @@ const ChooseHope = () => {
               className="text-[#DAA57B] cursor-pointer"
             />
             <img src={waveImage} alt="wave" className="absolute bottom-0 " />
-          </div>
+          </div> */}
 
           {showSlider && (
             <input

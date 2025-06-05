@@ -137,14 +137,14 @@ const JoinTeam = () => {
         {/* Left Column - Heading and Requirements */}
         <div>
           {/* Heading */}
-          <div className="text-[#A37159] mb-6 pl-[2%] w-[80%] sm:w-full">
-            <h1 className="sm:text-[55px] text-[33px] leading-none">Join <span className="text-[#C5A184]">Parallel Clinic Team</span></h1>
+          <div className="text-[#A37159] mb-6 pl-[2%] w-[80%] sm:w-full ">
+            <h1 className="sm:text-[55px] text-[33px] leading-none whitespace-nowrap">Join <span className="text-[#C5A184]">Parallel Clinic Team</span></h1>
           </div>
 
           {/* Requirements List */}
-          <div>
+          <div className="sm:max-h-[50vh] sm:overflow-y-auto hide-scrollbar">
             {displayData?.map((section, index) => (
-              <div key={index} className="">
+              <div key={index} className=" ">
                 <p className="text-[#A37159] text-[18px] font-semibold flex items-start gap-2">
                   <span className="">{section.index}</span>
                   <span className="flex-1">{section.title}</span>
@@ -163,9 +163,9 @@ const JoinTeam = () => {
         </div>
 
         {/* Right Column - Inviting Doctors */}
-        <div className="flex flex-col  justify-end sm:h-[70vh]">
+        <div className="flex flex-col  justify-end sm:h-[70vh] ">
           <div>
-            <h2 className="text-[#A37159] text-3xl mb-6">Inviting</h2>
+            <h2 className="text-[#A37159] text-2xl mb-2">Inviting</h2>
             <ul className="pl-4 text-[#A37159] text-2xl space-y-2">
               <div className="flex items-start gap-3 ">
                 <div className="w-2 h-2 bg-[#A37159] my-auto"></div>
@@ -178,8 +178,8 @@ const JoinTeam = () => {
             </ul>
 
 
-            <h3 className="text-[#A37159] text-2xl mt-8 mb-4">Join Our Team as:</h3>
-            <ol className="pl-4 space-y-2 text-xl">
+            <p className="text-[#A37159] text-2xl mt-2 ">Join Our Team as:</p>
+            <ol className="pl-4  text-xl">
               <li
                 className={`cursor-pointer ${activePosition === 1 ? 'text-[#A37159] font-bold' : 'text-[#676F75]'}`}
                 onClick={() => handleClick(1)}
@@ -206,7 +206,7 @@ const JoinTeam = () => {
               </li>
             </ol>
 
-            <p className="text-[#676F75] mt-4">
+            <p className="text-[#676F75] mt-2">
               Positions 1-4 are based at Gurugram, Haryana, India.
             </p>
           </div>

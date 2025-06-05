@@ -177,7 +177,7 @@ const MedicalCondition = () => {
           {/* Left Column */}
           <div>
             {leftColumn.map((section, index) => (
-              <div key={index} className="">
+              <div key={index} className="leading-tight">
                 <p className="text-[#A37159] text-[18px] font-semibold">
                   <span className="mr-2">{section.index}</span>
                   {section.title}
@@ -200,7 +200,7 @@ const MedicalCondition = () => {
           {/* Right Column */}
           <div>
             {rightColumn.map((section, index) => (
-              <div key={index} className="">
+              <div key={index} className="leading-tight">
                 <p className="text-[#A37159] text-[18px] font-semibold">
                   <span className="mr-2">{section.index}</span>
                   {section.title}

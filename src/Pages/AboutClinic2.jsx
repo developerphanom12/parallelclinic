@@ -70,7 +70,7 @@ const AboutClinic2 = () => {
 
 
                     <div className="mt-6 text-[#A37159] leading-none">
-                        <p style={{ fontFamily: "MyFont" }} className="text-[#A37159] text-[25px]">Parallel Clinic's therapeutic doctrine is founded on Physicians & Patients working in Parallel.</p>
+                        <h3 style={{ fontFamily: "MyFont" }} className="text-[#A37159] text-[25px]">Parallel Clinic's therapeutic doctrine is founded on Physicians & Patients working in Parallel.</h3>
                         <div className="text-[17px] sm:-space-y-2  flex flex-col justify-center items-center w-full">
                             <p className="w-[90%] leading-0.5">
                                 Our Molecular-Targeted approach is based on a deep understanding of the molecular pathophysiology of diseases that we treat
