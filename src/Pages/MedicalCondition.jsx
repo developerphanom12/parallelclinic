@@ -5,6 +5,7 @@ import { FaHeadphones } from "react-icons/fa6";
 export const conditionSections = [
   {
     title: "Cancer Treatment Side Effects",
+    startCharCode: 97, // 'a'
     index: "1.",
     items: [
       "Oral Mucositis (CIOM/RIOM)",
@@ -19,35 +20,42 @@ export const conditionSections = [
   {
     title: "Post-Cancer Management",
     index: "b.",
+    startCharCode: 99, // 'c'
     items: [
       "Late Effects of Cancer Treatment",
       "Chemo-Brain (Difficulty remembering or processing information)",
       "Fatigue & Weakness",
-      "Neuropathy (CIPN) (nerve damage that causes tingling, burning, weakness or numbness in hands and/or feet)"
+      "Neuropathy (CIPN) (nerve damage that causes tingling, burning, weakness or numbness in hands and/or feet)",
+      "Rehabilitation",
     ]
   },
   {
     title: "Geriatric Conditions (Elderly Patients)",
+    startCharCode: 97, // 'a'
     index: "h.",
     items: [
       "Dry Skin",
       "Joint Pain",
       "Muscle Pain",
-      "Bowel Movement Disorders"
+      "Memory impairment",
+      "Prostatitis",
     ]
   },
   {
     title: "Pre-Diabetes / Obesity / NLP-1 Agonism",
+    startCharCode: 103, // 'g'
     index: "f.",
     items: ["Metabolic Disorders"]
   },
   {
     title: "Brain & Memory Function",
+    startCharCode: 105, // 'i'
     index: "h.",
     items: ["Cognitive Function (brain memory, attention, problem-solving, decision-making)"]
   },
   {
     title: "Pediatric Conditions (Children)",
+    startCharCode: 97, // 'a'
     index: "6.",
     items: [
       "Atopic Dermatitis",
@@ -57,6 +65,7 @@ export const conditionSections = [
   },
   {
     title: "Liver Disorders",
+    startCharCode: 97, // 'a'
     index: "7.",
     items: [
       "Fatty Liver",
@@ -67,33 +76,37 @@ export const conditionSections = [
   },
   {
     title: "Skin Conditions",
+    startCharCode: 97, // 'a'
     index: "viii.",
     items: [
       "Acne",
       "Dermatitis",
       "Skin Infections",
       "Psoriasis",
-      "Pigmentation"
+      "Dry Skin"
     ]
   },
   {
     title: "Immunity Disorders",
+    startCharCode: 103, // 'g'
     index: "f.",
-    items: ["Psoriasis", "Recurrent Infections"]
+    items: ["Psoriasis", "Frequent Infections"]
   },
   {
     title: "Kidney Health",
+    startCharCode: 106, // 'j'
     index: "i.",
-    items: ["Chronic Kidney Disease (Non-Kidney Disorders)"]
+    items: ["Early-stage Chronic Kidney Disorders"]
   },
   {
     title: "Reproductive & Sexual Health",
+    startCharCode: 108, // 'i'
     index: "k.",
     items: [
-      "Dysmenorrhea & Pre-menopause syndrome",
+      "Dysmenorrhea; Post-menopausal syndrome",
       "Polycystic ovary syndrome (PCOS)",
-      "Infertility issues",
-      "Erectile dysfunction",
+      "Endometriosis",
+      "Uterine fibroids",
       "Ovarian insufficiency",
       "Sexual dysfunction (Men & Women)"
     ]
@@ -170,7 +183,10 @@ const MedicalCondition = () => {
                 <ul className="ml-8 text-[#676F75] text-[12px]">
                   {section.items.map((item, i) => (
                     <li key={i}>
-                      <span className="mr-2">{String.fromCharCode(97 + i)}.</span>
+                      <span className="mr-2">
+                        {/* {String.fromCharCode(97 + i)}. */}
+                        {String.fromCharCode((section?.startCharCode || 97) + i)}.
+                        </span>
                       {item}
                     </li>
                   ))}
@@ -190,7 +206,9 @@ const MedicalCondition = () => {
                 <ul className="ml-8 text-[#676F75] text-[12px]">
                   {section.items.map((item, i) => (
                     <li key={i}>
-                      <span className="mr-2">{String.fromCharCode(97 + i)}.</span>
+                      <span className="mr-2">
+                      {String.fromCharCode((section?.startCharCode || 97) + i)}.
+                        </span>
                       {item}
                     </li>
                   ))}
