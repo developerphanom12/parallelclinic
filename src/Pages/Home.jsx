@@ -3,6 +3,8 @@ import gsap from "gsap";
 import MusicPlayer from "../components/MusicPlayer";
 import logoClinic from "../assets/logoClinic.png";
 import video from "../assets/fonts/Flower_webm.webm";
+import Heading from "../components/Heading";
+
 
 const Home = () => {
   const cursorRef = useRef(null);
@@ -51,7 +53,11 @@ const Home = () => {
       />
 
       {/* Main Content */}
-      <div className="relative z-10 flex flex-col px-6 sm:px-8 pt-0">
+      {/* <div className="relative z-10 flex flex-col px-6 sm:px-8 pt-0">
+         <div className="">
+          <img src={logoClinic} className="w-15 h-15 cursor-pointer" alt="Parallel Clinic Logo"  onClick={()=>{navigate("/")}}/>
+        </div>
+
         <h1
           style={{ fontFamily: "MyFont" }}
           className="text-4xl sm:text-5xl md:text-7xl sm:pl-16 w-full sm:w-[70%] text-[#C5A184] leading-tight"
@@ -59,10 +65,32 @@ const Home = () => {
           Let's Make Your Health <br />
           Sound!
         </h1>
-      </div>
+      </div> */}
+      <div className="relative z-10 flex flex-row  px-6 sm:px-8 pt-0">
+  <div className="mr-4 sm:my-3">
+    <img
+      src={logoClinic}
+      className="w-[60px] h-[60px] cursor-pointer"
+      alt="Parallel Clinic Logo"
+      onClick={() => {
+        navigate("/");
+      }}
+    />
+  </div>
+
+  <h1
+    // style={{ fontFamily: "MyFont" }}
+    className="sm:text-[55px] text-[33px] text-[#C5A184] leading-tight"
+  >
+    Let's Make Your  <br />
+    Health Sound!
+  </h1>
+  {/* <Heading firstText="Let's Make Your" secondText="Health Sound!" /> */}
+</div>
+
 
       {/* Video Container - Fixed at bottom */}
-      <div className="absolute sm:bottom-0 bottom-60 sm:left-0 w-full flex justify-center items-end z-5">
+      {/* <div className="absolute sm:bottom-0 bottom-60 sm:left-0 w-full flex justify-center items-end z-5">
         <div className="w-full sm:w-[100%] md:w-[100%] h-[40vh] sm:h-[50vh] md:h-[70vh] overflow-hidden">
           <video
             src={video}
@@ -78,7 +106,25 @@ const Home = () => {
             }}
           />
         </div>
-      </div>
+      </div> */}
+
+      <div className="absolute sm:bottom-[15%] bottom-[45%] w-full flex justify-center items-center z-5">
+  <div className="w-[300px] h-[200px] sm:w-[400px] sm:h-[300px] overflow-hidden">
+    <video
+      src={video}
+      autoPlay
+      loop
+      muted
+      playsInline
+      className="w-full h-full object-contain"
+      style={{ 
+        objectPosition: "center",
+        mixBlendMode: "multiply"
+      }}
+    />
+  </div>
+</div>
+
 
       <MusicPlayer />     
     </div>

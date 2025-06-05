@@ -49,7 +49,7 @@ export default function NavbarMobile({ open, setOpen }) {
           />
         </div>
 
-        <ul className="flex flex-col items-end gap-6 px-6 text-2xl font-medium mt-10">
+        <ul className="flex flex-col text-right items-end gap-6 px-6 text-2xl font-medium mt-10">
           {navLinks.map((link, idx) => (
             <li
               key={link.label}
