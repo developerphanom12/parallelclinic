@@ -349,7 +349,6 @@ const AboutClinic = () => {
       </div>
 
       {/* Bottom Text */}
-      {/* Bottom Text */}
       <div className="sm:fixed sm:bottom-0 sm:left-0 w-full  px-4 sm:px-0 flex flex-col items-center text-center space-y-0.5 z-50 mt-20 sm:mt-0">
         <h2 className="text-[#A37159] text-2xl sm:text-[25px] font-bold">
           World Class Personalized Targeted Precision Medicine
@@ -363,11 +362,11 @@ const AboutClinic = () => {
         <p className="text-[#676F75] text-base sm:text-[17px]">
           Using Botanical Medicines with Well Documented Molecular Level Mechanisms of Actions
         </p>
-      </div>
-      {/* Headphone Icon */}
-      <div className="absolute bottom-0 right-8 text-sm text-gray-700">
+      <div className="absolute bottom-4 right-8 text-sm text-gray-700">
         <FaHeadphones size={50} className="text-[#DAA57B]" />
       </div>
+      </div>
+      {/* Headphone Icon */}
     </div>
   );
 };

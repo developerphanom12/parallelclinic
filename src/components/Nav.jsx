@@ -26,36 +26,6 @@ const Nav = () => {
 
   return (
     <>
-      {/* <nav className="bg-[#FDF8E5] w-full flex justify-end items-start sm:px-8 ">
-        
-        <div
-          className="hidden sm:block relative ml-60 w-28 h-28 scale-150 cursor-pointer"
-          onClick={() => setShowMenu(!showMenu)}
-        >
-          <img
-            src={menuGif}
-            alt="sound gif"
-            className="w-full h-full object-cover rounded-full"
-            
-            
-          />
-          <IoIosMenu size={35} onClick={()=>{navigate("/choose")}} className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-3xl text-[#C5A184]" />
-        </div>
-
-        <div
-          className="sm:hidden block relative w-32 h-32 cursor-pointer"
-          onClick={() => setOpen(!open)}
-        >
-          <img
-            src={menuGif}
-            alt="sound gif"
-            className="w-full h-full object-cover rounded-full"
-            onClick={()=>{navigate("/choose")}}
-          />
-          <IoIosMenu size={35} className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-3xl text-[#C5A184]" />
-        </div>
-      </nav> */}
-
       <nav className="bg-[#FDF8E5] w-full sm:px-8 relative h-[10vh] ">
         {location.pathname !== "/" ? (
           // ✅ Show only when route is NOT "/"

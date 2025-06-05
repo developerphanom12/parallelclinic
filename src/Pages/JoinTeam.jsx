@@ -14,7 +14,7 @@ const jobData = [
     ]
   },
   {
-    title:"Professional Growth Opportunities include gaining experience of",
+    title: "Professional Growth Opportunities include gaining experience of",
     items: [
       "Managing large, long term Effectiveness Clinical Trials for natural medicines to create a scientific evidence base in line with US FDA systems",
       "Being part of a team that’s on the forefront of developing unique prescription medicines",
@@ -23,7 +23,7 @@ const jobData = [
     ]
   },
   {
-    title:"Professional compensation ",
+    title: "Professional compensation ",
     items: [
       "shall match the best available in the industry, based on qualifications, experience and skills.  Besides, Parallel Clinic offers highly lucrative performance-linked incentives (depending upon personal & professional attributes). ",
       "All positions offer long-term growth opportunities and expect a minimum 2 years engagement commitment. ",
@@ -31,7 +31,7 @@ const jobData = [
     ]
   },
   {
-    title:"Clinic Director ",
+    title: "Clinic Director ",
     items: [
       "Role Description: ",
       "To manage and supervise everyday operations of the clinic with a focus on improving the quality of patient care by ensuring the facilities are well-staffed. ",
@@ -46,7 +46,7 @@ const jobData = [
     ]
   },
   {
-    title:"Medical Consultants / Tele-Consultants",
+    title: "Medical Consultants / Tele-Consultants",
     items: [
       "Role Description: ",
       "Managing patients in an online clinic -providing medical consultations, prescribing medicines and following up with patients based on their online inputs. ",
@@ -57,7 +57,7 @@ const jobData = [
     ]
   },
   {
-    title:"Pharmacists",
+    title: "Pharmacists",
     items: [
       "Role Description: ",
       "Managing Pharmacy operations, including",
@@ -66,7 +66,7 @@ const jobData = [
       "managing inventories",
     ]
   },
- 
+
 ];
 
 
@@ -80,7 +80,7 @@ const JoinTeam = () => {
   useEffect(() => {
     const cursor = cursorRef.current;
 
-    const moveCircle = (e) => {   
+    const moveCircle = (e) => {
       gsap.to(cursor, {
         x: e.clientX,
         y: e.clientY,
@@ -111,27 +111,27 @@ const JoinTeam = () => {
   }, []);
 
   const handleClick = (btnIndex) => {
-  if (btnIndex === 1) {
-    setDisplayData([jobData[3]]); 
-  } else if (btnIndex === 2) {
-    setDisplayData([jobData[4]]);
-  } else if (btnIndex === 3) {
-    setDisplayData([jobData[4]]);
-  } else if (btnIndex === 4) {
-    setDisplayData([jobData[5]]);
-  }
-  setActivePosition(btnIndex);
-};
+    if (btnIndex === 1) {
+      setDisplayData([jobData[3]]);
+    } else if (btnIndex === 2) {
+      setDisplayData([jobData[4]]);
+    } else if (btnIndex === 3) {
+      setDisplayData([jobData[4]]);
+    } else if (btnIndex === 4) {
+      setDisplayData([jobData[5]]);
+    }
+    setActivePosition(btnIndex);
+  };
 
 
   return (
-    <div className="relative w-full bg-[#FDF8E5] sm:overflow-hidden h-full">
+    <div className="relative w-full bg-[#FDF8E5] sm:min-h-[84vh] flex flex-col">
       {/* Cursor */}
       <div
         ref={cursorRef}
         className="w-12 h-12 border border-[#C5A184] rounded-full fixed top-0 left-0 z-[999]"
       />
-   
+
       {/* Content */}
       <div className="w-full px-4 sm:px-16 grid grid-cols-1 lg:grid-cols-2 gap-8  sm:h-[70vh]">
         {/* Left Column - Heading and Requirements */}
@@ -140,72 +140,72 @@ const JoinTeam = () => {
           <div className="text-[#A37159] mb-6 pl-[2%] w-[80%]">
             <h1 className="sm:text-[55px] text-[33px] leading-none">Join <span className="text-[#C5A184]">Parallel Clinic Team</span></h1>
           </div>
-          
+
           {/* Requirements List */}
           <div>
-      {displayData?.map((section, index) => (
-        <div key={index} className="">
-          <p className="text-[#A37159] text-[18px] font-semibold flex items-start gap-2">
-  <span className="">{section.index}</span>
-  <span className="flex-1">{section.title}</span>
-</p>
-          <ul className="ml-8 text-[#676F75] text-[12px]">
-            {section.items.map((item, i) => (
-              <li key={i}>
-                <span className="mr-2">{String.fromCharCode(97 + i)}.</span>
-                {item}
-              </li>
+            {displayData?.map((section, index) => (
+              <div key={index} className="">
+                <p className="text-[#A37159] text-[18px] font-semibold flex items-start gap-2">
+                  <span className="">{section.index}</span>
+                  <span className="flex-1">{section.title}</span>
+                </p>
+                <ul className="ml-8 text-[#676F75] text-[12px]">
+                  {section.items.map((item, i) => (
+                    <li key={i}>
+                      <span className="mr-2">{String.fromCharCode(97 + i)}.</span>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
             ))}
-          </ul>
+          </div>
         </div>
-      ))}
-    </div>
-        </div>
-        
+
         {/* Right Column - Inviting Doctors */}
         <div className="flex flex-col  justify-end sm:h-[70vh]">
           <div>
             <h2 className="text-[#A37159] text-3xl mb-6">Inviting</h2>
-           <ul className="pl-4 text-[#A37159] text-2xl space-y-2">
-  <div className="flex items-start gap-3 ">
-    <div className="w-2 h-2 bg-[#A37159] my-auto"></div>
-    <span>Ayush Doctors &</span>
-  </div>
-  <div className="flex items-start gap-3 ">
-    <div className="w-2 h-2 bg-[#A37159] my-auto"></div>
-    <span>Conventional/Allopathic Doctors</span>
-  </div>
-</ul>
+            <ul className="pl-4 text-[#A37159] text-2xl space-y-2">
+              <div className="flex items-start gap-3 ">
+                <div className="w-2 h-2 bg-[#A37159] my-auto"></div>
+                <span>Ayush Doctors &</span>
+              </div>
+              <div className="flex items-start gap-3 ">
+                <div className="w-2 h-2 bg-[#A37159] my-auto"></div>
+                <span>Conventional/Allopathic Doctors</span>
+              </div>
+            </ul>
 
-            
+
             <h3 className="text-[#A37159] text-2xl mt-8 mb-4">Join Our Team as:</h3>
             <ol className="pl-4 space-y-2 text-xl">
-              <li 
+              <li
                 className={`cursor-pointer ${activePosition === 1 ? 'text-[#A37159] font-bold' : 'text-[#676F75]'}`}
                 onClick={() => handleClick(1)}
               >
                 1. Clinic Director
               </li>
-              <li 
+              <li
                 className={`cursor-pointer ${activePosition === 2 ? 'text-[#A37159] font-bold' : 'text-[#676F75]'}`}
                 onClick={() => handleClick(2)}
               >
                 2. Medical Consultant
               </li>
-              <li 
+              <li
                 className={`cursor-pointer ${activePosition === 3 ? 'text-[#A37159] font-bold' : 'text-[#676F75]'}`}
                 onClick={() => handleClick(3)}
               >
                 3. Medical Tele-Consultant
               </li>
-              <li 
+              <li
                 className={`cursor-pointer ${activePosition === 4 ? 'text-[#A37159] font-bold' : 'text-[#676F75]'}`}
                 onClick={() => handleClick(4)}
               >
                 4. Pharmacist
               </li>
             </ol>
-            
+
             <p className="text-[#676F75] mt-4">
               Positions 1-4 are based at Gurugram, Haryana, India.
             </p>
@@ -213,7 +213,7 @@ const JoinTeam = () => {
         </div>
       </div>
 
-      
+
       {/* Bottom Text */}
       <div className="sm:fixed sm:bottom-0 sm:left-0 w-full px-4 sm:px-0 flex flex-col items-center text-center space-y-0.5 z-50 mt-20 sm:mt-0 ">
         <h2 className="text-[#A37159] text-2xl sm:text-[25px] font-bold">
@@ -228,13 +228,13 @@ const JoinTeam = () => {
         <p className="text-[#676F75] text-base sm:text-[17px]">
           Using Botanical Medicines with Well Documented Molecular Level Mechanisms of Actions
         </p>
+        <div className="absolute bottom-4 right-8 text-sm text-gray-700">
+          <FaHeadphones size={50} className="text-[#DAA57B]" />
+        </div>
       </div>
 
       {/* Bottom Right Text */}
-     <div className="absolute bottom-0 right-8 text-sm text-gray-700">
-             <FaHeadphones size={50} className="text-[#DAA57B]" />
-           </div>
-   
+
     </div>
   );
 };

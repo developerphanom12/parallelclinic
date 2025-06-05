@@ -67,12 +67,12 @@ const JoinTeam2 = () => {
            <p className="text-[#676F75] text-base sm:text-[17px]">
              Using Botanical Medicines with Well Documented Molecular Level Mechanisms of Actions
            </p>
+        <div className="absolute bottom-4 right-8 text-sm text-gray-700">
+                <FaHeadphones size={50} className="text-[#DAA57B]" />
+              </div>
          </div>
    
          {/* Bottom Right Text */}
-        <div className="absolute bottom-0 right-8 text-sm text-gray-700">
-                <FaHeadphones size={50} className="text-[#DAA57B]" />
-              </div>
       
        </div>
   )
