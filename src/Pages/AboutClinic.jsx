@@ -4,6 +4,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { FaHeadphones } from "react-icons/fa6";
+import { RiArrowDropDownLine } from "react-icons/ri";
 
 const faqs = [
   {
@@ -211,12 +212,25 @@ const AboutClinic = () => {
             <div className="px-6 sm:w-1/2 sm:h-[50vh] sm:overflow-y-auto hide-scrollbar">
               {leftFaqs?.map((faq, index) => (
                 <div key={index} className="py-2 sm:py-[12px]">
-                  <p
-                    className={`cursor-pointer text-[#5C8A8A] text-[18px] ${openIndex === index ? "text-[#A37159]" : ""} hover:text-[#A37159] transition`}
+                  <div
+                    className={`cursor-pointer text-[#5C8A8A] text-[18px] ${openIndex === index ? "text-[#A37159]" : ""} hover:text-[#A37159] transition flex justify-between w-[100%]`}
                     onClick={() => toggleAnswer(index)}
                   >
-                    {index + 1}. {faq.question}
-                  </p>
+                    <div>
+
+                    {index + 1}. {faq.question} 
+                    </div>
+                    <div className="w-[5%] ">
+
+                    {openIndex === index ? (
+
+                      <RiArrowDropDownLine size={30} className=" transform rotate-180 "/>
+                    ) : (
+                      <RiArrowDropDownLine size={30} className="" 
+                       />
+                    )}
+                    </div>
+                  </div>
                   {openIndex === index && (
                     <div style={{ marginTop: "8px", color: "#374151", fontSize: "16px" }}>
                       {Array.isArray(faq.answer) ? (
@@ -239,10 +253,24 @@ const AboutClinic = () => {
                 return (
                   <div key={index} className="py-2 sm:py-[12px]">
                     <p
-                      className={`cursor-pointer text-[#5C8A8A] text-[18px] ${openIndex === actualIndex ? "text-[#A37159]" : ""} hover:text-[#A37159] transition`}
+                      className={`cursor-pointer text-[#5C8A8A] text-[18px] ${openIndex === actualIndex ? "text-[#A37159]" : ""} hover:text-[#A37159] transition flex justify-between w-[100%]`}
                       onClick={() => toggleAnswer(actualIndex)}
                     >
+                      
+                      <div>
+
                       {actualIndex + 1}. {faq.question}
+</div>
+<div className="w-[5%] ">
+
+{openIndex === index ? (
+
+  <RiArrowDropDownLine size={30} className=" transform rotate-180 "/>
+) : (
+  <RiArrowDropDownLine size={30} className="" 
+   />
+)}
+</div>
                     </p>
                     {openIndex === actualIndex && (
                       <div style={{ marginTop: "8px", color: "#374151", fontSize: "16px" }}>

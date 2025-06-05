@@ -124,7 +124,7 @@ const ChooseHope = () => {
         <div className="flex sm:pl-16">
           <h1
             style={{ fontFamily: "MyFont" }}
-            className="sm:text-7xl text-5xl sm:w-[50%] w-[90%] text-[#C5A184]"
+            className="sm:text-[55px] text-[33px] sm:w-[50%] w-[90%] text-[#C5A184]"
           >
             Choose Hope. Renew Hope.
           </h1>

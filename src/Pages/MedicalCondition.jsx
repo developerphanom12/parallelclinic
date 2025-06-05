@@ -164,9 +164,9 @@ const MedicalCondition = () => {
       />
 
       {/* Content */}
-      <div className="w-full px-2 sm:px-16 sm:h-[70vh] h-full">
+      <div className="w-full px-2 sm:px-16 sm:h-[70vh]  h-full">
         {/* Heading */}
-        <div className="text-[#A37159] flex items-start w-full mb-2 pl-[2%]">
+        <div className="text-[#A37159] flex items-start w-full mb-4 pl-[2%]">
           <h1 className="sm:text-[55px] text-[33px] w-[80%] sm:w-auto leading-none">Medical Conditions<br className="block sm:hidden" /><span className="text-[#C5A184]">{" "}Managed by Parallel Clinic</span></h1>
         </div>
 

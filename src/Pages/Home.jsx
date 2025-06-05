@@ -79,7 +79,7 @@ const Home = () => {
 
   <h1
     // style={{ fontFamily: "MyFont" }}
-    className="text-[38px] sm:text-5xl md:text-7xl text-[#C5A184] leading-tight"
+    className="sm:text-[55px] text-[33px] text-[#C5A184] leading-tight"
   >
     Let's Make Your  <br />
     Health Sound!
