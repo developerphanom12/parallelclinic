@@ -7,6 +7,7 @@ import JoinTeam from './Pages/JoinTeam'
 import Layout from './components/Layout'
 import AboutClinic2 from './Pages/AboutClinic2'
 import JoinTeam2 from './Pages/JoinTeam2'
+import JobApplication from './Pages/JobApplication'
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path='/medicalconditions' element={<MedicalCondition/>} />
         <Route path='/joinparallelclinic' element={<JoinTeam/>} />
         <Route path='/joinparallelclinic2' element={<JoinTeam2/>} />
+        {/* <Route path='/jobapplication' element={<JobApplication/>} /> */}
       </Routes>
     </Layout>
   )
