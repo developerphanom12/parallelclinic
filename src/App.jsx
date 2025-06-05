@@ -20,7 +20,6 @@ function App() {
         <Route path='/medicalconditions' element={<MedicalCondition/>} />
         <Route path='/joinparallelclinic' element={<JoinTeam/>} />
         <Route path='/joinparallelclinic2' element={<JoinTeam2/>} />
-        {/* <Route path='/jobapplication' element={<JobApplication/>} /> */}
       </Routes>
     </Layout>
   )
