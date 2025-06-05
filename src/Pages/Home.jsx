@@ -3,6 +3,7 @@ import gsap from "gsap";
 import MusicPlayer from "../components/MusicPlayer";
 import logoClinic from "../assets/logoClinic.png";
 import video from "../assets/fonts/Flower_webm.webm";
+import Heading from "../components/Heading";
 
 
 const Home = () => {
@@ -84,6 +85,7 @@ const Home = () => {
     Let's Make Your  <br />
     Health Sound!
   </h1>
+  {/* <Heading firstText="Let's Make Your" secondText="Health Sound!" /> */}
 </div>
 
 

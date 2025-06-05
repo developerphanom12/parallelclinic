@@ -134,7 +134,7 @@ const faqs = [
       "Some natural ingredients used in Parallel Clinic medicines may have come from trees (which, by definition, are not herbs). Or, the ingredients used may include honey (which is 100% natural yet may not be classified as a botanical product since it is collected by honeybees). Some other ingredients may be bio-identical, e.g., hyaluronic acid which is present in human body in abundance, or Natural Moisturizing Factors (NMFs) present in the top layer of skin which are a collection of water-soluble compounds top like amino acids, urea, lactic acid and various other humectants that are obviously not herbs."
     ]
   },
-  
+
 ];
 
 const AboutClinic = () => {
@@ -218,17 +218,17 @@ const AboutClinic = () => {
                   >
                     <div>
 
-                    {index + 1}. {faq.question} 
+                      {index + 1}. {faq.question}
                     </div>
                     <div className="w-[5%] ">
 
-                    {openIndex === index ? (
+                      {openIndex === index ? (
 
-                      <RiArrowDropDownLine size={30} className=" transform rotate-180 "/>
-                    ) : (
-                      <RiArrowDropDownLine size={30} className="" 
-                       />
-                    )}
+                        <RiArrowDropDownLine size={30} className=" transform rotate-180 " />
+                      ) : (
+                        <RiArrowDropDownLine size={30} className=""
+                        />
+                      )}
                     </div>
                   </div>
                   {openIndex === index && (
@@ -256,21 +256,21 @@ const AboutClinic = () => {
                       className={`cursor-pointer text-[#5C8A8A] text-[18px] ${openIndex === actualIndex ? "text-[#A37159]" : ""} hover:text-[#A37159] transition flex justify-between w-[100%]`}
                       onClick={() => toggleAnswer(actualIndex)}
                     >
-                      
+
                       <div>
 
-                      {actualIndex + 1}. {faq.question}
-</div>
-<div className="w-[5%] ">
+                        {actualIndex + 1}. {faq.question}
+                      </div>
+                      <div className="w-[5%] ">
 
-{openIndex === index ? (
+                        {openIndex === index ? (
 
-  <RiArrowDropDownLine size={30} className=" transform rotate-180 "/>
-) : (
-  <RiArrowDropDownLine size={30} className="" 
-   />
-)}
-</div>
+                          <RiArrowDropDownLine size={30} className=" transform rotate-180 " />
+                        ) : (
+                          <RiArrowDropDownLine size={30} className=""
+                          />
+                        )}
+                      </div>
                     </p>
                     {openIndex === actualIndex && (
                       <div style={{ marginTop: "8px", color: "#374151", fontSize: "16px" }}>

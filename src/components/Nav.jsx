@@ -104,7 +104,7 @@ const Nav = () => {
           className="sm:absolute hidden top-4 right-44 sm:flex w-fit bg-transparent text-[#848688] gap-12 items-center justify-start text-[30px] z-50"
         >
           {menuItems.map((item, index) => (
-            <p
+            <h2
               key={index}
               className={`cursor-pointer transition-opacity duration-300 ${invisibleIndex === index ? "opacity-0" : "opacity-100"
                 }`}
@@ -114,7 +114,7 @@ const Nav = () => {
               }}
             >
               {item.label}
-            </p>
+            </h2>
           ))}
         </div>
       )}

@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { FaHeadphones } from "react-icons/fa6";
+import Heading from "../components/Heading";
 
 export const conditionSections = [
   {
@@ -166,9 +167,10 @@ const MedicalCondition = () => {
       {/* Content */}
       <div className="w-full px-2 sm:px-16 sm:h-[70vh]  h-full">
         {/* Heading */}
-        <div className="text-[#A37159] flex items-start w-full mb-4 pl-[2%]">
+        {/* <div className="text-[#A37159] flex items-start w-full mb-4 pl-[2%]">
           <h1 className="sm:text-[55px] text-[33px] w-[80%] sm:w-auto leading-none">Medical Conditions<br className="block sm:hidden" /><span className="text-[#C5A184]">{" "}Managed by Parallel Clinic</span></h1>
-        </div>
+        </div> */}
+        <Heading firstText="Medical Conditions" secondText="Managed by Parallel Clinic" />
 
         {/* Medical Conditions List */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-16 gap-y-4 px-4 sm:px-8">

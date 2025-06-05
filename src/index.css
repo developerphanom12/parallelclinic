@@ -3,7 +3,7 @@
 @font-face {
   font-family: "MyFont";
   src: url("./assets/fonts/BODONIB.TTF") format("truetype");
-  font-weight: normal;
+  font-weight: bold;
   font-style: normal;
 }
 
@@ -21,9 +21,11 @@
 }
 h1 {
   line-height: 1.2;
+  font-family: "MyFont";
 }
 p{
   line-height: 1.4;
+  
 }
 
 .hide-scrollbar {
@@ -33,46 +35,6 @@ p{
 .hide-scrollbar::-webkit-scrollbar {
   display: none; /* Chrome, Safari, Opera */
 }
-
-/* 
-input[type="range"] {
-  -webkit-appearance: none;
-  appearance: none;
-  background: transparent;
-  cursor: pointer;
-} */
-
-/* Track (white) */
-/* input[type="range"]::-webkit-slider-runnable-track {
-  background: white;
-  height: 4px;
-  border-radius: 5px;
-}
-
-input[type="range"]::-moz-range-track {
-  background: white;
-  height: 4px;
-  border-radius: 5px;
-} */
-
-/* Thumb (circle) */
-/* input[type="range"]::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  height: 16px;
-  width: 16px;
-  background: #DAA57B;
-  border-radius: 50%;
-  margin-top: -6px; 
-  border: none;
-} */
-
-/* input[type="range"]::-moz-range-thumb {
-  background: #DAA57B;
-  height: 16px;
-  width: 16px;
-  border-radius: 50%;
-  border: none;
-} */
 
 
 input[type="range"].custom-slider::-webkit-slider-thumb {
