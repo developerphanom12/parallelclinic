@@ -133,7 +133,7 @@ const faqs = [
       "Some natural ingredients used in Parallel Clinic medicines may have come from trees (which, by definition, are not herbs). Or, the ingredients used may include honey (which is 100% natural yet may not be classified as a botanical product since it is collected by honeybees). Some other ingredients may be bio-identical, e.g., hyaluronic acid which is present in human body in abundance, or Natural Moisturizing Factors (NMFs) present in the top layer of skin which are a collection of water-soluble compounds top like amino acids, urea, lactic acid and various other humectants that are obviously not herbs."
     ]
   },
-  // ... Add other questions similarly
+  
 ];
 
 const AboutClinic = () => {
@@ -194,52 +194,30 @@ const AboutClinic = () => {
 
       {/* Main Content */}
       <div className="flex flex-col w-full px-6 sm:px-16 gap-8 flex-grow">
-        <div  className="text-[#A37159] flex flex-col items-start w-full pl-[2%]">
+        <div className="text-[#A37159] flex flex-col items-start w-full pl-[2%]">
           <h1 className="sm:text-[60px] text-5xl leading-none">About <br className="block sm:hidden" /><span className="text-[#C5A184]">Parallel Clinic</span></h1>
           <h2 className="text-[#A37159] text-2xl sm:text-3xl font-light pt-2">Information Hub: Your Questions. Our Answers.</h2>
         </div>
 
         {/* Right (FAQ) */}
 
-        {/* <div className="lg:w-[100%] flex sm:flex-row flex-col gap-7 mt-6 lg:mt-0 text-[#5C8A8A] text-[18px] space-y-2">
-          <div className="px-6  sm:w-[50%] h-[50vh] overflow-y-auto hide-scrollbar">
-            {leftFaqs?.map((faq, index) => (
-              <div key={index} className=" py-4">
-                <p
-                  className={`cursor-pointer text-[#5C8A8A] text-[18px] ${openIndex === index ? "text-[#A37159]" : ""} hover:text-[#A37159] transition`}
-                  onClick={() => toggleAnswer(index)}
-                >
-                  {index + 1}. {" "}{faq.question}
-                </p>
-                {openIndex === index && (
-                  <div style={{ marginTop: "8px", color: "#374151", fontSize: "16px" }}>
-                    {Array.isArray(faq.answer) ? (
-                      faq.answer.map((para, i) => (
-                        <p key={i} style={{ marginBottom: "8px", marginLeft: "20px" }}>{para}</p>
-                      ))
-                    ) : (
-                      <p style={{ marginBottom: "8px", marginLeft: "20px" }}>{faq.answer}</p>
-                    )}
 
-                  </div>
-                )}
 
-              </div>
-            ))}
-          </div>
-          <div className="px-6  sm:w-[50%] h-[50vh] overflow-y-auto hide-scrollbar">
-            {rightFaqs.map((faq, index) => {
-              const actualIndex = half + index;
-              return (
+        <div className="lg:w-full flex sm:flex-row flex-col gap-7 mt-6 lg:mt-0 text-[#5C8A8A] text-[18px]">
+          {/* Parent scroll on mobile */}
+          <div className="flex-1 flex flex-col sm:flex-row h-[50vh] overflow-y-auto hide-scrollbar">
 
-                <div key={index} className=" py-4">
+            {/* Left Column */}
+            <div className="px-6 sm:w-1/2 sm:h-[50vh] sm:overflow-y-auto hide-scrollbar">
+              {leftFaqs?.map((faq, index) => (
+                <div key={index} className="py-2 sm:py-[12px]">
                   <p
-                    className={`cursor-pointer text-[#5C8A8A] text-[18px] ${openIndex === actualIndex ? "text-[#A37159]" : ""} hover:text-[#A37159] transition`}
-                    onClick={() => toggleAnswer(actualIndex)}
+                    className={`cursor-pointer text-[#5C8A8A] text-[18px] ${openIndex === index ? "text-[#A37159]" : ""} hover:text-[#A37159] transition`}
+                    onClick={() => toggleAnswer(index)}
                   >
-                    {actualIndex + 1}. {" "}{faq.question}
+                    {index + 1}. {faq.question}
                   </p>
-                  {openIndex === actualIndex && (
+                  {openIndex === index && (
                     <div style={{ marginTop: "8px", color: "#374151", fontSize: "16px" }}>
                       {Array.isArray(faq.answer) ? (
                         faq.answer.map((para, i) => (
@@ -248,102 +226,42 @@ const AboutClinic = () => {
                       ) : (
                         <p style={{ marginBottom: "8px", marginLeft: "20px" }}>{faq.answer}</p>
                       )}
-
                     </div>
                   )}
-
                 </div>
-              )
-            })}
-          </div>
-        </div> */}
-
-        <div className="lg:w-full flex sm:flex-row flex-col gap-7 mt-6 lg:mt-0 text-[#5C8A8A] text-[18px]">
-  {/* Parent scroll on mobile */}
-  <div className="flex-1 flex flex-col sm:flex-row h-[50vh] overflow-y-auto hide-scrollbar">
-    
-    {/* Left Column */}
-    <div className="px-6 sm:w-1/2 sm:h-[50vh] sm:overflow-y-auto hide-scrollbar">
-      {leftFaqs?.map((faq, index) => (
-        <div key={index} className="py-2 sm:py-[12px]">
-          <p
-            className={`cursor-pointer text-[#5C8A8A] text-[18px] ${openIndex === index ? "text-[#A37159]" : ""} hover:text-[#A37159] transition`}
-            onClick={() => toggleAnswer(index)}
-          >
-            {index + 1}. {faq.question}
-          </p>
-          {openIndex === index && (
-            <div style={{ marginTop: "8px", color: "#374151", fontSize: "16px" }}>
-              {Array.isArray(faq.answer) ? (
-                faq.answer.map((para, i) => (
-                  <p key={i} style={{ marginBottom: "8px", marginLeft: "20px" }}>{para}</p>
-                ))
-              ) : (
-                <p style={{ marginBottom: "8px", marginLeft: "20px" }}>{faq.answer}</p>
-              )}
+              ))}
             </div>
-          )}
-        </div>
-      ))}
-    </div>
 
-    {/* Right Column */}
-    <div className="px-6 sm:w-1/2 sm:h-[50vh] sm:overflow-y-auto hide-scrollbar">
-      {rightFaqs.map((faq, index) => {
-        const actualIndex = half + index;
-        return (
-          <div key={index} className="py-2 sm:py-[12px]">
-            <p
-              className={`cursor-pointer text-[#5C8A8A] text-[18px] ${openIndex === actualIndex ? "text-[#A37159]" : ""} hover:text-[#A37159] transition`}
-              onClick={() => toggleAnswer(actualIndex)}
-            >
-              {actualIndex + 1}. {faq.question}
-            </p>
-            {openIndex === actualIndex && (
-              <div style={{ marginTop: "8px", color: "#374151", fontSize: "16px" }}>
-                {Array.isArray(faq.answer) ? (
-                  faq.answer.map((para, i) => (
-                    <p key={i} style={{ marginBottom: "8px", marginLeft: "20px" }}>{para}</p>
-                  ))
-                ) : (
-                  <p style={{ marginBottom: "8px", marginLeft: "20px" }}>{faq.answer}</p>
-                )}
-              </div>
-            )}
+            {/* Right Column */}
+            <div className="px-6 sm:w-1/2 sm:h-[50vh] sm:overflow-y-auto hide-scrollbar">
+              {rightFaqs.map((faq, index) => {
+                const actualIndex = half + index;
+                return (
+                  <div key={index} className="py-2 sm:py-[12px]">
+                    <p
+                      className={`cursor-pointer text-[#5C8A8A] text-[18px] ${openIndex === actualIndex ? "text-[#A37159]" : ""} hover:text-[#A37159] transition`}
+                      onClick={() => toggleAnswer(actualIndex)}
+                    >
+                      {actualIndex + 1}. {faq.question}
+                    </p>
+                    {openIndex === actualIndex && (
+                      <div style={{ marginTop: "8px", color: "#374151", fontSize: "16px" }}>
+                        {Array.isArray(faq.answer) ? (
+                          faq.answer.map((para, i) => (
+                            <p key={i} style={{ marginBottom: "8px", marginLeft: "20px" }}>{para}</p>
+                          ))
+                        ) : (
+                          <p style={{ marginBottom: "8px", marginLeft: "20px" }}>{faq.answer}</p>
+                        )}
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+
           </div>
-        );
-      })}
-    </div>
-
-  </div>
-</div>
-
-
-
-
-
-
-        {/* <div className="lg:w-[60%] mt-6 lg:mt-0 text-[#5C8A8A] text-[18px] space-y-2">
-          {[
-            "What is special about Parallel Clinic",
-            "What is the process of consultation",
-            "What kind of medicines are used by Parallel Clinic",
-            "What is the regulatory status of medicines used by Parallel Clinic",
-            "What is molecular medicine",
-            "Are there steroids in the medicines used by Parallel Clinic",
-            "Can I get these medicines available in the market",
-            "Will I continue to take medicines prescribed by other specialists",
-            "How fast can I expect the treatment to work",
-            "Can I tell my Doctor about taking treatment from Parallel Clinic also",
-            "Can someone else attend the Parallel Clinic doctor on behalf of the patient",
-            "How safe will be my personal information that I share with Parallel Clinic",
-            "I need this treatment but cannot afford it",
-            "I'm impressed. How do I begin consulting a doctor at Parallel Clinic",
-            "Get in Touch",
-          ].map((item, i) => (
-            <p key={i} className="hover:text-[#A37159] cursor-pointer">{item}</p>
-          ))}
-        </div> */}
+        </div>
 
 
       </div>
@@ -362,9 +280,9 @@ const AboutClinic = () => {
         <p className="text-[#676F75] text-base sm:text-[17px]">
           Using Botanical Medicines with Well Documented Molecular Level Mechanisms of Actions
         </p>
-      <div className="absolute bottom-4 right-8 text-sm text-gray-700">
-        <FaHeadphones size={50} className="text-[#DAA57B]" />
-      </div>
+        <div className="absolute bottom-4 right-8 text-sm text-gray-700">
+          <FaHeadphones size={50} className="text-[#DAA57B]" />
+        </div>
       </div>
       {/* Headphone Icon */}
     </div>

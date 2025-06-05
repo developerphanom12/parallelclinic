@@ -205,15 +205,6 @@ const MedicalCondition = () => {
       <div className="absolute bottom-0 right-8 text-sm text-gray-700">
         <FaHeadphones size={50} className="text-[#DAA57B]" />
       </div>
-
-      {/* <div className="w-full absolute bottom-16 sm:bottom-8 left-0 flex flex-col items-center px-4 text-center leading-none">
-        <h1 style={{ fontFamily: "MyFontNavbar" }} className="text-[#676F75] sm:text-[30px]">
-          Managed With World Class Publications Documenting the Assurance of
-        </h1>
-        <h1 style={{ fontFamily: "MyFontNavbar" }} className="text-[#A37159] sm:text-[30px]">
-          Highly Safe & Highly Efficient Medicines*
-        </h1>
-      </div> */}
     </div>
   );
 };
