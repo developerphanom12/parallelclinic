@@ -45,7 +45,7 @@ const Home = () => {
   }, []);
 
   return (
-    <div className="relative w-full h-full sm:h-[84vh] bg-[#FDF8E5] overflow-hidden">
+    <div className="relative w-full h-full sm:h-[90vh] bg-[#FDF8E5] overflow-hidden">
       {/* Cursor Follower */}
       <div
         ref={cursorRef}

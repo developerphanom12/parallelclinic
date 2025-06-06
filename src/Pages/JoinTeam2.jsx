@@ -47,7 +47,7 @@ const JoinTeam2 = () => {
          />
              {/* Heading */}
              <div className="text-[#A37159] mb-6 pl-[5%] w-[80%]">
-               <h1 className="sm:text-[55px] text-[33px] leading-none">Join <span className="text-[#C5A184]">Parallel Clinic Team</span></h1>
+               <h1 className="sm:text-[55px] text-[33px] leading-none">Join <br className="block sm:hidden" /> <span className="text-[#C5A184]">Parallel Clinic Team</span></h1>
              </div>
          
          {/* Bottom Text */}

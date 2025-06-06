@@ -3,8 +3,10 @@ import gsap from "gsap";
 import menuGif from "../assets/MainMenuRing.gif";
 import { FaHeadphones } from "react-icons/fa6";
 import flower1 from "../assets/flower1.png";
-import flower2 from "../assets/flower2.png";
-import flower3 from "../assets/flower3.png";
+import flower2 from "../assets/flower6.png";
+import flower3 from "../assets/flower5.png";
+import flower4 from "../assets/flower4.png";
+import flower5 from "../assets/flower2.png";
 import { useNavigate } from "react-router-dom";
 import waveStop from "../assets/waveStop.gif";
 import wavePlaying from "../assets/wavePlaying.gif";
@@ -19,7 +21,7 @@ const ChooseHope = () => {
   const [volume, setVolume] = useState(0.3);
   const [waveImage, setWaveImage] = useState(waveStop); // <-- Track current wave gif
 
-  const images = [flower1, flower2, flower3];
+  const images = [flower1, flower2, flower3 , flower4, flower5];
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const imageRefs = useRef([]);
@@ -124,35 +126,47 @@ const ChooseHope = () => {
         <div className="flex sm:pl-8">
           <h1
             style={{ fontFamily: "MyFont" }}
-            className="sm:text-[55px] text-[33px] sm:w-[50%] w-[90%] text-[#C5A184]"
+            className="sm:text-[55px] text-[33px] sm:w-[50%] text-[#C5A184]"
           >
-            Choose Hope. Renew Hope.
+            Choose Hope. <br className="block sm:hidden" /> Renew Hope.
           </h1>
         </div>
       </div>
 
       {/* Flower Images */}
       <div className="absolute top-[30%] left-[50%] transform -translate-x-1/2 flex justify-center items-center">
-        <div className="w-[300px] h-[200px] sm:w-[450px] sm:h-[350px] relative flex justify-bottom items-center">
+        <div className="w-[300px] h-[200px] sm:w-[480px] sm:h-[380px] relative flex justify-bottom items-center">
           <img
             ref={(el) => (imageRefs.current[0] = el)}
             src={flower1}
             alt="flower1"
-            className="absolute object-contain opacity-0 transition-opacity scale-75 w-[100vw] h-[100vh]"
+            className="absolute object-contain opacity-0 transition-opacity scale-75 w-[110vw] h-[110vh]"
           />
 
           <img
             ref={(el) => (imageRefs.current[1] = el)}
             src={flower2}
             alt="flower2"
-            className="absolute object-contain opacity-0 transition-opacity scale-75 w-[86vw] h-[100vh]"
+            className="absolute  opacity-0 transition-opacity scale-75 w-[80vw] h-[80vh]"
           />
 
           <img
             ref={(el) => (imageRefs.current[2] = el)}
             src={flower3}
             alt="flower3"
-            className="absolute object-contain opacity-0 transition-opacity scale-75 w-[100vw] h-[80vh]"
+            className="absolute object-contain opacity-0 transition-opacity scale-75 w-[100vw] h-[100vh]"
+          />
+          <img
+            ref={(el) => (imageRefs.current[3] = el)}
+            src={flower4}
+            alt="flower4"
+            className="absolute object-contain opacity-0 transition-opacity scale-75 w-[120vw] h-[120vh]"
+          />
+          <img
+            ref={(el) => (imageRefs.current[4] = el)}
+            src={flower5}
+            alt="flower5"
+            className="absolute object-contain opacity-0 transition-opacity scale-75 w-[100vw] h-[100vh]"
           />
         </div>
       </div>

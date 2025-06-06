@@ -69,7 +69,7 @@ const AboutClinic2 = () => {
                     </div>
 
 
-                    <div className="mt-6 text-[#A37159] leading-none">
+                    <div className="sm:mt-2 mt-4 text-[#A37159] leading-none">
                         <h3 style={{ fontFamily: "MyFont" }} className="text-[#A37159] text-[25px]">Parallel Clinic's therapeutic doctrine is founded on Physicians & Patients working in Parallel.</h3>
                         <div className="text-[17px] sm:-space-y-2  flex flex-col justify-center items-center w-full">
                             <p className="w-[90%] leading-0.5">
