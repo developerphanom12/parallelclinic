@@ -97,9 +97,9 @@ const jobData = [
     items: [
       "To manage and supervise everyday operations of the clinic with a focus on improving the quality of patient care by ensuring the facilities are well-staffed. ",
       "Oversight of all operations of the clinic, including but not limited to ",
-      "a. Selection of medical, paramedical and support staff ",
-      "b. Responsible for the performance of medical, paramedical and support staff ",
-      "c. Setting SOPs, Treatment Protocols and Standards of Care to be followed in the clinic ",
+      "Selection of medical, paramedical and support staff ",
+      "Responsible for the performance of medical, paramedical and support staff ",
+      "Setting SOPs, Treatment Protocols and Standards of Care to be followed in the clinic ",
       "Coordinating the preparation of ",
       "Treatment Protocols, and  ",
       "Standards of Care for all medical conditions managed and treated at the Clinic.  ",
