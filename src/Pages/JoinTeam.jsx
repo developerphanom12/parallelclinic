@@ -4,6 +4,7 @@ import { FaHeadphones, FaSpinner } from "react-icons/fa6";
 import { FaTimes } from "react-icons/fa";
 import axios from "axios";
 import * as Yup from "yup";
+import NewPlayerGlobal from "../components/NewPlayerGlobal";
 
 // Form validation schema
 const applicationSchema = Yup.object().shape({
@@ -481,7 +482,7 @@ const JoinTeam = () => {
       </div>
 
       {/* Bottom Text */}
-      <div className="sm:fixed sm:bottom-0 sm:left-0 w-full px-4 sm:px-0 flex flex-col items-center text-center space-y-0.5 z-50 mt-20 sm:mt-0 ">
+      <div className="sm:fixed sm:bottom-0 sm:left-0 w-full px-4 sm:px-0 flex flex-col items-center text-center space-y-0.5 z-50 mt-20 sm:mt-0 mb-30 sm:mb-0 ">
         <h2 className="text-[#A37159] text-2xl sm:text-[25px] font-bold">
           Practice World Class Personalized, Molecular-Targeted Precision
           Medicine
@@ -498,7 +499,8 @@ const JoinTeam = () => {
           Mechanisms of Actions
         </p>
         <div className="absolute bottom-4 right-8 text-sm text-gray-700">
-          <FaHeadphones size={50} className="text-[#DAA57B]" />
+          {/* <FaHeadphones size={50} className="text-[#DAA57B]" /> */}
+          <NewPlayerGlobal/>
         </div>
       </div>
 

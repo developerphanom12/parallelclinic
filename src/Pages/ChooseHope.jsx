@@ -1,26 +1,17 @@
 import React, { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
-import menuGif from "../assets/MainMenuRing.gif";
-import { FaHeadphones } from "react-icons/fa6";
 import flower1 from "../assets/flower1.png";
 import flower2 from "../assets/flower6.png";
 import flower3 from "../assets/flower5.png";
 import flower4 from "../assets/flower4.png";
 import flower5 from "../assets/flower2.png";
 import { useNavigate } from "react-router-dom";
-import waveStop from "../assets/waveStop.gif";
-import wavePlaying from "../assets/wavePlaying.gif";
-import sampleAudio from "../assets/audio.wav";
+import NewPlayerGlobal from "../components/NewPlayerGlobal";
 
 const ChooseHope = () => {
   const cursorRef = useRef(null);
   const [invisibleIndex, setInvisibleIndex] = useState(null);
   const navigate = useNavigate();
-  const audioRef = useRef(null);
-  const [showSlider, setShowSlider] = useState(false);
-  const [volume, setVolume] = useState(0.3);
-  const [waveImage, setWaveImage] = useState(waveStop); // <-- Track current wave gif
-
   const images = [flower1, flower2, flower3 , flower4, flower5];
 
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -37,24 +28,6 @@ const ChooseHope = () => {
       }
     });
   }, []);
-  const handleHeadphoneClick = () => {
-    setShowSlider(!showSlider);
-    const audio = audioRef.current;
-    if (audio) {
-      audio.currentTime = 0;
-      audio.volume = volume;
-      audio.play();
-      setWaveImage(wavePlaying);
-    }
-  };
-
-  const handleVolumeChange = (e) => {
-    const newVolume = parseFloat(e.target.value);
-    setVolume(newVolume);
-    if (audioRef.current) {
-      audioRef.current.volume = newVolume;
-    }
-  };
 
   // Auto transition every 30s
   useEffect(() => {
@@ -182,37 +155,14 @@ const ChooseHope = () => {
 
       {/* Bottom Right Text */}
       <div className="absolute sm:bottom-8 bottom-5 sm:right-6 right-6 text-sm text-gray-700">
-        <div className="flex flex-col gap-2 items-end mr-7">
+        <div className="flex flex-col sm:flex-row gap-2 items-end mr-7">
           <div style={{ fontFamily: "MyFont" }} className="sm:w-[]">
             <h1 className="text-[#C5A184] sm:text-[20px]  text-[20px] sm:text-end text-center">
               With Well Documented <br/> Science Based Assurance of <br/>Highly Safe,Highly Efficient Medicines*
             </h1>
           </div>
-          <FaHeadphones size={50} className="text-[#DAA57B]" />
-          {/* <div
-            onClick={handleHeadphoneClick}
-            className="relative w-fit cursor-pointer"
-          >
-            <FaHeadphones
-              size={100}
-              className="text-[#DAA57B] cursor-pointer"
-            />
-            <img src={waveImage} alt="wave" className="absolute bottom-0 " />
-          </div> */}
-
-          {showSlider && (
-            <input
-              type="range"
-              min="0"
-              max="1"
-              step="0.01"
-              value={volume}
-              onChange={handleVolumeChange}
-              className="absolute bottom-40 sm:-right-4 -right-8 rotate-[-90deg] w-32 appearance-none custom-slider z-0"
-            />
-          )}
-
-          <audio ref={audioRef} src={sampleAudio} loop />
+          {/* <FaHeadphones size={50} className="text-[#DAA57B]" /> */}
+         <NewPlayerGlobal/>
         </div>
       </div>
     </div>
