@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import MusicPlayer from "../components/MusicPlayer";
 import logoClinic from "../assets/logoClinic.png";
-import video from "../assets/fonts/Flower_webm.webm";
+import video from "../assets/fonts/Flower.mp4";
 import Heading from "../components/Heading";
 
 
@@ -108,12 +108,12 @@ const Home = () => {
         </div>
       </div> */}
 
-      <div className="absolute sm:bottom-[15%] bottom-[45%] w-full flex justify-center items-center z-5">
-  <div className="w-[300px] h-[200px] sm:w-[400px] sm:h-[300px] overflow-hidden">
+      <div className="absolute sm:bottom-[15%] bottom-[45%] w-full flex justify-center items-center z-5 ">
+  <div className="w-[300px] h-[200px] sm:w-[500px] sm:h-[400px] overflow-hidden rounded-full">
     <video
       src={video}
       autoPlay
-      loop
+      // loop
       muted
       playsInline
       className="w-full h-full object-contain"
