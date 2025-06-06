@@ -26,8 +26,8 @@ const jobData = [
   {
     title:
       "Parallel Clinic, an online clinic, is inviting medical & paramedical professionals to join our team!",
-    items: [
-      "We are looking for mature persons with",
+    SubHead:"We are looking for mature persons with",
+    items: [    
       "Outstanding articulation and communication skills",
       "Outstanding MS Office capabilities",
       "An eye for detail, attitude for compliance, with a temperament to understand and communicate nuanced issues",
@@ -36,6 +36,7 @@ const jobData = [
   },
   {
     title: "Professional Growth Opportunities include gaining experience of",
+
     items: [
       "Managing large, long term Effectiveness Clinical Trials for natural medicines to create a scientific evidence base in line with US FDA systems",
       "Being part of a team that’s on the forefront of developing unique prescription medicines",
@@ -53,8 +54,8 @@ const jobData = [
   },
   {
     title: "Clinic Director ",
+    SubHead: "Role Description:",
     items: [
-      "Role Description: ",
       "To manage and supervise everyday operations of the clinic with a focus on improving the quality of patient care by ensuring the facilities are well-staffed. ",
       "Oversight of all operations of the clinic, including but not limited to ",
       "a. Selection of medical, paramedical and support staff ",
@@ -68,8 +69,8 @@ const jobData = [
   },
   {
     title: "Medical Consultants / Tele-Consultants",
+    SubHead: "Role Description:",
     items: [
-      "Role Description: ",
       "Managing patients in an online clinic -providing medical consultations, prescribing medicines and following up with patients based on their online inputs. ",
       "Developing protocols for management of various medical conditions ",
       "Managing clinic & pharmacy operations in compliance with applicable regulations ",
@@ -79,8 +80,8 @@ const jobData = [
   },
   {
     title: "Pharmacists",
+    SubHead: "Role Description:",
     items: [
-      "Role Description: ",
       "Managing Pharmacy operations, including",
       "preparing and dispensing medicines (including making extractions & mixtures on natural products) ",
       "storing medicines ",
@@ -91,12 +92,14 @@ const jobData = [
 
 const JoinTeam = () => {
   const cursorRef = useRef(null);
+  const requirementsRef = useRef(null);
   const [displayData, setDisplayData] = useState(jobData.slice(0, 3));
   const [activePosition, setActivePosition] = useState(0); // Default active position
   const [showForm, setShowForm] = useState(false);
   const [formPending, setFormPending] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
   const [submitError, setSubmitError] = useState("");
+  const [hasOverflow, setHasOverflow] = useState(false);
 
   // Form state
   const [formData, setFormData] = useState({
@@ -107,6 +110,23 @@ const JoinTeam = () => {
     description: "",
   });
   const [resumeFile, setResumeFile] = useState(null);
+
+  // Check if content has overflow
+  useEffect(() => {
+    const checkOverflow = () => {
+      if (requirementsRef.current) {
+        const hasVerticalOverflow = requirementsRef.current.scrollHeight > requirementsRef.current.clientHeight;
+        setHasOverflow(hasVerticalOverflow);
+      }
+    };
+
+    checkOverflow();
+    window.addEventListener('resize', checkOverflow);
+    
+    return () => {
+      window.removeEventListener('resize', checkOverflow);
+    };
+  }, [displayData]);
 
   // Mouse follower
   useEffect(() => {
@@ -247,36 +267,51 @@ const JoinTeam = () => {
           {/* Heading */}
           <div className="text-[#A37159] mb-6 pl-[2%] w-[80%] sm:w-full ">
             <h1 className="sm:text-[55px] text-[33px] leading-none whitespace-nowrap">
-              Join <span className="text-[#C5A184]">Parallel Clinic Team</span>
+              Join <br className="block sm:hidden" />
+              <span className="text-[#C5A184]">Parallel Clinic Team</span>
             </h1>
           </div>
 
           {/* Requirements List */}
-          <div className="sm:h-[50vh] sm:overflow-y-auto hide-scrollbar">
-            {displayData?.map((section, index) => (
-              <div key={index} className=" ">
-                <p className="text-[#A37159] text-[18px] font-semibold flex items-start gap-2">
-                  <span className="">{section.index}</span>
-                  <span className="flex-1">{section.title}</span>
-                </p>
-                <ul className="ml-8 text-[#676F75] text-[12px]">
-                  {section.items.map((item, i) => (
-                    <li key={i}>
-                      <span className="mr-2">
-                        {String.fromCharCode(97 + i)}.
-                      </span>
-                      {item}
-                    </li>
-                  ))}
-                </ul>
+          <div className="relative">
+            <div 
+              ref={requirementsRef}
+              className="sm:h-[50vh] sm:overflow-y-auto hide-scrollbar pb-10"
+            >
+              {displayData?.map((section, index) => (
+                <div key={index} className=" ">
+                  <h2 className="text-[#A37159] text-[18px] font-semibold flex items-start gap-2">
+                    <span className="">{section.index}</span>
+                    <span className="flex-1">{section.title}</span>
+                  </h2>
+                  <h3 className="ml-8 text-[#676F75] text-[14px]"> {section.SubHead}</h3>   
+               <ul className="ml-8 text-[#676F75] text-[12px]">
+                    {section.items.map((item, i) => (
+                      <li key={i}>
+                        <span className="mr-2">
+                          {String.fromCharCode(97 + i)}.
+                        </span>
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+            
+            {/* Show more indicator */}
+            {hasOverflow && (
+              <div className="absolute bottom-0 left-0 w-full text-end mr-5 bg-gradient-to-t from-[#FDF8E5] pb-2 pt-6">
+                <span className="text-[#A37159] text-sm">Scroll for more...</span>
               </div>
-            ))}
+            )}
           </div>
+
           {/* Apply Now Button */}
           <div className="mt-6 flex justify-start">
             <button
               onClick={() => setShowForm(true)}
-              className="bg-[#A37159] hover:bg-[#C5A184] text-white py-2 px-4 rounded-md transition-all duration-300"
+              className="bg-[#A37159] hover:bg-[#C5A184] text-white py-2 px-4 rounded-md transition-all duration-300 cursor-pointer"
             >
               Apply Now
             </button>
