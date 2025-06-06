@@ -2,6 +2,33 @@ import React, { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { FaHeadphones, FaSpinner } from "react-icons/fa6";
 import { FaTimes } from "react-icons/fa";
+import axios from "axios";
+import * as Yup from "yup";
+
+// Form validation schema
+const applicationSchema = Yup.object().shape({
+  fullName: Yup.string()
+    .required("Full name is required")
+    .min(2, "Name must be at least 2 characters"),
+  email: Yup.string()
+    .email("Please enter a valid email")
+    .required("Email is required"),
+  contactNumber: Yup.string()
+    .required("Contact number is required")
+    .matches(/^[0-9+\-\s]+$/, "Please enter a valid phone number"),
+  position: Yup.string().required("Position is required"),
+  message: Yup.string(),
+  resume: Yup.mixed()
+    .required("Resume is required")
+    .test("fileType", "Only PDF files are accepted", (value) => {
+      if (!value) return true;
+      return value && value.type === "application/pdf";
+    })
+    .test("fileSize", "File is too large (max 5MB)", (value) => {
+      if (!value) return true;
+      return value && value.size <= 5 * 1024 * 1024; // 5MB limit
+    }),
+});
 
 // Submit button component with loading state
 function SubmitButton({ pending }) {
@@ -19,6 +46,18 @@ function SubmitButton({ pending }) {
         "Submit Application"
       )}
     </button>
+  );
+}
+
+// Form submission loader overlay
+function FormLoader() {
+  return (
+    <div className="fixed inset-0 bg-[#00000047] bg-opacity-50 flex items-center justify-center z-[1001]">
+      <div className="bg-white p-6 rounded-lg shadow-lg flex flex-col items-center">
+        <FaSpinner className="text-[#A37159] text-4xl animate-spin mb-3" />
+        <p className="text-[#676F75] font-medium">Submitting your application...</p>
+      </div>
+    </div>
   );
 }
 
@@ -100,14 +139,15 @@ const JoinTeam = () => {
   const [submitSuccess, setSubmitSuccess] = useState(false);
   const [submitError, setSubmitError] = useState("");
   const [hasOverflow, setHasOverflow] = useState(false);
+  const [validationErrors, setValidationErrors] = useState({});
 
   // Form state
   const [formData, setFormData] = useState({
-    name: "",
+    fullName: "",
     email: "",
-    contact: "",
+    contactNumber: "",
     position: "Clinic Director",
-    description: "",
+    message: "",
   });
   const [resumeFile, setResumeFile] = useState(null);
 
@@ -179,53 +219,92 @@ const JoinTeam = () => {
     setActivePosition(btnIndex);
   };
 
+  // Validate form data
+  const validateForm = async () => {
+    try {
+      await applicationSchema.validate(
+        { 
+          fullName: formData.fullName, 
+          email: formData.email, 
+          contactNumber: formData.contactNumber, 
+          position: formData.position, 
+          message: formData.message,
+          resume: resumeFile 
+        }, 
+        { abortEarly: false }
+      );
+      setValidationErrors({});
+      return true;
+    } catch (err) {
+      const errors = {};
+      err.inner.forEach((e) => {
+        errors[e.path] = e.message;
+      });
+      setValidationErrors(errors);
+      return false;
+    }
+  };
+
   // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
+    
+    // Validate form
+    const isValid = await validateForm();
+    if (!isValid) {
+      return;
+    }
+    
     setFormPending(true);
+    setSubmitError("");
 
     const submitData = new FormData();
-    submitData.append("name", formData.name);
+    submitData.append("fullName", formData.fullName);
     submitData.append("email", formData.email);
-    submitData.append("contact", formData.contact);
+    submitData.append("contactNumber", formData.contactNumber);
     submitData.append("position", formData.position);
-    submitData.append("description", formData.description);
+    submitData.append("message", formData.message);
 
     if (resumeFile) {
       submitData.append("resume", resumeFile);
     }
 
     try {
-      // Simulate API call with timeout
-      await new Promise((resolve) => setTimeout(resolve, 1500));
+      // Replace with your actual API endpoint
+      const response = await axios.post('https://api5.phanomprofessionals.com/api/apply', submitData, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      });
 
+      console.log("Application submitted successfully!", response.data);
       setSubmitSuccess(true);
-      console.log("Application submitted successfully!", formData);
       setSubmitError("");
 
       // Reset form after successful submission
       setFormData({
-        name: "",
+        fullName: "",
         email: "",
-        contact: "",
+        contactNumber: "",
         position: formData.position, // Keep the current position
-        description: "",
+        message: "",
       });
       setResumeFile(null);
 
       const fileInput = document.getElementById("resume");
       if (fileInput) fileInput.value = "";
 
-      //  3 seconds baad form close
+      // Close form after 3 seconds
       setTimeout(() => {
         setShowForm(false);
         setSubmitSuccess(false);
       }, 3000);
     } catch (error) {
+      console.error("Application submission error:", error);
       setSubmitError(
+        error.response?.data?.message || 
         "Failed to submit your application. Please try again later."
       );
-      console.error("Application submission error:", error);
     } finally {
       setFormPending(false);
     }
@@ -238,17 +317,34 @@ const JoinTeam = () => {
       ...prev,
       [name]: value,
     }));
+    
+    // Clear validation error when field is edited
+    if (validationErrors[name]) {
+      setValidationErrors(prev => ({
+        ...prev,
+        [name]: undefined
+      }));
+    }
   };
 
   // Handle file input change
   const handleFileChange = (e) => {
     const file = e.target.files[0];
-    if (file && file.type === "application/pdf") {
-      setResumeFile(file);
-      setSubmitError("");
-    } else {
-      setResumeFile(null);
-      setSubmitError("Please upload a PDF file for your resume");
+    if (file) {
+      if (file.type === "application/pdf") {
+        setResumeFile(file);
+        // Clear validation error
+        setValidationErrors(prev => ({
+          ...prev,
+          resume: undefined
+        }));
+      } else {
+        setResumeFile(null);
+        setValidationErrors(prev => ({
+          ...prev,
+          resume: "Only PDF files are accepted"
+        }));
+      }
     }
   };
 
@@ -408,7 +504,9 @@ const JoinTeam = () => {
 
       {/* Application Form Popup */}
       {showForm && (
-        <div className="fixed inset-0 backdrop-blur-xs  bg-opacity-30 flex items-center justify-center z-[1000] p-4">
+        <div className="fixed inset-0 backdrop-blur-xs bg-[#00000047] bg-opacity-30 flex items-center justify-center z-[1000] p-4">
+          {formPending && <FormLoader />}
+          
           <div className="bg-[#FDF8E5] rounded-lg shadow-xl w-full max-w-4xl max-h-[90vh] overflow-y-auto">
             {/* Form Header */}
             <div className="flex justify-between items-center p-6 border-b border-[#C5A184]">
@@ -418,6 +516,7 @@ const JoinTeam = () => {
               <button
                 onClick={() => setShowForm(false)}
                 className="text-[#A37159] hover:text-[#C5A184] transition-colors cursor-pointer"
+                disabled={formPending}
               >
                 <FaTimes size={24} />
               </button>
@@ -443,24 +542,30 @@ const JoinTeam = () => {
               {/* Application Form */}
               <form onSubmit={handleSubmit}>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  {/* Name Field */}
+                  {/* Full Name Field */}
                   <div className="sm:col-span-1 col-span-2">
                     <label
-                      htmlFor="name"
+                      htmlFor="fullName"
                       className="block text-[#A37159] text-sm font-medium mb-1"
                     >
                       Full Name *
                     </label>
                     <input
                       type="text"
-                      id="name"
-                      name="name"
-                      value={formData.name}
+                      id="fullName"
+                      name="fullName"
+                      value={formData.fullName}
                       onChange={handleChange}
-                      required
-                      className="w-full px-3 py-1.5 border border-[#C5A184] rounded-md focus:outline-none focus:ring-1 focus:ring-[#A37159] text-sm"
+                      className={`w-full px-3 py-1.5 border ${
+                        validationErrors.fullName 
+                          ? "border-red-500 focus:ring-red-500" 
+                          : "border-[#C5A184] focus:ring-[#A37159]"
+                      } rounded-md focus:outline-none focus:ring-1 text-sm`}
                       placeholder="Enter your full name"
                     />
+                    {validationErrors.fullName && (
+                      <p className="mt-1 text-xs text-red-500">{validationErrors.fullName}</p>
+                    )}
                   </div>
 
                   {/* Email Field */}
@@ -477,30 +582,42 @@ const JoinTeam = () => {
                       name="email"
                       value={formData.email}
                       onChange={handleChange}
-                      required
-                      className="w-full px-3 py-1.5 border border-[#C5A184] rounded-md focus:outline-none focus:ring-1 focus:ring-[#A37159] text-sm"
+                      className={`w-full px-3 py-1.5 border ${
+                        validationErrors.email 
+                          ? "border-red-500 focus:ring-red-500" 
+                          : "border-[#C5A184] focus:ring-[#A37159]"
+                      } rounded-md focus:outline-none focus:ring-1 text-sm`}
                       placeholder="Enter your email address"
                     />
+                    {validationErrors.email && (
+                      <p className="mt-1 text-xs text-red-500">{validationErrors.email}</p>
+                    )}
                   </div>
 
-                  {/* Contact Field */}
+                  {/* Contact Number Field */}
                   <div className="sm:col-span-1 col-span-2">
                     <label
-                      htmlFor="contact"
+                      htmlFor="contactNumber"
                       className="block text-[#A37159] text-sm font-medium mb-1"
                     >
                       Contact Number *
                     </label>
                     <input
                       type="tel"
-                      id="contact"
-                      name="contact"
-                      value={formData.contact}
+                      id="contactNumber"
+                      name="contactNumber"
+                      value={formData.contactNumber}
                       onChange={handleChange}
-                      required
-                      className="w-full px-3 py-1.5 border border-[#C5A184] rounded-md focus:outline-none focus:ring-1 focus:ring-[#A37159] text-sm"
+                      className={`w-full px-3 py-1.5 border ${
+                        validationErrors.contactNumber 
+                          ? "border-red-500 focus:ring-red-500" 
+                          : "border-[#C5A184] focus:ring-[#A37159]"
+                      } rounded-md focus:outline-none focus:ring-1 text-sm`}
                       placeholder="Enter your contact number"
                     />
+                    {validationErrors.contactNumber && (
+                      <p className="mt-1 text-xs text-red-500">{validationErrors.contactNumber}</p>
+                    )}
                   </div>
 
                   {/* Position Field */}
@@ -516,8 +633,11 @@ const JoinTeam = () => {
                       name="position"
                       value={formData.position}
                       onChange={handleChange}
-                      required
-                      className="w-full px-3 py-1.5 border border-[#C5A184] rounded-md focus:outline-none focus:ring-1 focus:ring-[#A37159] bg-white text-sm"
+                      className={`w-full px-3 py-1.5 border ${
+                        validationErrors.position 
+                          ? "border-red-500 focus:ring-red-500" 
+                          : "border-[#C5A184] focus:ring-[#A37159]"
+                      } rounded-md focus:outline-none focus:ring-1 bg-white text-sm`}
                     >
                       <option value="Clinic Director">Clinic Director</option>
                       <option value="Medical Consultant">
@@ -528,6 +648,9 @@ const JoinTeam = () => {
                       </option>
                       <option value="Pharmacist">Pharmacist</option>
                     </select>
+                    {validationErrors.position && (
+                      <p className="mt-1 text-xs text-red-500">{validationErrors.position}</p>
+                    )}
                   </div>
 
                   {/* Resume Upload */}
@@ -544,34 +667,46 @@ const JoinTeam = () => {
                       name="resume"
                       accept="application/pdf"
                       onChange={handleFileChange}
-                      required
-                      className="w-full px-3 py-1.5 border border-[#C5A184] rounded-md focus:outline-none focus:ring-1 focus:ring-[#A37159] text-sm file:mr-3 file:py-1 file:px-3 file:rounded-md file:border-0 file:text-xs file:bg-[#A37159] file:text-white hover:file:bg-[#C5A184]"
+                      className={`w-full px-3 py-1.5 border ${
+                        validationErrors.resume 
+                          ? "border-red-500 focus:ring-red-500" 
+                          : "border-[#C5A184] focus:ring-[#A37159]"
+                      } rounded-md focus:outline-none focus:ring-1 text-sm file:mr-3 file:py-1 file:px-3 file:rounded-md file:border-0 file:text-xs file:bg-[#A37159] file:text-white hover:file:bg-[#C5A184]`}
                     />
                     {resumeFile && (
                       <p className="mt-1 text-xs text-[#676F75]">
                         Selected file: {resumeFile.name}
                       </p>
                     )}
+                    {validationErrors.resume && (
+                      <p className="mt-1 text-xs text-red-500">{validationErrors.resume}</p>
+                    )}
                   </div>
 
-                  {/* Description Field */}
+                  {/* Message Field */}
                   <div className="col-span-2">
                     <label
-                      htmlFor="description"
+                      htmlFor="message"
                       className="block text-[#A37159] text-sm font-medium mb-1"
                     >
-                      Why do you want to join Parallel Clinic? *
+                      Why do you want to join Parallel Clinic? (optional)
                     </label>
                     <textarea
-                      id="description"
-                      name="description"
-                      value={formData.description}
+                      id="message"
+                      name="message"
+                      value={formData.message}
                       onChange={handleChange}
-                      required
                       rows="3"
-                      className="w-full px-3 py-1.5 border border-[#C5A184] rounded-md focus:outline-none focus:ring-1 focus:ring-[#A37159] text-sm"
+                      className={`w-full px-3 py-1.5 border ${
+                        validationErrors.message 
+                          ? "border-red-500 focus:ring-red-500" 
+                          : "border-[#C5A184] focus:ring-[#A37159]"
+                      } rounded-md focus:outline-none focus:ring-1 text-sm`}
                       placeholder="Tell us about yourself and why you're interested in this position"
                     ></textarea>
+                    {validationErrors.message && (
+                      <p className="mt-1 text-xs text-red-500">{validationErrors.message}</p>
+                    )}
                   </div>
                 </div>
 
