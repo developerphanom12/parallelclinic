@@ -194,7 +194,7 @@ const AboutClinic = () => {
       <div className="text-[#A37159] flex sm:fixed top-10 items-start w-full pl-[10%]">
           <h1 className="sm:text-[55px] text-[33px] leading-none">About <br className="block sm:hidden" /><span className="text-[#C5A184]">Parallel Clinic</span></h1>
         </div>
-    <div className="h-[60vh] sm:mt-10 mt-20 overflow-y-scroll overflow-x-hidden pb-10">
+    <div className="sm:h-[60vh] sm:mt-10 mt-4 sm:overflow-y-scroll sm:overflow-x-hidden pb-10 hide-scrollbar">
 
       {/* Top Section from AboutClinic2 */}
       <div className="w-[100vw] flex flex-col items-center justify-center">
@@ -313,7 +313,7 @@ const AboutClinic = () => {
     </div>
 
       {/* Bottom Text */}
-      <div className="sm:fixed sm:bottom-0 sm:left-0 w-full px-4 sm:px-0 flex flex-col items-center text-center space-y-0.5 z-50 mt-10 sm:mt-0">
+      <div className="sm:fixed sm:bottom-0 sm:left-0 w-full px-4 sm:px-0 flex flex-col items-center text-center leading-tight z-50 mt-10 sm:mt-0">
         <h2 className="text-[#A37159] text-2xl sm:text-[40px] font-semibold">
           Making Your Medicine Personal & Precise.
         </h2>
