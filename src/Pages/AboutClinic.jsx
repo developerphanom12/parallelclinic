@@ -5,6 +5,7 @@ import React, { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { FaHeadphones } from "react-icons/fa6";
 import { RiArrowDropDownLine } from "react-icons/ri";
+import NewPlayerGlobal from "../components/NewPlayerGlobal";
 
 const faqs = [
   {
@@ -313,7 +314,7 @@ const AboutClinic = () => {
     </div>
 
       {/* Bottom Text */}
-      <div className="sm:fixed sm:bottom-0 sm:left-0 w-full px-4 sm:px-0 flex flex-col items-center text-center leading-tight z-50 mt-10 sm:mt-0">
+      <div className="sm:fixed sm:bottom-0 sm:left-0 w-full px-4 sm:px-0 flex flex-col items-center text-center leading-tight z-50 mt-10 mb-30 sm:mb-0 sm:mt-0">
         <h2 className="text-[#A37159] text-2xl sm:text-[40px] font-semibold">
           Making Your Medicine Personal & Precise.
         </h2>
@@ -330,7 +331,8 @@ const AboutClinic = () => {
           Using Botanical Medicines with Well Documented Molecular Level Mechanisms of Actions
         </p>
         <div className="absolute bottom-4 right-8 text-sm text-gray-700">
-          <FaHeadphones size={50} className="text-[#DAA57B]" />
+          {/* <FaHeadphones size={50} className="text-[#DAA57B]" /> */}
+          <NewPlayerGlobal/>
         </div>
       </div>
     </div>

@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { FaHeadphones } from "react-icons/fa6";
 import Heading from "../components/Heading";
+import NewPlayerGlobal from "../components/NewPlayerGlobal";
 
 export const conditionSections = [
   {
@@ -173,7 +174,7 @@ const MedicalCondition = () => {
         <Heading firstText="Medical Conditions" secondText="Managed by Parallel Clinic" />
 
         {/* Medical Conditions List */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-16 gap-y-4 px-4 sm:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-16 gap-y-4 px-4 sm:px-8 mb-30 sm:mb-0">
           {/* Left Column */}
           <div>
             {leftColumn.map((section, index) => (
@@ -223,7 +224,8 @@ const MedicalCondition = () => {
       </div>
       {/* Bottom Right Text */}
       <div className="absolute bottom-0 right-8 text-sm text-gray-700">
-        <FaHeadphones size={50} className="text-[#DAA57B]" />
+        {/* <FaHeadphones size={50} className="text-[#DAA57B]" /> */}
+        <NewPlayerGlobal/>
       </div>
     </div>
   );
