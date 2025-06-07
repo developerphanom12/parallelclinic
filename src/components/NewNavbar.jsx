@@ -34,7 +34,7 @@ const NewNavbar = () => {
           <div className="hidden lg:block"></div>
 
           {/* Menu Icon - Right side for mobile, tablet and desktop */}
-          <div className="absolute top-2 right-2 z-50 bg-amber-300 flex flex-col items-center justify-center">
+          <div className="absolute top-2 right-2 z-50 flex flex-col items-center justify-center">
 
             <div className="hidden lg:block">
             <img
