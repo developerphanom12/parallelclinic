@@ -192,10 +192,10 @@ const AboutClinic = () => {
         ref={cursorRef}
         className="w-12 h-12 border border-[#C5A184] rounded-full fixed top-0 left-0 z-[999] pointer-events-none"
       />
-      <div className="text-[#A37159] flex sm:fixed top-10 items-start w-full pl-[10%]">
+      <div className="text-[#A37159] flex sm:fixed top-12 items-start w-full pl-[10%]">
           <h1 className="sm:text-[55px] text-[33px] leading-none">About <br className="block sm:hidden" /><span className="text-[#C5A184]">Parallel Clinic</span></h1>
         </div>
-    <div className="sm:h-[60vh] sm:mt-10 mt-4 sm:overflow-y-scroll sm:overflow-x-hidden pb-10 hide-scrollbar">
+    <div className="sm:h-[60vh] md:h-[70vh] lg:h-[80vh] sm:mt-10 mt-4 sm:overflow-y-scroll sm:overflow-x-hidden pb-10 hide-scrollbar">
 
       {/* Top Section from AboutClinic2 */}
       <div className="w-[100vw] flex flex-col items-center justify-center">
@@ -216,8 +216,8 @@ const AboutClinic = () => {
           </div>
 
           <div className="sm:mt-2 mt-4 text-[#A37159] leading-none">
-            <h3 style={{ fontFamily: "MyFont" }} className="text-[#A37159] text-[25px]">Parallel Clinic's therapeutic doctrine is founded on Physicians & Patients working in Parallel.</h3>
-            <div className="text-[17px] sm:-space-y-2 flex flex-col justify-center items-center w-full">
+            <h3 style={{ fontFamily: "MyFont" }} className="text-[#A37159] text-[25px] lg:mb-0 mb-4">Parallel Clinic's therapeutic doctrine is founded on Physicians & Patients working in Parallel.</h3>
+            <div className="text-[17px] lg:-space-y-2 gap-4 lg:gap-2  flex flex-col justify-center items-center w-full">
               <p className="w-[90%] leading-0.5">
                 Our Molecular-Targeted approach is based on a deep understanding of the molecular pathophysiology of diseases that we treat
               </p>
@@ -314,7 +314,7 @@ const AboutClinic = () => {
     </div>
 
       {/* Bottom Text */}
-      <div className="sm:fixed sm:bottom-0 sm:left-0 w-full px-4 sm:px-0 flex flex-col items-center text-center leading-tight z-50 mt-10 mb-30 sm:mb-0 sm:mt-0">
+      <div className="sm:fixed sm:bottom-0 sm:left-0 w-full px-4 sm:px-0 flex flex-col items-center text-center leading-tight z-50 mt-10 mb-30 sm:mb-0 sm:mt-0 bg-[#FDF8E5] ">
         <h2 className="text-[#A37159] text-2xl sm:text-[40px] font-semibold">
           Making Your Medicine Personal & Precise.
         </h2>

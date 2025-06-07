@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import MusicPlayer from "../components/MusicPlayer";
 import logoClinic from "../assets/logoClinic.png";
-import video from "../assets/fonts/Flower.mp4";
+import video from "../assets/fonts/HomeFlower.mp4";
 import Heading from "../components/Heading";
 
 

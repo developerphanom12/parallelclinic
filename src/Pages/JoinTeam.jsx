@@ -1,5 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
+import { ScrollToPlugin } from "gsap/ScrollToPlugin";
+gsap.registerPlugin(ScrollToPlugin);
 import { FaHeadphones, FaSpinner } from "react-icons/fa6";
 import { FaTimes } from "react-icons/fa";
 import axios from "axios";
@@ -66,8 +68,8 @@ const jobData = [
   {
     title:
       "Parallel Clinic, an online clinic, is inviting medical & paramedical professionals to join our team!",
-    SubHead:"We are looking for mature persons with",
-    items: [    
+    SubHead: "We are looking for mature persons with",
+    items: [
       "Outstanding articulation and communication skills",
       "Outstanding MS Office capabilities",
       "An eye for detail, attitude for compliance, with a temperament to understand and communicate nuanced issues",
@@ -163,7 +165,7 @@ const JoinTeam = () => {
 
     checkOverflow();
     window.addEventListener('resize', checkOverflow);
-    
+
     return () => {
       window.removeEventListener('resize', checkOverflow);
     };
@@ -218,20 +220,31 @@ const JoinTeam = () => {
       setFormData((prev) => ({ ...prev, position: "Pharmacist" }));
     }
     setActivePosition(btnIndex);
+
+    if (window.innerWidth <= 768) {
+      console.log("📱 Trying to scroll to top...");
+      gsap.to(window, {
+        scrollTo: { y: 0 },
+        duration: 1,
+        ease: "power2.out",
+      });
+    }
   };
+
+
 
   // Validate form data
   const validateForm = async () => {
     try {
       await applicationSchema.validate(
-        { 
-          fullName: formData.fullName, 
-          email: formData.email, 
-          contactNumber: formData.contactNumber, 
-          position: formData.position, 
+        {
+          fullName: formData.fullName,
+          email: formData.email,
+          contactNumber: formData.contactNumber,
+          position: formData.position,
           message: formData.message,
-          resume: resumeFile 
-        }, 
+          resume: resumeFile
+        },
         { abortEarly: false }
       );
       setValidationErrors({});
@@ -249,13 +262,13 @@ const JoinTeam = () => {
   // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     // Validate form
     const isValid = await validateForm();
     if (!isValid) {
       return;
     }
-    
+
     setFormPending(true);
     setSubmitError("");
 
@@ -303,7 +316,7 @@ const JoinTeam = () => {
     } catch (error) {
       console.error("Application submission error:", error);
       setSubmitError(
-        error.response?.data?.message || 
+        error.response?.data?.message ||
         "Failed to submit your application. Please try again later."
       );
     } finally {
@@ -318,7 +331,7 @@ const JoinTeam = () => {
       ...prev,
       [name]: value,
     }));
-    
+
     // Clear validation error when field is edited
     if (validationErrors[name]) {
       setValidationErrors(prev => ({
@@ -357,32 +370,33 @@ const JoinTeam = () => {
         className="w-12 h-12 border border-[#C5A184] rounded-full fixed top-0 left-0 z-[999]"
       />
 
+      {/* Heading */}
+      <div className="text-[#A37159] mb-6 pl-[5%] w-[80%] sm:w-full ">
+        <h1 className="sm:text-[55px] text-[33px] leading-none whitespace-nowrap">
+          Join <br className="block sm:hidden" />
+          <span className="text-[#C5A184]">Parallel Clinic Team</span>
+        </h1>
+      </div>
       {/* Content */}
-      <div className="w-full px-4 sm:px-16 grid grid-cols-1 lg:grid-cols-2 gap-8 sm:h-[70vh]">
+      <div className="w-full px-4 sm:px-16 lg:grid flex flex-col-reverse  lg:grid-cols-2 gap-20 lg:h-[70vh]">
         {/* Left Column - Heading and Requirements */}
         <div>
-          {/* Heading */}
-          <div className="text-[#A37159] mb-6 pl-[2%] w-[80%] sm:w-full ">
-            <h1 className="sm:text-[55px] text-[33px] leading-none whitespace-nowrap">
-              Join <br className="block sm:hidden" />
-              <span className="text-[#C5A184]">Parallel Clinic Team</span>
-            </h1>
-          </div>
+
 
           {/* Requirements List */}
           <div className="relative">
-            <div 
+            <div
               ref={requirementsRef}
-              className="sm:h-[50vh] sm:overflow-y-auto hide-scrollbar pb-10"
+              className="lg:h-[50vh] lg:overflow-y-auto hide-scrollbar pb-10"
             >
               {displayData?.map((section, index) => (
                 <div key={index} className=" ">
-                  <h2 className="text-[#A37159] text-[18px] font-semibold flex items-start gap-2">
+                  <h2 className="text-[#A37159] text-[20px] font-semibold flex items-start gap-2">
                     <span className="">{section.index}</span>
                     <span className="flex-1">{section.title}</span>
                   </h2>
-                  <h3 className="ml-8 text-[#676F75] text-[14px]"> {section.SubHead}</h3>   
-               <ul className="ml-8 text-[#676F75] text-[12px]">
+                  <h3 className="ml-8 text-[#676F75] text-[18px]"> {section.SubHead}</h3>
+                  <ul className="ml-8 text-[#676F75] text-[16px]">
                     {section.items.map((item, i) => (
                       <li key={i}>
                         <span className="mr-2">
@@ -395,7 +409,7 @@ const JoinTeam = () => {
                 </div>
               ))}
             </div>
-            
+
             {/* Show more indicator */}
             {hasOverflow && (
               <div className="absolute bottom-0 left-0 w-full text-end mr-5 bg-gradient-to-t from-[#FDF8E5] pb-2 pt-6">
@@ -416,7 +430,7 @@ const JoinTeam = () => {
         </div>
 
         {/* Right Column - Inviting Doctors */}
-        <div className="flex flex-col justify-end sm:h-[70vh] ">
+        <div className="flex flex-col lg:justify-end lg:h-[50vh]  ">
           <div>
             <h2 className="text-[#A37159] text-2xl mb-2">Inviting</h2>
             <ul className="pl-4 text-[#A37159] text-2xl space-y-2">
@@ -431,43 +445,40 @@ const JoinTeam = () => {
             </ul>
 
             <p className="text-[#A37159] text-2xl mt-2 ">Join Our Team as:</p>
+            <h5 className="text-[#676F75] text-sm">Click to view Details</h5>
             <ol className="pl-4 text-xl">
               <li
-                className={`cursor-pointer ${
-                  activePosition === 1
+                className={`cursor-pointer hover:text-[#A37159] ${activePosition === 1
                     ? "text-[#A37159] font-bold"
                     : "text-[#676F75]"
-                }`}
+                  }`}
                 onClick={() => handleClick(1)}
               >
                 1. Clinic Director
               </li>
               <li
-                className={`cursor-pointer ${
-                  activePosition === 2
+                className={`cursor-pointer hover:text-[#A37159] ${activePosition === 2
                     ? "text-[#A37159] font-bold"
                     : "text-[#676F75]"
-                }`}
+                  }`}
                 onClick={() => handleClick(2)}
               >
                 2. Medical Consultant
               </li>
               <li
-                className={`cursor-pointer ${
-                  activePosition === 3
+                className={`cursor-pointer hover:text-[#A37159] ${activePosition === 3
                     ? "text-[#A37159] font-bold"
                     : "text-[#676F75]"
-                }`}
+                  }`}
                 onClick={() => handleClick(3)}
               >
                 3. Medical Tele-Consultant
               </li>
               <li
-                className={`cursor-pointer ${
-                  activePosition === 4
+                className={`cursor-pointer hover:text-[#A37159] ${activePosition === 4
                     ? "text-[#A37159] font-bold"
                     : "text-[#676F75]"
-                }`}
+                  }`}
                 onClick={() => handleClick(4)}
               >
                 4. Pharmacist
@@ -500,7 +511,7 @@ const JoinTeam = () => {
         </p>
         <div className="absolute bottom-4 right-8 text-sm text-gray-700">
           {/* <FaHeadphones size={50} className="text-[#DAA57B]" /> */}
-          <NewPlayerGlobal/>
+          <NewPlayerGlobal />
         </div>
       </div>
 
@@ -508,7 +519,7 @@ const JoinTeam = () => {
       {showForm && (
         <div className="fixed inset-0 backdrop-blur-xs bg-[#00000047] bg-opacity-30 flex items-center justify-center z-[1000] p-4">
           {formPending && <FormLoader />}
-          
+
           <div className="bg-[#FDF8E5] rounded-lg shadow-xl w-full max-w-4xl max-h-[90vh] overflow-y-auto">
             {/* Form Header */}
             <div className="flex justify-between items-center p-6 border-b border-[#C5A184]">
@@ -558,11 +569,10 @@ const JoinTeam = () => {
                       name="fullName"
                       value={formData.fullName}
                       onChange={handleChange}
-                      className={`w-full px-3 py-1.5 border ${
-                        validationErrors.fullName 
-                          ? "border-red-500 focus:ring-red-500" 
+                      className={`w-full px-3 py-1.5 border ${validationErrors.fullName
+                          ? "border-red-500 focus:ring-red-500"
                           : "border-[#C5A184] focus:ring-[#A37159]"
-                      } rounded-md focus:outline-none focus:ring-1 text-sm`}
+                        } rounded-md focus:outline-none focus:ring-1 text-sm`}
                       placeholder="Enter your full name"
                     />
                     {validationErrors.fullName && (
@@ -584,11 +594,10 @@ const JoinTeam = () => {
                       name="email"
                       value={formData.email}
                       onChange={handleChange}
-                      className={`w-full px-3 py-1.5 border ${
-                        validationErrors.email 
-                          ? "border-red-500 focus:ring-red-500" 
+                      className={`w-full px-3 py-1.5 border ${validationErrors.email
+                          ? "border-red-500 focus:ring-red-500"
                           : "border-[#C5A184] focus:ring-[#A37159]"
-                      } rounded-md focus:outline-none focus:ring-1 text-sm`}
+                        } rounded-md focus:outline-none focus:ring-1 text-sm`}
                       placeholder="Enter your email address"
                     />
                     {validationErrors.email && (
@@ -610,11 +619,10 @@ const JoinTeam = () => {
                       name="contactNumber"
                       value={formData.contactNumber}
                       onChange={handleChange}
-                      className={`w-full px-3 py-1.5 border ${
-                        validationErrors.contactNumber 
-                          ? "border-red-500 focus:ring-red-500" 
+                      className={`w-full px-3 py-1.5 border ${validationErrors.contactNumber
+                          ? "border-red-500 focus:ring-red-500"
                           : "border-[#C5A184] focus:ring-[#A37159]"
-                      } rounded-md focus:outline-none focus:ring-1 text-sm`}
+                        } rounded-md focus:outline-none focus:ring-1 text-sm`}
                       placeholder="Enter your contact number"
                     />
                     {validationErrors.contactNumber && (
@@ -635,11 +643,10 @@ const JoinTeam = () => {
                       name="position"
                       value={formData.position}
                       onChange={handleChange}
-                      className={`w-full px-3 py-1.5 border ${
-                        validationErrors.position 
-                          ? "border-red-500 focus:ring-red-500" 
+                      className={`w-full px-3 py-1.5 border ${validationErrors.position
+                          ? "border-red-500 focus:ring-red-500"
                           : "border-[#C5A184] focus:ring-[#A37159]"
-                      } rounded-md focus:outline-none focus:ring-1 bg-white text-sm`}
+                        } rounded-md focus:outline-none focus:ring-1 bg-white text-sm`}
                     >
                       <option value="Clinic Director">Clinic Director</option>
                       <option value="Medical Consultant">
@@ -669,11 +676,10 @@ const JoinTeam = () => {
                       name="resume"
                       accept="application/pdf"
                       onChange={handleFileChange}
-                      className={`w-full px-3 py-1.5 border ${
-                        validationErrors.resume 
-                          ? "border-red-500 focus:ring-red-500" 
+                      className={`w-full px-3 py-1.5 border ${validationErrors.resume
+                          ? "border-red-500 focus:ring-red-500"
                           : "border-[#C5A184] focus:ring-[#A37159]"
-                      } rounded-md focus:outline-none focus:ring-1 text-sm file:mr-3 file:py-1 file:px-3 file:rounded-md file:border-0 file:text-xs file:bg-[#A37159] file:text-white hover:file:bg-[#C5A184]`}
+                        } rounded-md focus:outline-none focus:ring-1 text-sm file:mr-3 file:py-1 file:px-3 file:rounded-md file:border-0 file:text-xs file:bg-[#A37159] file:text-white hover:file:bg-[#C5A184]`}
                     />
                     {resumeFile && (
                       <p className="mt-1 text-xs text-[#676F75]">
@@ -699,11 +705,10 @@ const JoinTeam = () => {
                       value={formData.message}
                       onChange={handleChange}
                       rows="3"
-                      className={`w-full px-3 py-1.5 border ${
-                        validationErrors.message 
-                          ? "border-red-500 focus:ring-red-500" 
+                      className={`w-full px-3 py-1.5 border ${validationErrors.message
+                          ? "border-red-500 focus:ring-red-500"
                           : "border-[#C5A184] focus:ring-[#A37159]"
-                      } rounded-md focus:outline-none focus:ring-1 text-sm`}
+                        } rounded-md focus:outline-none focus:ring-1 text-sm`}
                       placeholder="Tell us about yourself and why you're interested in this position"
                     ></textarea>
                     {validationErrors.message && (
@@ -739,4 +744,3 @@ const JoinTeam = () => {
 };
 
 export default JoinTeam;
- 
