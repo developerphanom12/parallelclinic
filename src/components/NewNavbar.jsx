@@ -34,7 +34,17 @@ const NewNavbar = () => {
           <div className="hidden lg:block"></div>
 
           {/* Menu Icon - Right side for mobile, tablet and desktop */}
-          <div className="absolute top-2 right-2 z-50">
+          <div className="absolute top-2 right-2 z-50 bg-amber-300 flex flex-col items-center justify-center">
+
+            <div className="hidden lg:block">
+            <img
+              src={logoClinic}
+              className="w-[50px] h-[50px] cursor-pointer"
+              alt="Parallel Clinic Logo"
+              onClick={() => navigate("/")}
+            />
+          </div>
+
             {/* Desktop Menu Icon */}
           { location.pathname == "/" ?   <div
               className="lg:block hidden relative w-28 h-28 cursor-pointer scale-150"
