@@ -1,10 +1,10 @@
 import React, { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
-import flower1 from "../assets/flower1.png";
-import flower2 from "../assets/flower6.png";
-import flower3 from "../assets/flower5.png";
-import flower4 from "../assets/flower4.png";
-import flower5 from "../assets/flower2.png";
+import flower1 from "../assets/2.png";
+import flower2 from "../assets/1.png";
+import flower3 from "../assets/3.png";
+import flower4 from "../assets/4.png";
+import flower5 from "../assets/5.png";
 import { useNavigate } from "react-router-dom";
 import NewPlayerGlobal from "../components/NewPlayerGlobal";
 
@@ -107,7 +107,7 @@ const ChooseHope = () => {
       </div>
 
       {/* Flower Images */}
-      <div className="absolute top-[30%] left-[50%] transform -translate-x-1/2 flex justify-center items-center">
+      <div className="absolute sm:top-[25%] top-[30%] left-[50%] transform -translate-x-1/2 flex justify-center items-center">
         <div className="w-[300px] h-[200px] sm:w-[480px] sm:h-[380px] relative flex justify-bottom items-center">
           <img
             ref={(el) => (imageRefs.current[0] = el)}
