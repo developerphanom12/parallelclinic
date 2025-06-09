@@ -121,7 +121,7 @@ const ChooseHope = () => {
  
           <img
             ref={(el) => (imageRefs.current[1] = el)}
-            src={flower2}
+            src={flower2} 
             alt="flower2"
             className="absolute object-contain opacity-0 transition-opacity scale-75 w-[100vw] h-[100vh]"
           />
