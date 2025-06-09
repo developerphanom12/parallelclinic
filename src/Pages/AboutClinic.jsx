@@ -377,9 +377,9 @@ const AboutClinic = () => {
    
 
       {/* Bottom Text */}
-      <div className="sm:fixed relative sm:bottom-0 sm:left-0 w-full px-4 sm:px-0 flex flex-col items-center text-center z-50 mt-10 mb-30 sm:mb-0 sm:mt-0 bg-[#FDF8E5] ">
-         {showButton && (
-  <div className="absolute z-50 text-center right-[6%] bottom-[80%]">
+      <div className="sm:fixed relative sm:bottom-0 sm:left-0 w-full px-4 sm:px-0 flex flex-col items-center text-center z-50 mt-10 pb-20 sm:pb-0 sm:mb-0 sm:mt-0 bg-[#FDF8E5] ">
+        {showButton && (
+  <div className="hidden sm:block sm:absolute z-50 text-center right-[6%] bottom-[80%]">
     <button
       onClick={() => {
         scrollContainerRef.current.scrollTo({
@@ -387,12 +387,13 @@ const AboutClinic = () => {
           behavior: "smooth",
         });
       }}
-      className="bg-transparent text-[#A37159] "
+      className="bg-transparent text-[#A37159]"
     >
       Scroll to see more
     </button>
   </div>
 )}
+
         
         <h2 style={{ fontFamily: "libre bodoni" }} className="text-[#A37159] text-2xl sm:text-[30px] font-semibold leading-tight mt-2">
           Making Your Medicine Personal & Precise.
@@ -409,7 +410,7 @@ const AboutClinic = () => {
         <p className="text-[#676F75] text-base sm:text-[16px] leading-tight sm:w-[60%] lg:w-full">
           Using Botanical Medicines with Well Documented Molecular Level Mechanisms of Actions
         </p>
-        <div className="absolute bottom-4 right-8 text-sm text-gray-700">
+        <div className="absolute sm:bottom-4 bottom-0 right-8 text-sm text-gray-700">
           {/* <FaHeadphones size={50} className="text-[#DAA57B]" /> */}
           <NewPlayerGlobal/>
         </div>
