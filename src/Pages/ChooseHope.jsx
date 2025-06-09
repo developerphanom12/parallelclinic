@@ -30,27 +30,30 @@ const ChooseHope = () => {
   }, []);
  
   // Auto transition every 30s
-  useEffect(() => {
-    const interval = setInterval(() => {
-      const nextIndex = (currentIndex + 1) % images.length;
- 
-      // Fade out current, fade in next
-      gsap.to(imageRefs.current[currentIndex], {
-        opacity: 0,
-        duration: 2,
-        ease: "power2.out",
-      });
-      gsap.to(imageRefs.current[nextIndex], {
-        opacity: 1,
-        duration: 2,
-        ease: "power2.out",
-      });
- 
-      setCurrentIndex(nextIndex);
-    }, 30000);
- 
-    return () => clearInterval(interval);
-  }, [currentIndex]);
+ useEffect(() => {
+  const interval = setInterval(() => {
+    const nextIndex = (currentIndex + 1) % images.length;
+
+    const tl = gsap.timeline({
+      onComplete: () => setCurrentIndex(nextIndex)
+    });
+
+    tl.to(imageRefs.current[currentIndex], {
+      opacity: 0,
+      duration: 5,
+      ease: "power2.out",
+    })
+    .to(imageRefs.current[nextIndex], {
+      opacity: 1,
+      duration: 5,
+      ease: "power2.out",
+    }, ">"); // ">" means start after previous tween ends
+
+  }, 30000);
+
+  return () => clearInterval(interval);
+}, [currentIndex]);
+
  
   // Mouse follower
   useEffect(() => {
@@ -87,7 +90,7 @@ const ChooseHope = () => {
   }, []);
  
   return (
-    <div className="relative w-full h-full sm:h-[90vh] bg-[#FDF8E5] overflow-y-hidden ">
+    <div className="relative w-full h-full sm:h-[85vh] bg-[#FDF8E5] overflow-y-hidden ">
       {/* Cursor */}
       <div
         ref={cursorRef}
@@ -99,16 +102,16 @@ const ChooseHope = () => {
         <div className="flex sm:pl-8">
           <h1
             style={{ fontFamily: "MyFont" }}
-            className="sm:text-[55px] text-[33px] sm:w-[50%] text-[#C5A184]"
+            className="sm:text-[55px] text-[33px] text-[#C5A184]"
           >
-            Choose Hope. <br className="block sm:hidden" /> Renew Hope.
+            Choose Hope. <br className="block" /> Renew Hope.
           </h1>
         </div>
       </div>
  
       {/* Flower Images */}
-      <div className="absolute sm:top-[25%] top-[30%] left-[50%] transform -translate-x-1/2 flex justify-center items-center">
-        <div className="w-[300px] h-[200px] sm:w-[480px] sm:h-[380px] relative flex justify-bottom items-center">
+<div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex justify-center items-center">
+        <div className="w-[350px] h-[350px] sm:w-[380px] sm:h-[380px] relative flex justify-bottom items-center">
           <img
             ref={(el) => (imageRefs.current[0] = el)}
             src={flower1}
@@ -120,7 +123,7 @@ const ChooseHope = () => {
             ref={(el) => (imageRefs.current[1] = el)}
             src={flower2}
             alt="flower2"
-            className="absolute  opacity-0 transition-opacity scale-75 w-[100vw] h-[100vh]"
+            className="absolute object-contain opacity-0 transition-opacity scale-75 w-[100vw] h-[100vh]"
           />
  
           <img
@@ -145,26 +148,29 @@ const ChooseHope = () => {
       </div>
  
       {/* Consult Doctors Text - Left Bottom */}
-      <div className="absolute bottom-2 sm:bottom-10 left-6 sm:left-16 text-[#A37159] ">
-        <h2 style={{ fontFamily: "MyFont" }} className="text-1xl sm:text-3xl">
-          Consult Parallel Clinic Doctors
-          <br />
-          Without Leaving Your House
-        </h2>
-      </div>
- 
-      {/* Bottom Right Text */}
-      <div className="absolute sm:bottom-8 bottom-5 sm:right-6 right-6 text-sm text-gray-700">
-        <div className="flex flex-col sm:flex-row gap-2 items-end mr-7">
-          <div style={{ fontFamily: "MyFont" }} className="sm:w-[]">
-            <h1 className="text-[#C5A184] sm:text-[20px]  text-[20px] sm:text-end text-center">
-              With Well Documented <br/> Science Based Assurance of <br/>Highly Safe,Highly Efficient Medicines*
-            </h1>
-          </div>
-          {/* <FaHeadphones size={50} className="text-[#DAA57B]" /> */}
-         <NewPlayerGlobal/>
-        </div>
-      </div>
+     <div className="absolute bottom-1 lg:bottom-10 w-full px-6 sm:px-16 flex flex-col lg:flex-row justify-between items-center  gap-6 sm:gap-0 z-50">
+  {/* Left Text */}
+  <div className="text-[#A37159] text-center sm:text-left">
+    <h2 style={{ fontFamily: "MyFont" }} className="text-1xl sm:text-3xl">
+      Consult Parallel Clinic Doctors
+      <br />
+      Without Leaving Your House
+    </h2>
+  </div>
+
+  {/* Right Text & Player */}
+  <div className="flex items-center sm:items-end gap-3 sm:gap-6 text-sm text-gray-700 text-center sm:text-end">
+    <div style={{ fontFamily: "MyFont" }}>
+      <h1 className="text-[#C5A184] text-[16px] sm:text-[20px]">
+        With Well Documented <br />
+        Science Based Assurance of <br />
+        Highly Safe, Highly Efficient Medicines*
+      </h1>
+    </div>
+    <NewPlayerGlobal />
+  </div>
+</div>
+
     </div>
   );
 };

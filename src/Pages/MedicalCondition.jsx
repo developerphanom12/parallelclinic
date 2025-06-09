@@ -21,7 +21,7 @@ export const conditionSections = [
   },
   {
     title: "Post-Cancer Management",
-    index: "b.",
+    index: "2",
     startCharCode: 99, // 'c'
     items: [
       "Late Effects of Cancer Treatment",
@@ -34,7 +34,7 @@ export const conditionSections = [
   {
     title: "Geriatric Conditions (Elderly Patients)",
     startCharCode: 97, // 'a'
-    index: "h.",
+    index: "3.",
     items: [
       "Dry Skin",
       "Joint Pain",
@@ -46,13 +46,13 @@ export const conditionSections = [
   {
     title: "Pre-Diabetes / Obesity / NLP-1 Agonism",
     startCharCode: 103, // 'g'
-    index: "f.",
+    index: "4.",
     items: ["Metabolic Disorders"]
   },
   {
     title: "Brain & Memory Function",
     startCharCode: 105, // 'i'
-    index: "h.",
+    index: "5.",
     items: ["Cognitive Function (brain memory, attention, problem-solving, decision-making)"]
   },
   {
@@ -79,7 +79,7 @@ export const conditionSections = [
   {
     title: "Skin Conditions",
     startCharCode: 97, // 'a'
-    index: "viii.",
+    index: "8.",
     items: [
       "Acne",
       "Dermatitis",
@@ -91,19 +91,19 @@ export const conditionSections = [
   {
     title: "Immunity Disorders",
     startCharCode: 103, // 'g'
-    index: "f.",
+    index: "9.",
     items: ["Psoriasis", "Frequent Infections"]
   },
   {
     title: "Kidney Health",
     startCharCode: 106, // 'j'
-    index: "i.",
+    index: "10.",
     items: ["Early-stage Chronic Kidney Disorders"]
   },
   {
     title: "Reproductive & Sexual Health",
     startCharCode: 108, // 'i'
-    index: "k.",
+    index: "11.",
     items: [
       "Dysmenorrhea; Post-menopausal syndrome",
       "Polycystic ovary syndrome (PCOS)",
@@ -157,6 +157,22 @@ const MedicalCondition = () => {
     };
   }, []);
 
+  const toRoman = (num) => {
+  const romans = [
+    ["M", 1000], ["CM", 900], ["D", 500], ["CD", 400],
+    ["C", 100],  ["XC", 90],  ["L", 50],  ["XL", 40],
+    ["X", 10],   ["IX", 9],   ["V", 5],   ["IV", 4], ["I", 1],
+  ];
+  let result = "";
+  for (const [roman, value] of romans) {
+    while (num >= value) {
+      result += roman;
+      num -= value;
+    }
+  }
+  return result;
+};
+
   return (
     <div className="relative w-full bg-[#FDF8E5] sm:min-h-[84vh] flex flex-col">
       {/* Cursor */}
@@ -166,7 +182,7 @@ const MedicalCondition = () => {
       />
 
       {/* Content */}
-      <div className="w-full px-2 sm:px-16 sm:h-[70vh]  h-full">
+      <div className="w-full px-2 sm:px-16 sm:h-[70vh] ">
         {/* Heading */}
         {/* <div className="text-[#A37159] flex items-start w-full mb-4 pl-[2%]">
           <h1 className="sm:text-[55px] text-[33px] w-[80%] sm:w-auto leading-none">Medical Conditions<br className="block sm:hidden" /><span className="text-[#C5A184]">{" "}Managed by Parallel Clinic</span></h1>
@@ -174,12 +190,12 @@ const MedicalCondition = () => {
         <Heading firstText="Medical Conditions" secondText="Managed by Parallel Clinic" />
 
         {/* Medical Conditions List */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-16 gap-y-4 px-4 sm:px-8 mb-30 sm:mb-0">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-16 gap-y-4 px-4 sm:px-8 mb-5 sm:mb-0 mt-3">
           {/* Left Column */}
           <div>
             {leftColumn.map((section, index) => (
               <div key={index} className="leading-tight">
-                <p className="text-[#A37159] text-[18px] font-semibold">
+                <p style={{ fontFamily: "libre bodoni" }} className="text-[#A37159] text-[18px] font-semibold">
                   <span className="mr-2">{section.index}</span>
                   {section.title}
                 </p>
@@ -188,7 +204,8 @@ const MedicalCondition = () => {
                     <li key={i}>
                       <span className="mr-2">
                         {/* {String.fromCharCode(97 + i)}. */}
-                        {String.fromCharCode((section?.startCharCode || 97) + i)}.
+                        {/* {String.fromCharCode(( 97) + i)}. */}
+                         {toRoman(i + 1)}.
                         </span>
                       {item}
                     </li>
@@ -202,7 +219,7 @@ const MedicalCondition = () => {
           <div>
             {rightColumn.map((section, index) => (
               <div key={index} className="leading-tight">
-                <p className="text-[#A37159] text-[18px] font-semibold">
+                <p style={{ fontFamily: "libre bodoni" }} className="text-[#A37159] text-[18px] font-semibold">
                   <span className="mr-2">{section.index}</span>
                   {section.title}
                 </p>
@@ -210,7 +227,8 @@ const MedicalCondition = () => {
                   {section.items.map((item, i) => (
                     <li key={i}>
                       <span className="mr-2">
-                      {String.fromCharCode((section?.startCharCode || 97) + i)}.
+                      {/* {String.fromCharCode(( 97) + i)}. */}
+                       {toRoman(i + 1)}.
                         </span>
                       {item}
                     </li>
@@ -223,10 +241,19 @@ const MedicalCondition = () => {
 
       </div>
       {/* Bottom Right Text */}
-      <div className="absolute bottom-0 right-8 text-sm text-gray-700">
+      {/* <div className="absolute bottom-0 right-8 text-sm text-gray-700"> */}
         {/* <FaHeadphones size={50} className="text-[#DAA57B]" /> */}
-        <NewPlayerGlobal/>
-      </div>
+        {/* <NewPlayerGlobal/>
+      </div> */}
+
+     <div className="sm:fixed sm:bottom-0 sm:left-0 z-50  w-full">
+  <div className="flex justify-end text-sm text-gray-700 p-2">
+    {/* <FaHeadphones size={50} className="text-[#DAA57B]" /> */}
+    <NewPlayerGlobal />
+  </div>
+</div>
+
+
     </div>
   );
 };

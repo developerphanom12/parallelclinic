@@ -66,7 +66,7 @@ const MusicPlayer = () => {
           onClick={handleHeadphoneClick}
           className="relative w-fit cursor-pointer"
         >
-          <FaHeadphones className="text-[#DAA57B] cursor-pointer text-[80px] sm:text-7xl md:text-[100px]" />
+          <FaHeadphones className="text-[#DAA57B] cursor-pointer text-[80px] sm:text-7xl md:text-[90px]" />
           <img src={waveImage} alt="wave" className="absolute bottom-0 " />
         </div>
 

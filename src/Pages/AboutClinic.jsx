@@ -140,7 +140,8 @@ const faqs = [
 
 const AboutClinic = () => {
   const cursorRef = useRef(null);
-
+  const [showButton, setShowButton] = useState(true);
+  const scrollContainerRef = useRef(null); 
   const [openIndex, setOpenIndex] = useState(null);
 
   const half = Math.ceil(faqs.length / 2);
@@ -185,6 +186,45 @@ const AboutClinic = () => {
     };
   }, []);
 
+  useEffect(() => {
+  const handleScroll = () => {
+    const container = scrollContainerRef.current;
+    if (container) {
+      // Check if we're at the bottom of the container
+      const isBottom =
+        container.scrollTop + container.clientHeight >= container.scrollHeight - 10;
+      
+      // Check if there's content to scroll
+      const hasScrollableContent = container.scrollHeight > container.clientHeight;
+      
+      // Only show the button if there's content to scroll and we're not at the bottom
+      setShowButton(hasScrollableContent && !isBottom);
+      
+      // Debug logs
+      console.log("Container height:", container.clientHeight);
+      console.log("Content height:", container.scrollHeight);
+      console.log("Scroll position:", container.scrollTop);
+      console.log("Has scrollable content:", hasScrollableContent);
+    }
+  };
+
+  const container = scrollContainerRef.current;
+  if (container) {
+    // Initial check
+    handleScroll();
+    
+    // Add scroll event listener
+    container.addEventListener("scroll", handleScroll);
+  }
+
+  return () => {
+    if (container) {
+      container.removeEventListener("scroll", handleScroll);
+    }
+  };
+}, []);
+
+
   return (
     <div className="relative w-full bg-[#FDF8E5] min-h-[84vh] flex flex-col">
       {/* Cursor */}
@@ -192,36 +232,52 @@ const AboutClinic = () => {
         ref={cursorRef}
         className="w-12 h-12 border border-[#C5A184] rounded-full fixed top-0 left-0 z-[999] pointer-events-none"
       />
-      <div className="text-[#A37159] flex sm:fixed top-12 items-start w-full pl-[10%]">
-          <h1 className="sm:text-[55px] text-[33px] leading-none">About <br className="block sm:hidden" /><span className="text-[#C5A184]">Parallel Clinic</span></h1>
+      <div className="text-[#A37159] flex sm:fixed top-12 justify-center items-center w-full ">
+          <h1 className="sm:text-[55px] text-[33px] leading-none">About <span className="text-[#C5A184]">Parallel Clinic</span></h1>
         </div>
-    <div className="sm:h-[60vh] md:h-[70vh] lg:h-[80vh] sm:mt-10 mt-4 sm:overflow-y-scroll sm:overflow-x-hidden pb-10 hide-scrollbar">
+    <div ref={scrollContainerRef} className="sm:h-[60vh] md:h-[70vh] lg:h-[80vh] sm:mt-10 mt-4 sm:overflow-y-scroll sm:overflow-x-hidden pb-10 hide-scrollbar relative">
+       {showButton && (
+  <div className="hidden sm:block fixed top-[60%] right-6 z-50 text-center">
+    <button
+      onClick={() => {
+        scrollContainerRef.current.scrollTo({
+          top: scrollContainerRef.current.scrollHeight,
+          behavior: "smooth",
+        });
+      }}
+      className="bg-transparent text-[#A37159] "
+    >
+      Scroll to see more
+    </button>
+  </div>
+)}
+
 
       {/* Top Section from AboutClinic2 */}
       <div className="w-[100vw] flex flex-col items-center justify-center">
         
         <div className="w-[90vw] flex flex-col items-center text-center">
-          <p className="mt-2 sm:text-[30px] text-[25px] text-[#A37159] font-light leading-relaxed">
+          <p style={{ fontFamily: "libre bodoni"}} className="mt-2 sm:text-[30px] text-[25px] text-[#A37159] font-light leading-relaxed">
             Parallel Clinic offers Personalized, Molecular-Targeted,<br />
             Precision Medicine using Natural Pharmaceutical Ingredients (NPIs).
           </p>
 
-          <div className="flex items-center justify-center mt-2 sm:text-[30px] text-[20px] text-[#A37159] font-light text-center leading-snug">
-            <span className="sm:text-[80px] text-[150px] leading-none -mt-6">{'{'}</span>
+          <div style={{ fontFamily: "libre bodoni"}}  className="flex items-center justify-center mt-2 sm:text-[30px] text-[20px] text-[#A37159] font-light text-center leading-snug">
+            <span className="lg:text-[80px] sm:text-[120px] text-[150px] leading-none -mt-2">{'{'}</span>
             <p className="mx-4 leading-snug">
               Approximately 90% of all current medications are effective for <br />
               only 30~50% of the patients who take them!
             </p>
-            <span className="sm:text-[80px] text-[150px] leading-none -mt-6">{'}'}</span>
+            <span className="lg:text-[80px] sm:text-[120px] text-[150px] leading-none -mt-2">{'}'}</span>
           </div>
 
           <div className="sm:mt-2 mt-4 text-[#A37159] leading-none">
             <h3 style={{ fontFamily: "MyFont" }} className="text-[#A37159] text-[25px] lg:mb-0 mb-4">Parallel Clinic's therapeutic doctrine is founded on Physicians & Patients working in Parallel.</h3>
-            <div className="text-[17px] lg:-space-y-2 gap-4 lg:gap-2  flex flex-col justify-center items-center w-full">
-              <p className="w-[90%] leading-0.5">
+            <div className="text-[17px] lg:space-y-0.5 gap-4 lg:gap-2  flex flex-col justify-center items-center w-full">
+              <p className="w-[100%] leading-0.5">
                 Our Molecular-Targeted approach is based on a deep understanding of the molecular pathophysiology of diseases that we treat
               </p>
-              <p className="w-[90%] leading-0">
+              <p className="w-[100%] leading-0">
                 The NPIs used are selected based on their well-characterized constituents that target specific disease stages at molecular level
               </p>
               <p className="leading-0">
@@ -238,11 +294,11 @@ const AboutClinic = () => {
           <h2 className="text-[#A37159] text-2xl sm:text-3xl font-light pt-2">Information Hub: Your Questions. Our Answers.</h2>
         </div>
 
-        <div className="lg:w-full flex sm:flex-row flex-col gap-7 mt-6 lg:mt-0 text-[#5C8A8A] text-[18px]">
-          <div className="flex-1 flex flex-col sm:flex-row h-[50vh] overflow-y-auto hide-scrollbar">
-            <div className="px-6 sm:w-1/2 sm:h-[50vh] sm:overflow-y-auto hide-scrollbar">
+        <div className="lg:w-full flex sm:flex-row flex-col gap-7 mt-6 lg:mt-0 text-[#5C8A8A] text-[18px] pb-2 md:pb-30">
+          <div className="flex-1 flex flex-col h-[50vh] overflow-y-auto hide-scrollbar">
+            <div className="px-6  sm:h-[50vh]  hide-scrollbar">
               {leftFaqs?.map((faq, index) => (
-                <div key={index} className="py-2 sm:py-[12px]">
+                <div key={index} className="py-2 sm:py-[7px]">
                   <div
                     className={`cursor-pointer text-[#5C8A8A] text-[18px] ${openIndex === index ? "text-[#A37159]" : ""} hover:text-[#A37159] transition flex justify-between w-[100%]`}
                     onClick={() => toggleAnswer(index)}
@@ -273,11 +329,11 @@ const AboutClinic = () => {
               ))}
             </div>
             
-            <div className="px-6 sm:w-1/2 sm:h-[50vh] sm:overflow-y-auto hide-scrollbar">
+            <div className="px-6 sm:h-[50vh] hide-scrollbar">
               {rightFaqs.map((faq, index) => {
                 const actualIndex = half + index;
                 return (
-                  <div key={index} className="py-2 sm:py-[12px]">
+                  <div key={index} className="py-2 sm:py-[7px]">
                     <p
                       className={`cursor-pointer text-[#5C8A8A] text-[18px] ${openIndex === actualIndex ? "text-[#A37159]" : ""} hover:text-[#A37159] transition flex justify-between w-[100%]`}
                       onClick={() => toggleAnswer(actualIndex)}
@@ -308,26 +364,34 @@ const AboutClinic = () => {
                 );
               })}
             </div>
+            {/* <div className="">Scroll For more</div> */}
           </div>
         </div>
       </div>
+
+     
+
+
     </div>
 
+   
+
       {/* Bottom Text */}
-      <div className="sm:fixed sm:bottom-0 sm:left-0 w-full px-4 sm:px-0 flex flex-col items-center text-center leading-tight z-50 mt-10 mb-30 sm:mb-0 sm:mt-0 bg-[#FDF8E5] ">
-        <h2 className="text-[#A37159] text-2xl sm:text-[40px] font-semibold">
+      <div className="sm:fixed sm:bottom-0 sm:left-0 w-full px-4 sm:px-0 flex flex-col items-center text-center z-50 mt-10 mb-30 sm:mb-0 sm:mt-0 bg-[#FDF8E5] ">
+        
+        <h2 style={{ fontFamily: "libre bodoni" }} className="text-[#A37159] text-2xl sm:text-[30px] font-semibold leading-tight mt-2">
           Making Your Medicine Personal & Precise.
         </h2>
-        <h2 className="text-[#A37159] text-2xl sm:text-[25px] font-bold">
-          World Class Personalized Targeted Precision Medicine
+        <h2 style={{ fontFamily: "libre bodoni" }} className="text-[#A37159] text-2xl sm:text-[23px] sm:w-[60%] lg:w-fullfont-bold leading-tight">
+          World Class Personalized Targeted Precision Medicine using Natural Pharmaceutical Ingredients
         </h2>
-        <h2 className="text-[#A37159] text-2xl sm:text-[25px] font-bold">
+        {/* <h2 style={{ fontFamily: "libre bodoni" }} className="text-[#A37159] text-2xl sm:text-[23px] font-bold leading-tight">
           using Natural Pharmaceutical Ingredients
-        </h2>
-        <p className="text-[#676F75] text-base sm:text-[17px]">
+        </h2> */}
+        <p className="text-[#676F75] text-base sm:text-[16px] leading-tight sm:w-[60%] lg:w-full">
           Founded on a Clear Understanding of Molecular Basis of Pathophysiology of Medical Conditions
         </p>
-        <p className="text-[#676F75] text-base sm:text-[17px]">
+        <p className="text-[#676F75] text-base sm:text-[16px] leading-tight sm:w-[60%] lg:w-full">
           Using Botanical Medicines with Well Documented Molecular Level Mechanisms of Actions
         </p>
         <div className="absolute bottom-4 right-8 text-sm text-gray-700">

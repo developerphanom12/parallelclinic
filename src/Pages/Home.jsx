@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import MusicPlayer from "../components/MusicPlayer";
-import logoClinic from "../assets/logoClinic.png";
+import logoClinic from "../assets/Parallel_logo.png";
 import video from "../assets/fonts/HomeFlower.mp4";
 import Heading from "../components/Heading";
 
@@ -45,7 +45,7 @@ const Home = () => {
   }, []);
 
   return (
-    <div className="relative w-full h-full sm:h-[90vh] bg-[#FDF8E5] overflow-hidden">
+    <div className="relative w-full h-full sm:h-[80vh] bg-[#FDF8E5] overflow-hidden">
       {/* Cursor Follower */}
       <div
         ref={cursorRef}
@@ -66,27 +66,27 @@ const Home = () => {
           Sound!
         </h1>
       </div> */}
-      <div className="relative z-10 flex flex-row  px-6 sm:px-8 pt-0">
-  <div className="mr-4 sm:my-3">
-    <img
-      src={logoClinic}
-      className="w-[60px] h-[60px] cursor-pointer"
-      alt="Parallel Clinic Logo"
-      onClick={() => {
-        navigate("/");
-      }}
-    />
-  </div>
+      <div className="relative z-10 flex flex-row  px-6 sm:px-8 pt-0 ml-4">
+        {/* <div className="mr-4 sm:my-3">
+          <img
+            src={logoClinic}
+            className="w-[60px] h-[60px] cursor-pointer"
+            alt="Parallel Clinic Logo"
+            onClick={() => {
+              navigate("/");
+            }}
+          />
+        </div> */}
 
-  <h1
-    // style={{ fontFamily: "MyFont" }}
-    className="sm:text-[55px] text-[33px] text-[#C5A184] leading-tight"
-  >
-    Let's Make Your  <br />
-    Health Sound!
-  </h1>
-  {/* <Heading firstText="Let's Make Your" secondText="Health Sound!" /> */}
-</div>
+        <h1
+          // style={{ fontFamily: "MyFont" }}
+          className="sm:text-[55px] text-[33px] text-[#C5A184] leading-tight"
+        >
+          Let's Make Your  <br />
+          Health Sound!
+        </h1>
+        {/* <Heading firstText="Let's Make Your" secondText="Health Sound!" /> */}
+      </div>
 
 
       {/* Video Container - Fixed at bottom */}
@@ -108,28 +108,27 @@ const Home = () => {
         </div>
       </div> */}
 
-      <div className="absolute sm:bottom-[15%] bottom-[45%] w-full flex justify-center items-center z-5 ">
-  <div className="w-[300px] h-[200px] sm:w-[500px] sm:h-[400px] overflow-hidden rounded-full">
-    <video
-      src={video}
-      autoPlay
-      // loop
-      muted
-      playsInline
-      className="w-full h-full object-contain"
-      style={{ 
-        objectPosition: "center",
-        mixBlendMode: "multiply"
-      }}
-    />
-  </div>
-</div>
+      <div className="absolute  top-[45%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full flex justify-center items-center z-5">
+        <div className="w-[300px] h-[300px] sm:w-[350px] sm:h-[350px] overflow-hidden rounded-full">
+          <video
+            src={video}
+            autoPlay
+            // loop
+            muted
+            playsInline
+            className="w-full h-full object-contain"
+            style={{
+              objectPosition: "center",
+              mixBlendMode: "multiply"
+            }}
+          />
+        </div>
+      </div>
 
 
-      <MusicPlayer />     
+      <MusicPlayer />
     </div>
   );
 };
 
 export default Home;
-  
