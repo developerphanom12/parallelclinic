@@ -52,7 +52,7 @@ const MusicPlayer = () => {
             <IoIosMusicalNote size={45} className="text-[#DAA57B] mt-5" />
             Start With Adding Some Sound
           </h1>
-          <h1 className="text-[14px] sm:text-[20px]">
+          <h1 className="text-[14px] sm:text-[18px]">
             Click to Create a Healthy & Immersive Aura
           </h1>
         </div>

@@ -24,7 +24,7 @@ const NewNavbar = () => {
           {/* Logo - Visible on mobile and tablet */}
           {location.pathname == "/" || location.pathname == "/choose" ?
           <>
-            <div className="block lg:hidden">
+            <div className="block lg:hidden ">
               <img
                 src={logoClinic}
                 className="w-[65px] h-[50px] cursor-pointer"
@@ -42,7 +42,7 @@ const NewNavbar = () => {
             </div>
              </>
              :
-            <div className="block">
+            <div className="block pl-4">
               <img
                 src={logoClinic}
                 className="w-[65px] h-[50px] cursor-pointer"

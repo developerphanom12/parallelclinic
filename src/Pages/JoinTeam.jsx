@@ -246,8 +246,6 @@ const JoinTeam = () => {
     }
   };
 
-
-
   // Validate form data
   const validateForm = async () => {
     try {
@@ -787,16 +785,6 @@ const JoinTeam = () => {
         <div className="flex flex-col lg:justify-start lg:h-[50vh]  ">
           <div>
             <h2 style={{ fontFamily: "libre bodoni" }} className="text-[#A37159] text-2xl whitespace-nowrap mb-6 ">Inviting Ayurvedic Doctors & Conventional/Allopathic Doctors</h2>
-            {/* <ul className="pl-4 text-[#A37159] text-2xl space-y-1">
-              <div className="flex items-start gap-3 ">
-                <div className="w-2 h-2 bg-[#A37159] my-auto"></div>
-                <span>Ayurvedic Doctors &</span>
-              </div>
-              <div className="flex items-start gap-3 ">
-                <div className="w-2 h-2 bg-[#A37159] my-auto"></div>
-                <span>Conventional/Allopathic Doctors</span>
-              </div>
-            </ul> */}
 
             <p className="text-[#A37159] text-[26px] font-semibold mb-6 ">Join Our Team as:</p>
             {/* <h5 className="text-[#676F75] text-sm">Click to view Details</h5> */}

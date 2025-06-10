@@ -3,7 +3,6 @@ import gsap from "gsap";
 import { FaHeadphones } from "react-icons/fa6";
 import { RiArrowDropDownLine } from "react-icons/ri";
 import NewPlayerGlobal from "../components/NewPlayerGlobal";
-import AboutLogo from "../assets/AboutLogo.png";
 import { GoArrowLeft } from "react-icons/go";
 import { useNavigate } from "react-router-dom";
 
@@ -150,10 +149,9 @@ const AboutClinic2 = () => {
     return (
         <div className="relative w-full bg-[#FDF8E5] min-h-[84vh] flex flex-col">
             {/* Cursor */}
-            <div className="w-12 h-12 border border-[#C5A184] rounded-full fixed top-0 left-0 z-[999] pointer-events-none"
-            />
-            <div style={{ fontFamily: "libre bodoni" }} className="text-[#A37159] flex sm:fixed top-12 justify-center items-center w-full ">
-                <h1 className="sm:text-[55px] text-[33px] leading-none">About <span className="text-[#C5A184]">Parallel Clinic</span></h1>
+            {/* <div className="w-12 h-12 border border-[#C5A184] rounded-full fixed top-0 left-0 z-[999] pointer-events-none"/> */}
+            <div style={{ fontFamily: "libre bodoni" }} className="text-[#A37159] flex sm:fixed sm:top-16 top-12 justify-center items-center w-full ">
+                <h1 className="sm:text-[48px] text-[33px] leading-none">About <span className="text-[#C5A184]">Parallel Clinic</span></h1>
             </div>
             <div className="sm:h-[60vh] md:h-[70vh] lg:h-[80vh] mt-4 sm:overflow-y-scroll sm:overflow-x-hidden hide-scrollbar relative">
 
@@ -166,9 +164,9 @@ const AboutClinic2 = () => {
                         </div>
                     </div> */}
                     <div className="w-auto items-center justify-center ">
-                        <div className="text-[#A37159] flex justify-self-center items-center gap-2  sm:w-[60vw] pl-[1%]">
+                        <div className="text-[#A37159] flex sm:justify-self-center items-start sm:items-center gap-2  sm:w-[60vw] pl-[1%]">
                            <GoArrowLeft size={30} onClick={()=>navigate("/about")} className="cursor-pointer" />
-                           <h2 style={{ fontFamily: "libre bodoni" }} className="text-[#A37159] text-2xl sm:text-3xl font-light pt-2 ">Information Hub: Your Questions. Our Answers.</h2>
+                           <h2 style={{ fontFamily: "libre bodoni" }} className="text-[#A37159] text-2xl sm:text-3xl font-light sm:pt-2 ">Information Hub: Your Questions. Our Answers.</h2>
                         </div>
                     </div>
 
@@ -181,7 +179,7 @@ const AboutClinic2 = () => {
                                             className={`cursor-pointer text-[#5C8A8A] text-[18px] ${openIndex === index ? "text-[#A37159]" : ""} hover:text-[#A37159] transition flex justify-between w-[100%]`}
                                             onClick={() => toggleAnswer(index)}
                                         >
-                                            <div>
+                                            <div style={{ fontFamily: "roboto flex" }}>
                                                 {index + 1}. {faq.question}
                                             </div>
                                             <div className="w-[7%]  flex justify-end items-center ">
@@ -193,7 +191,7 @@ const AboutClinic2 = () => {
                                             </div>
                                         </div>
                                         {openIndex === index && (
-                                            <div style={{ marginTop: "8px", color: "#374151", fontSize: "16px" }}>
+                                            <div className="sm:pr-20px" style={{ marginTop: "8px", color: "#374151", fontSize: "16px" , fontFamily: "roboto flex" ,}}>
                                                 {Array.isArray(faq.answer) ? (
                                                     faq.answer.map((para, i) => (
                                                         <p key={i} style={{ marginBottom: "20px", marginLeft: "20px" }}>{para}</p>
@@ -206,69 +204,26 @@ const AboutClinic2 = () => {
                                     </div>
                                 ))}
                             </div>
-
-                            {/* <div className="px-6 sm:h-[50vh] w-[60vw] hide-scrollbar">
-                                {rightFaqs.map((faq, index) => {
-                                    const actualIndex = half + index;
-                                    return (
-                                        <div key={index} className="py-2 sm:py-[4px]">
-                                            <p
-                                                className={`cursor-pointer text-[#5C8A8A] text-[18px] w-[90%] ${openIndex === actualIndex ? "text-[#A37159]" : ""} hover:text-[#A37159] transition flex justify-between w-[100%]`}
-                                                onClick={() => toggleAnswer(actualIndex)}
-                                            >
-                                                <div>
-                                                    {actualIndex + 1}. {faq.question}
-                                                </div>
-                                                <div className="w-[7%] flex justify-end items-center ">
-                                                    {openIndex === actualIndex ? (
-                                                        <RiArrowDropDownLine size={30} className="transform rotate-180" />
-                                                    ) : (
-                                                        <RiArrowDropDownLine size={30} className="" />
-                                                    )}
-                                                </div>
-                                            </p>
-                                            {openIndex === actualIndex && (
-                                                <div style={{ marginTop: "8px", color: "#374151", fontSize: "16px" }}>
-                                                    {Array.isArray(faq.answer) ? (
-                                                        faq.answer.map((para, i) => (
-                                                            <p key={i} style={{ marginBottom: "8px", marginLeft: "20px" }}>{para}</p>
-                                                        ))
-                                                    ) : (
-                                                        <p style={{ marginBottom: "8px", marginLeft: "20px" }}>{faq.answer}</p>
-                                                    )}
-                                                </div>
-                                            )}
-                                        </div>
-                                    );
-                                })}
-                            </div> */}
-                            {/* <div className="">Scroll For more</div> */}
                         </div>
                     </div>
                 </div>
-
-
-
-
             </div>
-
-
 
             {/* Bottom Text */}
             <div className="sm:fixed relative sm:bottom-0 sm:left-0 w-full px-4 sm:px-0 flex flex-col items-center text-center z-50 mt-10 pb-20 sm:pb-0 sm:mb-0 sm:mt-0 bg-[#FDF8E5] ">
-                <h2 style={{ fontFamily: "libre bodoni" }} className="text-[#A37159] text-2xl sm:text-[30px] font-semibold leading-tight mt-2">
+                <h2 style={{ fontFamily: "libre bodoni" }} className="text-[#A37159] text-2xl sm:text-[28px] font-semibold leading-tight mt-2">
                     Making Your Medicine Personal & Precise.
                 </h2>
-                <h2 style={{ fontFamily: "libre bodoni" }} className="text-[#A37159] text-2xl sm:text-[20px] sm:w-[60%] lg:w-full font-bold leading-tight">
+                <h2 style={{ fontFamily: "libre bodoni" }} className="text-[#A37159] text-2xl sm:text-[24px] sm:w-[60%] lg:w-full font-bold leading-tight">
                     World Class Personalized Targeted Precision Medicine using Natural Pharmaceutical Ingredients
                 </h2>
                 {/* <h2 style={{ fontFamily: "libre bodoni" }} className="text-[#A37159] text-2xl sm:text-[23px] font-bold leading-tight">
                  using Natural Pharmaceutical Ingredients
                </h2> */}
-                <p className="text-[#676F75] text-base sm:text-[16px] leading-tight sm:w-[60%] lg:w-full">
+                <p style={{ fontFamily: "roboto flex" }} className="text-[#676F75] text-base sm:text-[18px] leading-tight sm:w-[60%] lg:w-full">
                     Founded on a Clear Understanding of Molecular Basis of Pathophysiology of Medical Conditions
                 </p>
-                <p className="text-[#676F75] text-base sm:text-[16px] leading-tight sm:w-[60%] lg:w-full">
+                <p style={{ fontFamily: "roboto flex" }} className="text-[#676F75] text-base sm:text-[18px] leading-tight sm:w-[60%] lg:w-full">
                     Using Botanical Medicines with Well Documented Molecular Level Mechanisms of Actions
                 </p>
                 <div className="absolute sm:bottom-4 bottom-0 right-8 text-sm text-gray-700">

@@ -117,45 +117,9 @@ export const conditionSections = [
 
 
 const MedicalCondition = () => {
-  const cursorRef = useRef(null);
 
   const leftColumn = conditionSections.slice(0, 5);  // first 5 sections
   const rightColumn = conditionSections.slice(5, 11); // next 6 sections
-
-
-  // Mouse follower
-  useEffect(() => {
-    const cursor = cursorRef.current;
-
-    const moveCircle = (e) => {
-      gsap.to(cursor, {
-        x: e.clientX,
-        y: e.clientY,
-        scale: 1,
-        opacity: 1,
-        duration: 0.8,
-        ease: "power2.out",
-      });
-    };
-
-    const checkMouseLeaveDocument = (e) => {
-      if (!e.relatedTarget && !e.toElement) {
-        gsap.to(cursor, {
-          scale: 0,
-          opacity: 0,
-          duration: 0.5,
-        });
-      }
-    };
-
-    window.addEventListener("mousemove", moveCircle);
-    document.addEventListener("mouseout", checkMouseLeaveDocument);
-
-    return () => {
-      document.removeEventListener("mouseout", checkMouseLeaveDocument);
-      window.removeEventListener("mousemove", moveCircle);
-    };
-  }, []);
 
   const toRoman = (num) => {
   const romans = [
@@ -170,27 +134,17 @@ const MedicalCondition = () => {
       num -= value;
     }
   }
-  return result;
+  return result.toLowerCase();
 };
 
   return (
     <div className="relative w-full bg-[#FDF8E5] sm:min-h-[84vh] flex flex-col">
-      {/* Cursor */}
-      <div
-        ref={cursorRef}
-        className="w-12 h-12 border border-[#C5A184] rounded-full fixed top-0 left-0 z-[999]"
-      />
-
       {/* Content */}
-      <div className="w-full px-2 sm:px-16 sm:h-[70vh] ">
-        {/* Heading */}
-        {/* <div className="text-[#A37159] flex items-start w-full mb-4 pl-[2%]">
-          <h1 className="sm:text-[55px] text-[33px] w-[80%] sm:w-auto leading-none">Medical Conditions<br className="block sm:hidden" /><span className="text-[#C5A184]">{" "}Managed by Parallel Clinic</span></h1>
-        </div> */}
-        <Heading firstText="Medical Conditions" secondText="Managed by Parallel Clinic" />
+      <div className="w-full px-2 sm:px-16 hide-scrollbar relative flex flex-col sm:fixed sm:top-20 top-12">
+      <Heading firstText="Medical Conditions" secondText="Managed by Parallel Clinic" />
 
         {/* Medical Conditions List */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-16 gap-y-4 px-4 sm:px-8 mb-5 sm:mb-0 mt-3">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-16 gap-y-4 px-4 sm:px-8 mb-5 sm:mb-0 mt-2">
           {/* Left Column */}
           <div>
             {leftColumn.map((section, index) => (
@@ -199,16 +153,12 @@ const MedicalCondition = () => {
                   <span className="mr-2">{section.index}</span>
                   {section.title}
                 </p>
-                <ul className="ml-8 text-[#676F75] text-[12px]">
+                <ul style={{ fontFamily: "roboto flex" }} className="ml-8 text-[#676F75] text-[12px]">
                   {section.items.map((item, i) => (
-                    <li key={i}>
-                      <span className="mr-2">
-                        {/* {String.fromCharCode(97 + i)}. */}
-                        {/* {String.fromCharCode(( 97) + i)}. */}
-                         {toRoman(i + 1)}.
-                        </span>
-                      {item}
-                    </li>
+                   <li key={i} className="flex items-baseline">
+                  <span className="mr-2 flex-shrink-0 w-2">{toRoman(i + 1)}.</span>
+                  <span className="block">{item}</span>
+                </li>
                   ))}
                 </ul>
               </div>
@@ -223,10 +173,10 @@ const MedicalCondition = () => {
                   <span className="mr-2">{section.index}</span>
                   {section.title}
                 </p>
-                <ul className="ml-8 text-[#676F75] text-[12px]">
+                <ul style={{ fontFamily: "roboto flex" }} className="ml-8 text-[#676F75] text-[12px]">
                   {section.items.map((item, i) => (
                     <li key={i}>
-                      <span className="mr-2">
+                      <span className="mr-2 inline-block w-2 ">
                       {/* {String.fromCharCode(( 97) + i)}. */}
                        {toRoman(i + 1)}.
                         </span>
