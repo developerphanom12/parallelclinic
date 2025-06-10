@@ -42,17 +42,17 @@ const MusicPlayer = () => {
 
   return (
     <div className="absolute bottom-4 right-6 text-sm text-gray-700 z-9">
-      <div className="flex gap-2 items-end relative">
+      <div className="flex gap-2 items-end relative ">
         <div
           onClick={handleTextClick}
           style={{ fontFamily: "MyFontNavbar" }}
-          className="leading-none mb-5 text-end cursor-pointer"
+          className="leading-none text-end flex flex-col justify-end cursor-pointer"
         >
-          <h1 className="text-[#DAA57B] text-[18px] sm:text-[23px] flex items-center  sm:items-center sm:justify-end gap-1 justify-start ">
+          <h1 className="text-[#DAA57B] text-[18px] sm:text-[24px] flex items-center  sm:items-center sm:justify-end gap-1 justify-start ">
             <IoIosMusicalNote size={45} className="text-[#DAA57B] mt-5" />
             Start With Adding Some Sound
           </h1>
-          <h1 className="text-[14px] sm:text-[12px]">
+          <h1 className="text-[14px] sm:text-[20px]">
             Click to Create a Healthy & Immersive Aura
           </h1>
         </div>

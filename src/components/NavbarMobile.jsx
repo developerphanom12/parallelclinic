@@ -38,7 +38,7 @@ export default function NavbarMobile({ open, setOpen }) {
       <div
         ref={menuRef}
         style={{ fontFamily: "MyFontNavbar" }}
-        className="fixed top-0 right-0 h-full w-[75%] sm:w-[60%] bg-[#5C4033] text-white translate-x-full lg:hidden z-[999]"
+        className="fixed top-0 right-0 h-[100vh] w-[75%] sm:w-[60%] bg-[#5C4033] text-white translate-x-full lg:hidden z-[999]"
       >
         {/* Close Button */}
         <div className="flex justify-end p-4">

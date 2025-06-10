@@ -775,19 +775,19 @@ const JoinTeam = () => {
       />
 
       {/* Heading */}
-      <div className="text-[#A37159] mb-6 pl-[5%] w-[80%] sm:w-full ">
+      <div className="text-[#A37159]  pl-[5%] w-[80%] sm:w-full ">
         <h1 className="sm:text-[55px] text-[33px] leading-none whitespace-nowrap">
           Join <br className="block sm:hidden" />
           <span className="text-[#C5A184]">Parallel Clinic Team</span>
         </h1>
       </div>
       {/* Content */}
-      <div className="w-full px-4 sm:px-16 flex flex-col gap-3 2xl:gap-5 lg:h-[50vh] overflow-scroll hide-scrollbar">
+      <div className="w-full px-4 sm:px-16 flex flex-row gap-3 2xl:gap-5 lg:h-[50vh] overflow-scroll hide-scrollbar">
         
-        <div className="flex flex-col lg:justify-end lg:h-[50vh]  ">
+        <div className="flex flex-col lg:justify-start lg:h-[50vh]  ">
           <div>
-            <h2 className="text-[#A37159] text-2xl">Inviting </h2>
-            <ul className="pl-4 text-[#A37159] text-2xl space-y-1">
+            <h2 style={{ fontFamily: "libre bodoni" }} className="text-[#A37159] text-2xl whitespace-nowrap mb-6 ">Inviting Ayurvedic Doctors & Conventional/Allopathic Doctors</h2>
+            {/* <ul className="pl-4 text-[#A37159] text-2xl space-y-1">
               <div className="flex items-start gap-3 ">
                 <div className="w-2 h-2 bg-[#A37159] my-auto"></div>
                 <span>Ayurvedic Doctors &</span>
@@ -796,12 +796,12 @@ const JoinTeam = () => {
                 <div className="w-2 h-2 bg-[#A37159] my-auto"></div>
                 <span>Conventional/Allopathic Doctors</span>
               </div>
-            </ul>
+            </ul> */}
 
-            <p className="text-[#A37159] text-2xl mt-2">Join Our Team as:</p>
-            <h5 className="text-[#676F75] text-sm">Click to view Details</h5>
+            <p className="text-[#A37159] text-[26px] font-semibold mb-6 ">Join Our Team as:</p>
+            {/* <h5 className="text-[#676F75] text-sm">Click to view Details</h5> */}
            
-               <ol className="pl-4 text-xl w-full grid grid-cols-1 md:grid-cols-4 justify-between">
+               <ol style={{ fontFamily: "libre bodoni" }} className="pl-4 text-[24px] w-full grid grid-cols-1  justify-between">
               <li className={`cursor-pointer hover:text-[#A37159] ${activePosition === 1
                   ? "text-[#A37159] font-bold"
                   : "text-[#676F75]"
@@ -846,15 +846,15 @@ const JoinTeam = () => {
           <div className="relative">
             <div
               ref={requirementsRef}
-              className="h-auto lg:overflow-y-auto hide-scrollbar pb-10"
+              className="h-auto lg:overflow-y-auto pb-10 mt-20"
             >
               {displayData?.map((section, index) => (
                 <div key={index} className=" ">
                   <h2 className="text-[#A37159] text-[20px] font-semibold flex items-start gap-2">
                     <span className="">{section?.index}</span>
-                    <span className="flex-1">{section?.title}</span>
+                    <span style={{ fontFamily: "libre bodoni" }} className="flex-1">{section?.title}</span>
                   </h2>
-                  <h3 className="ml-8 text-[#676F75] text-[18px]"> {section?.SubHead}</h3>
+                  <h3  className="ml-8 text-[#676F75] text-[18px]"> {section?.SubHead}</h3>
                   <h3 className="ml-8 text-[#676F75] text-[18px]"> {section?.desc}</h3>
                   <ul className="ml-8 text-[#676F75] text-[16px]">
                     {section?.items?.map((item, i) => (
@@ -1052,7 +1052,7 @@ const JoinTeam = () => {
                       className={`w-full px-3 py-1.5 border ${validationErrors.position
                         ? "border-red-500 focus:ring-red-500"
                         : "border-[#C5A184] focus:ring-[#A37159]"
-                        } rounded-md focus:outline-none focus:ring-1 bg-white text-sm`}
+                        } rounded-md focus:outline-none focus:ring-1 text-sm`}
                     >
                       <option value="Clinic Director">Clinic Director</option>
                       <option value="Medical Consultant">

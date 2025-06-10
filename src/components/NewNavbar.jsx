@@ -4,6 +4,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import menuGif from "../assets/p2.gif";
 import logoClinic from "../assets/Parallel_logo.png";
 import NavbarMobile from "./NavbarMobile";
+import NameLogo from "../assets/NameLogo.png";
 
 const NewNavbar = () => {
   const [showMenu, setShowMenu] = useState(false);
@@ -18,47 +19,40 @@ const NewNavbar = () => {
 
   return (
     <>
-      <nav className="bg-[#FDF8E5] w-full lg:px-8 relative h-[15vh] ">
-        <div className="flex justify-between items-center h-full px-4 lg:pl-10 pl-4 relative">
+      <nav className="bg-[#FDF8E5] w-full lg:pr-8 relative h-[10vh] lg:h-[15vh] ">
+        <div className="flex justify-between items-center h-full px-4  relative">
           {/* Logo - Visible on mobile and tablet */}
+          {location.pathname == "/" || location.pathname == "/choose" ?
+          <>
+            <div className="block lg:hidden">
+              <img
+                src={logoClinic}
+                className="w-[65px] h-[50px] cursor-pointer"
+                alt="Parallel Clinic Logo"
+                onClick={() => navigate("/")}
+              />
+            </div>
+            <div className="hidden lg:block">
+              <img
+                src={NameLogo}
+                className="scale-75 cursor-pointer"
+                alt="Parallel Clinic Logo"
+                onClick={() => navigate("/")}
+              />
+            </div>
+             </>
+             :
             <div className="block">
               <img
                 src={logoClinic}
-                className="w-[50px] h-[50px] cursor-pointer"
+                className="w-[65px] h-[50px] cursor-pointer"
                 alt="Parallel Clinic Logo"
                 onClick={() => navigate("/")}
               />
-            </div>
-
-          {/* {location.pathname == "/" ?
-            <div className="hidden"></div> :
-            <div className="lg:hidden block">
-              <img
-                src={logoClinic}
-                className="w-[50px] h-[50px] cursor-pointer"
-                alt="Parallel Clinic Logo"
-                onClick={() => navigate("/")}
-              />
-            </div>
-          } */}
-          {/* Empty div for desktop to maintain spacing */}
-          <div className="hidden lg:block"></div>
+            </div>}
 
           {/* Menu Icon - Right side for mobile, tablet and desktop */}
           <div className="absolute top-2 right-2 z-50 flex flex-col items-center justify-center">
-
-            {/* {location.pathname == "/" ?
-
-              <div className="hidden"></div> :
-              <div className="hidden lg:block">
-                <img
-                  src={logoClinic}
-                  className="w-[50px] h-[50px] cursor-pointer"
-                  alt="Parallel Clinic Logo"
-                  onClick={() => navigate("/")}
-                />
-              </div>
-            } */}
             {/* Desktop Menu Icon */}
             {location.pathname == "/" ?
             

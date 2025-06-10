@@ -101,8 +101,8 @@ const ChooseHope = () => {
       <div className="w-full flex justify-between items-start px-8 py-4">
         <div className="flex sm:pl-8">
           <h1
-            style={{ fontFamily: "MyFont" }}
-            className="sm:text-[55px] text-[33px] text-[#C5A184]"
+            style={{ fontFamily: "libre bodoni" }}
+            className="sm:text-[48px] text-[33px] text-[#C5A184]"
           >
             Choose Hope. <br className="block" /> Renew Hope.
           </h1>
@@ -116,33 +116,33 @@ const ChooseHope = () => {
             ref={(el) => (imageRefs.current[0] = el)}
             src={flower1}
             alt="flower1"
-            className="absolute object-contain opacity-0 transition-opacity scale-75 w-[100vw] h-[100vh]"
+            className="absolute object-contain opacity-0 transition-opacity scale-75 "
           />
  
           <img
             ref={(el) => (imageRefs.current[1] = el)}
             src={flower2} 
             alt="flower2"
-            className="absolute object-contain opacity-0 transition-opacity scale-75 w-[100vw] h-[100vh]"
+            className="absolute object-contain opacity-0 transition-opacity scale-75 "
           />
  
           <img
             ref={(el) => (imageRefs.current[2] = el)}
             src={flower3}
             alt="flower3"
-            className="absolute object-contain opacity-0 transition-opacity scale-75 w-[100vw] h-[100vh]"
+            className="absolute object-contain opacity-0 transition-opacity scale-75 "
           />
           <img
             ref={(el) => (imageRefs.current[3] = el)}
             src={flower4}
             alt="flower4"
-            className="absolute object-contain opacity-0 transition-opacity scale-75 w-[100vw] h-[100vh]"
+            className="absolute object-contain opacity-0 transition-opacity scale-75 "
           />
           <img
             ref={(el) => (imageRefs.current[4] = el)}
             src={flower5}
             alt="flower5"
-            className="absolute object-contain opacity-0 transition-opacity scale-75 w-[100vw] h-[100vh]"
+            className="absolute object-contain opacity-0 transition-opacity scale-75 "
           />
         </div>
       </div>
@@ -151,7 +151,7 @@ const ChooseHope = () => {
      <div className="absolute bottom-1 lg:bottom-10 w-full px-6 sm:px-16 flex flex-col lg:flex-row justify-between items-center  gap-6 sm:gap-0 z-50">
   {/* Left Text */}
   <div className="text-[#A37159] text-center sm:text-left">
-    <h2 style={{ fontFamily: "MyFont" }} className="text-1xl sm:text-3xl">
+    <h2 style={{ fontFamily: "MyFont" }} className="sm:text-[24px] text-[18px]">
       Consult Parallel Clinic Doctors
       <br />
       Without Leaving Your House
@@ -159,9 +159,9 @@ const ChooseHope = () => {
   </div>
 
   {/* Right Text & Player */}
-  <div className="flex items-center sm:items-end gap-3 sm:gap-6 text-sm text-gray-700 text-center sm:text-end">
+  <div className="flex items-center sm:items-end gap-3 sm:gap-6 text-sm text-gray-700 text-center sm:text-end ">
     <div style={{ fontFamily: "MyFont" }}>
-      <h1 className="text-[#C5A184] text-[16px] sm:text-[20px]">
+      <h1 className="text-[#C5A184] text-[16px] sm:text-[24px] leading-5">
         With Well Documented <br />
         Science Based Assurance of <br />
         Highly Safe, Highly Efficient Medicines*

@@ -232,7 +232,7 @@ const AboutClinic = () => {
         ref={cursorRef}
         className="w-12 h-12 border border-[#C5A184] rounded-full fixed top-0 left-0 z-[999] pointer-events-none"
       />
-      <div className="text-[#A37159] flex sm:fixed top-12 justify-center items-center w-full ">
+      <div style={{ fontFamily: "libre bodoni"}} className="text-[#A37159] flex sm:fixed top-12 justify-center items-center w-full ">
           <h1 className="sm:text-[55px] text-[33px] leading-none">About <span className="text-[#C5A184]">Parallel Clinic</span></h1>
         </div>
     <div ref={scrollContainerRef} className="sm:h-[60vh] md:h-[70vh] lg:h-[80vh] sm:mt-10 mt-4 sm:overflow-y-scroll sm:overflow-x-hidden pb-10 hide-scrollbar relative">
@@ -256,13 +256,13 @@ const AboutClinic = () => {
       {/* Top Section from AboutClinic2 */}
       <div className="w-[100vw] flex flex-col items-center justify-center">
         
-        <div className="w-[90vw] flex flex-col items-center text-center">
-          <p style={{ fontFamily: "libre bodoni"}} className="mt-2 sm:text-[30px] text-[25px] text-[#A37159] font-light leading-relaxed">
+        <div className="w-[90vw] flex flex-col items-center text-center sm:mb-20">
+          <p style={{ fontFamily: "libre bodoni"}} className="sm:text-[28px] text-[25px] text-[#A37159] font-light leading-relaxed">
             Parallel Clinic offers Personalized, Molecular-Targeted,<br />
             Precision Medicine using Natural Pharmaceutical Ingredients (NPIs).
           </p>
 
-          <div style={{ fontFamily: "libre bodoni"}}  className="flex items-center justify-center mt-2 sm:text-[30px] text-[20px] text-[#A37159] font-light text-center leading-snug">
+          <div style={{ fontFamily: "libre bodoni"}}  className="flex items-center justify-center mt-1 sm:text-[28px] text-[20px] text-[#A37159] font-light text-center leading-snug">
             <span className="lg:text-[80px] sm:text-[120px] text-[150px] leading-none -mt-2">{'{'}</span>
             <p className="mx-4 leading-snug">
               Approximately 90% of all current medications are effective for <br />
@@ -272,8 +272,8 @@ const AboutClinic = () => {
           </div>
 
           <div className="sm:mt-2 mt-4 text-[#A37159] leading-none">
-            <h3 style={{ fontFamily: "MyFont" }} className="text-[#A37159] text-[25px] lg:mb-0 mb-4">Parallel Clinic's therapeutic doctrine is founded on Physicians & Patients working in Parallel.</h3>
-            <div className="text-[17px] lg:space-y-0.5 gap-4 lg:gap-2  flex flex-col justify-center items-center w-full">
+            <h3 style={{ fontFamily: "libre bodoni" }} className="text-[#A37159] text-[25px] lg:mb-0 mb-4">Parallel Clinic's therapeutic doctrine is founded on Physicians & Patients working in Parallel.</h3>
+            <div className="text-[17px] lg:space-y-0.5  flex flex-col justify-center items-center w-full">
               <p className="w-[100%] leading-0.5">
                 Our Molecular-Targeted approach is based on a deep understanding of the molecular pathophysiology of diseases that we treat
               </p>
@@ -290,15 +290,15 @@ const AboutClinic = () => {
 
       {/* Middle Section - FAQs from AboutClinic */}
       <div className="flex flex-col w-full px-6 sm:px-16 gap-2 flex-grow mt-8 ">
-        <div className="text-[#A37159] flex flex-col items-start w-full pl-[2%]">
-          <h2 className="text-[#A37159] text-2xl sm:text-3xl font-light pt-2">Information Hub: Your Questions. Our Answers.</h2>
+        <div className="text-[#A37159] flex flex-col items-center w-full pl-[2%]">
+          <h2 style={{ fontFamily: "libre bodoni" }} className="text-[#A37159] text-2xl sm:text-3xl font-light pt-2">Information Hub: Your Questions. Our Answers.</h2>
         </div>
 
         <div className="lg:w-full flex sm:flex-row flex-col gap-7 mt-6 lg:mt-0 text-[#5C8A8A] text-[18px] pb-2 md:pb-30">
-          <div className="flex-1 flex flex-col h-[50vh] overflow-y-auto hide-scrollbar">
-            <div className="px-6  sm:h-[50vh]  hide-scrollbar">
+          <div className="flex-1 flex flex-col h-[50vh] overflow-y-auto justify-center items-center w-[50vw] ">
+            <div className="px-6  sm:h-[50vh] w-[60vw] hide-scrollbar">
               {leftFaqs?.map((faq, index) => (
-                <div key={index} className="py-2 sm:py-[7px]">
+                <div key={index} className="py-2 sm:py-[4px]">
                   <div
                     className={`cursor-pointer text-[#5C8A8A] text-[18px] ${openIndex === index ? "text-[#A37159]" : ""} hover:text-[#A37159] transition flex justify-between w-[100%]`}
                     onClick={() => toggleAnswer(index)}
@@ -306,7 +306,7 @@ const AboutClinic = () => {
                     <div>
                       {index + 1}. {faq.question}
                     </div>
-                    <div className="w-[5%] ">
+                    <div className="w-[7%]  flex justify-end items-center ">
                       {openIndex === index ? (
                         <RiArrowDropDownLine size={30} className="transform rotate-180" />
                       ) : (
@@ -318,10 +318,10 @@ const AboutClinic = () => {
                     <div style={{ marginTop: "8px", color: "#374151", fontSize: "16px" }}>
                       {Array.isArray(faq.answer) ? (
                         faq.answer.map((para, i) => (
-                          <p key={i} style={{ marginBottom: "8px", marginLeft: "20px" }}>{para}</p>
+                          <p key={i} style={{ marginBottom: "20px", marginLeft: "20px" }}>{para}</p>
                         ))
                       ) : (
-                        <p style={{ marginBottom: "8px", marginLeft: "20px" }}>{faq.answer}</p>
+                        <p style={{ marginBottom: "20px", marginLeft: "20px" }}>{faq.answer}</p>
                       )}
                     </div>
                   )}
@@ -329,19 +329,19 @@ const AboutClinic = () => {
               ))}
             </div>
             
-            <div className="px-6 sm:h-[50vh] hide-scrollbar">
+            <div className="px-6 sm:h-[50vh] w-[60vw] hide-scrollbar">
               {rightFaqs.map((faq, index) => {
                 const actualIndex = half + index;
                 return (
-                  <div key={index} className="py-2 sm:py-[7px]">
+                  <div key={index} className="py-2 sm:py-[4px]">
                     <p
-                      className={`cursor-pointer text-[#5C8A8A] text-[18px] ${openIndex === actualIndex ? "text-[#A37159]" : ""} hover:text-[#A37159] transition flex justify-between w-[100%]`}
+                      className={`cursor-pointer text-[#5C8A8A] text-[18px] w-[90%] ${openIndex === actualIndex ? "text-[#A37159]" : ""} hover:text-[#A37159] transition flex justify-between w-[100%]`}
                       onClick={() => toggleAnswer(actualIndex)}
                     >
                       <div>
                         {actualIndex + 1}. {faq.question}
                       </div>
-                      <div className="w-[5%] ">
+                      <div className="w-[7%] flex justify-end items-center ">
                         {openIndex === actualIndex ? (
                           <RiArrowDropDownLine size={30} className="transform rotate-180" />
                         ) : (
@@ -398,7 +398,7 @@ const AboutClinic = () => {
         <h2 style={{ fontFamily: "libre bodoni" }} className="text-[#A37159] text-2xl sm:text-[30px] font-semibold leading-tight mt-2">
           Making Your Medicine Personal & Precise.
         </h2>
-        <h2 style={{ fontFamily: "libre bodoni" }} className="text-[#A37159] text-2xl sm:text-[23px] sm:w-[60%] lg:w-fullfont-bold leading-tight">
+        <h2 style={{ fontFamily: "libre bodoni" }} className="text-[#A37159] text-2xl sm:text-[20px] sm:w-[60%] lg:w-full font-bold leading-tight">
           World Class Personalized Targeted Precision Medicine using Natural Pharmaceutical Ingredients
         </h2>
         {/* <h2 style={{ fontFamily: "libre bodoni" }} className="text-[#A37159] text-2xl sm:text-[23px] font-bold leading-tight">

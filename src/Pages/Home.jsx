@@ -45,7 +45,7 @@ const Home = () => {
   }, []);
 
   return (
-    <div className="relative w-full h-full sm:h-[80vh] bg-[#FDF8E5] overflow-hidden">
+    <div className="relative w-full h-[90vh] sm:h-[85vh]  bg-[#FDF8E5] overflow-hidden">
       {/* Cursor Follower */}
       <div
         ref={cursorRef}
@@ -66,7 +66,7 @@ const Home = () => {
           Sound!
         </h1>
       </div> */}
-      <div className="relative z-10 flex flex-row  px-6 sm:px-8 pt-0 ml-4">
+      <div className="relative z-10 flex flex-row  px-6 sm:px-8 pt-0 sm:ml-8">
         {/* <div className="mr-4 sm:my-3">
           <img
             src={logoClinic}
@@ -80,7 +80,7 @@ const Home = () => {
 
         <h1
           // style={{ fontFamily: "MyFont" }}
-          className="sm:text-[55px] text-[33px] text-[#C5A184] leading-tight"
+          className="sm:text-[48px] text-[33px] text-[#C5A184] leading-tight"
         >
           Let's Make Your  <br />
           Health Sound!
