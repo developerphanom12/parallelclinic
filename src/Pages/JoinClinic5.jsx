@@ -303,7 +303,7 @@ const JoinClinic5 = () => {
      
 
       {/* Bottom Text */}
-      <div className="lg:fixed lg:bottom-0 sm:left-0 w-full px-4 sm:px-0 flex flex-col items-center text-center space-y-0.5 z-50 mt-10 sm:mt-0 mb-30 sm:mb-0 ">
+      <div className="lg:fixed lg:bottom-0 sm:left-0 w-full px-4 sm:px-0 flex flex-col items-center text-center space-y-0.5 mt-10 sm:mt-0 mb-30 sm:mb-0 ">
         <h2 style={{ fontFamily: "libre bodoni" }} className="text-[#A37159] text-2xl sm:text-[23px] sm:w-[90%] w-[100%] font-bold mt-2">
           Practice World Class Personalized, Molecular-Targeted Precision
           Medicine using Natural Pharmaceutical Ingredients

@@ -196,7 +196,7 @@ const MedicalCondition = () => {
         {/* <NewPlayerGlobal/>
       </div> */}
 
-     <div className="sm:fixed sm:bottom-0 sm:left-0 z-50  w-full">
+     <div className="sm:fixed sm:bottom-0 sm:left-0  w-full">
   <div className="flex justify-end text-sm text-gray-700 p-2">
     {/* <FaHeadphones size={50} className="text-[#DAA57B]" /> */}
     <NewPlayerGlobal />
