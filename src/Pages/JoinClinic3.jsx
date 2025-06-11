@@ -252,6 +252,7 @@ const JoinClinic3 = () => {
           {/* Requirements List */}
           <div className="relative">
             <div
+            style={{fontFamily: "roboto flex"}}
               className="h-auto lg:overflow-y-auto "
             >
               {jobData?.map((section, index) => (
@@ -295,6 +296,7 @@ const JoinClinic3 = () => {
           {/* Apply Now Button */}
           <div className="mt-6 flex justify-start ">
             <button
+            style={{fontFamily: "libre bodoni"}}
               onClick={() => setShowForm(true)}
               className="bg-[#A37159] hover:bg-[#C5A184] text-white py-2 px-4 rounded-md transition-all duration-300 cursor-pointer"
             >

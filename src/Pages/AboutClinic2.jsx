@@ -191,13 +191,13 @@ const AboutClinic2 = () => {
                                             </div>
                                         </div>
                                         {openIndex === index && (
-                                            <div className="sm:pr-[10%] " style={{ marginTop: "8px", color: "#374151", fontSize: "16px" , fontFamily: "roboto flex" ,}}>
+                                            <div className="sm:pr-[10%] text-[#676F75]" style={{ marginTop: "8px", color: "#374151", fontSize: "16px" , fontFamily: "roboto flex" ,}}>
                                                 {Array.isArray(faq.answer) ? (
                                                     faq.answer.map((para, i) => (
-                                                        <p key={i} style={{ marginBottom: "20px", marginLeft: "20px" }}>{para}</p>
+                                                        <p className="text-[#676F75]" key={i} style={{ marginBottom: "20px", marginLeft: "20px" }}>{para}</p>
                                                     ))
                                                 ) : (
-                                                    <p style={{ marginBottom: "20px", marginLeft: "20px" }}>{faq.answer}</p>
+                                                    <p className="text-[#676F75]" style={{ marginBottom: "20px", marginLeft: "20px" }}>{faq.answer}</p>
                                                 )}
                                             </div>
                                         )}
