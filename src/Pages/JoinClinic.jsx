@@ -10,6 +10,8 @@ import NewPlayerGlobal from "../components/NewPlayerGlobal";
 import AboutLogo from "../assets/AboutLogo.png";
 import AboutLogo2 from "../assets/AboutBrown.png";
 import { useNavigate } from "react-router-dom";
+import { FaChevronDown } from "react-icons/fa";
+import { FaChevronUp } from "react-icons/fa";
 
 
 // Form validation schema
@@ -71,7 +73,7 @@ function FormLoader() {
 const jobData = [
   {
     title:
-      "Parallel Clinic, an online clinic, is inviting medical & paramedical professionals to join our team!",
+      "Attributes We Are Looking For",
     SubHead: "We are looking for mature persons with",
     items: [
       "Outstanding articulation and communication skills",
@@ -81,7 +83,7 @@ const jobData = [
     ],
   },
   {
-    title: "Professional Growth Opportunities include gaining experience of",
+    title: "Practice Personalized Molecular Medicine",
 
     items: [
       "Managing large, long term Effectiveness Clinical Trials for natural medicines to create a scientific evidence base in line with US FDA systems",
@@ -91,7 +93,15 @@ const jobData = [
     ],
   },
   {
-    title: "Professional compensation ",
+    title: "Professional Growth Opportunities",
+    items: [
+      "shall match the best available in the industry, based on qualifications, experience and skills.  Besides, Parallel Clinic offers highly lucrative performance-linked incentives (depending upon personal & professional attributes). ",
+      "All positions offer long-term growth opportunities and expect a minimum 2 years engagement commitment. ",
+      "Please send your resume by Email to JoinOurTeam@Parallel.Clinic ",
+    ],
+  },
+  {
+    title: "Professional Compensation",
     items: [
       "shall match the best available in the industry, based on qualifications, experience and skills.  Besides, Parallel Clinic offers highly lucrative performance-linked incentives (depending upon personal & professional attributes). ",
       "All positions offer long-term growth opportunities and expect a minimum 2 years engagement commitment. ",
@@ -140,7 +150,7 @@ const jobData = [
 const JoinClinic = () => {
       const navigate = useNavigate()
       const requirementsRef = useRef(null);
-      const [displayData, setDisplayData] = useState(jobData.slice(0, 3));
+      const [displayData, setDisplayData] = useState(jobData.slice(0, 4));
       const [activePosition, setActivePosition] = useState(0); // Default active position
       const [showForm, setShowForm] = useState(false);
       const [formPending, setFormPending] = useState(false);
@@ -149,6 +159,7 @@ const JoinClinic = () => {
       const [hasOverflow, setHasOverflow] = useState(false);
       const [validationErrors, setValidationErrors] = useState({});
        const [currentLogo, setCurrentLogo] = useState(AboutLogo);
+       const [openSections, setOpenSections] = useState({});
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -157,6 +168,11 @@ const JoinClinic = () => {
 
     return () => clearInterval(interval); // Clean up on unmount
   }, []);
+
+  const toggleSection = (sectionIndex) => {
+  setOpenSections(prev => ({[sectionIndex]: !prev[sectionIndex]
+  }));
+};
 
        // Form state
         const [formData, setFormData] = useState({
@@ -336,46 +352,68 @@ const JoinClinic = () => {
 
       <div className="flex flex-col-reverse md:flex-row sm:h-[55vh]">
   {/* Left Column (70%, scrollable) */}
-  <div className="w-full md:w-[70%] md:overflow-y-auto p-4">
-     <div className="relative ">
-            <div
-              ref={requirementsRef}
-              className="h-auto lg:overflow-y-auto pb-10 sm:pl-[5%]"
+  <div className="w-full md:w-[50%] md:overflow-y-auto p-4">
+    <div className="relative">
+      <div
+        ref={requirementsRef}
+        className="h-auto lg:overflow-y-auto pb-10 sm:pl-[5%]"
+      >
+        {displayData?.map((section, index) => (
+          <div key={index} className="pb-2">
+            <div 
+              className="text-[#A37159] text-[20px] font-semibold flex items-start justify-between cursor-pointer"
+              onClick={() => toggleSection(index)}
             >
-              {displayData?.map((section, index) => (
-                <div key={index} className=" ">
-                  <h2 className="text-[#A37159] text-[24px] font-semibold flex items-start gap-2">
-                    <span className="">{section?.index}</span>
-                    <span style={{ fontFamily: "libre bodoni" }} className="flex-1 ">{section?.title}</span>
-                  </h2>
-                  <h3 style={{ fontFamily: "roboto flex" }}  className="ml-8 text-[#676F75]  text-[18px]"> {section?.SubHead}</h3>
-                  <h3 style={{ fontFamily: "roboto flex" }}  className="ml-8 text-[#676F75] text-[18px]"> {section?.desc}</h3>
-                  <ul style={{ fontFamily: "roboto flex" }}  className="ml-8 text-[#676F75] text-[18px]">
-                    {section?.items?.map((item, i) => (
-                      <li key={i}>
-                        <span className="mr-2">
-                          {String.fromCharCode(97 + i)}.
-                        </span>
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </div>
+              <h2 style={{ fontFamily: "libre bodoni" }} className="flex items-start gap-2">
+                <span className="">{section?.index}</span>
+                <span className="flex-1">{section?.title}</span>
+              </h2>
+             
 
-            {/* Show more indicator */}
-            {hasOverflow && (
-              <div className="absolute bottom-0 left-0 w-full bg-gradient-to-t from-[#FDF8E5] pb-2 pt-6 text-center">
-                <span className="text-[#A37159] text-[24px] font-medium">Scroll to see more</span>
+              {openSections[index] ? (
+                <FaChevronUp size={20} className="text-[#A37159] " />
+              ) : (
+                <FaChevronDown size={20} className="text-[#A37159]" />
+              )}
+              
+            </div>
+            
+            {openSections[index] && (
+              <div className="mt-3 ml-8 transition-all duration-300 ease-in-out">
+                {section?.SubHead && (
+                  <h3 style={{ fontFamily: "roboto flex" }} className="text-[#676F75] text-[18px] mb-2">
+                    {section?.SubHead}
+                  </h3>
+                )}
+                
+                {section?.desc && (
+                  <h3 style={{ fontFamily: "roboto flex" }} className="text-[#676F75] text-[18px] mb-2">
+                    {section?.desc}
+                  </h3>
+                )}
+                
+                <ul style={{ fontFamily: "roboto flex" }} className="text-[#676F75] text-[18px]">
+                  {section?.items?.map((item, i) => (
+                    <li key={i} className="mb-2 flex">
+                      <span className="mr-2 ">
+                        {String.fromCharCode(97 + i)}.
+                      </span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
             )}
           </div>
+        ))}
+      </div>
+    
+    </div>
   </div>
 
   {/* Right Column (30%, fixed) */}
-  <div style={{ fontFamily: "libre bodoni" }} className="w-full md:w-[30%] p-4  sticky top-0 overflow-y-auto">
-    <h4 className="underline text-[#A37159] text-[24px]">Inviting</h4>
+  <div style={{ fontFamily: "libre bodoni" }} className="w-full md:w-[50%] p-4  sticky top-0 overflow-y-auto sm:ml-4">
+    <h4 className=" text-[#A37159] text-[24px]">Inviting</h4>
     <h4 className=" text-[#A37159] text-[24px]">Ayurvedic Doctors &</h4>
     <h4 className=" text-[#A37159] text-[24px]">Conventional / Allopathic Doctors</h4>
       <div onClick={()=>navigate("/joinparallelclinic/clinicdirector")} className="flex gap-2 items-center cursor-pointer">

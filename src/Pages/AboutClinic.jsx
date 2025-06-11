@@ -7,11 +7,22 @@ import { FaHeadphones } from "react-icons/fa6";
 import { RiArrowDropDownLine } from "react-icons/ri";
 import NewPlayerGlobal from "../components/NewPlayerGlobal";
 import AboutLogo from "../assets/AboutLogo.png";
+import AboutLogo2 from "../assets/AboutBrown.png";
 import { useNavigate } from "react-router-dom";
+import { FaArrowRight } from "react-icons/fa";
 
 
 const AboutClinic = () => {
  const navigate = useNavigate()
+  const [currentLogo, setCurrentLogo] = useState(AboutLogo);
+
+  useEffect(() => {
+      const interval = setInterval(() => {
+        setCurrentLogo(prev => (prev === AboutLogo ? AboutLogo2 : AboutLogo));
+      }, 800);
+
+      return () => clearInterval(interval); // Clean up on unmount
+    }, []);
 
   return (
     <div className="relative w-full bg-[#FDF8E5] min-h-[84vh] flex flex-col overflow-hidden">
@@ -35,7 +46,7 @@ const AboutClinic = () => {
 
             <div style={{ fontFamily: "libre bodoni" }} className="flex items-center justify-center mt-1 sm:mb-2 sm:text-[26px] text-[20px] text-[#A37159] font-light text-center leading-snug">
               <span className="lg:text-[80px] sm:text-[120px] text-[150px] leading-none -mt-2">{'{'}</span>
-              <p className="mx-4 leading-snug">
+              <p className="mx-4 leading-snug italic ">
                 Approximately 90% of all current medications are effective for <br />
                 only 30~50% of the patients who take them!
               </p>
@@ -58,8 +69,10 @@ const AboutClinic = () => {
             </div>
 
             <div onClick={()=>navigate("/about2")} className="text-[#A37159] flex justify-self-center sm:items-center items-start sm:mt-4 mt-6 cursor-pointer ">
-              <img src={AboutLogo} className="w-8 h-8 sm:mr-4 " alt="About Logo" />
-              <h2 style={{ fontFamily: "libre bodoni" }} className="text-[#A37159] text-2xl sm:text-[28px] font-light sm:pt-2 ">Information Hub: Your Questions. Our Answers.</h2>
+              {/* <img src={currentLogo} className="w-8 h-8 sm:mr-4 " alt="About Logo" /> */}
+              <h2 style={{ fontFamily: "libre bodoni" }} className="hover:text-[#A37159] text-[rgb(132,134,136)] text-2xl sm:text-[28px] font-light sm:pt-2 mr-2">Information Hub: Your Questions. Our Answers. FAQs.</h2>
+              {/* <img src={currentLogo} className="w-8 h-8 sm:mr-4 " alt="About Logo" /> */}
+              <FaArrowRight size={26} />
             </div>
           </div>
         </div>

@@ -148,10 +148,10 @@ const ChooseHope = () => {
       </div>
  
       {/* Consult Doctors Text - Left Bottom */}
-     <div className="absolute bottom-1 lg:bottom-10 w-full px-6 sm:px-16 flex flex-col lg:flex-row justify-between items-center  gap-6 sm:gap-0 z-50">
+     <div className="absolute bottom-1 lg:bottom-10 w-full px-6 sm:px-16 flex flex-col lg:flex-row justify-between items-center  gap-6 sm:gap-0 ">
   {/* Left Text */}
   <div className="text-[#A37159] text-center sm:text-left">
-    <h2 style={{ fontFamily: "MyFont" }} className="sm:text-[24px] text-[18px]">
+    <h2 style={{ fontFamily: "libre bodoni" }} className="sm:text-[24px] text-[18px]">
       Consult Parallel Clinic Doctors
       <br />
       Without Leaving Your House
@@ -160,7 +160,7 @@ const ChooseHope = () => {
 
   {/* Right Text & Player */}
   <div className="flex items-center sm:items-end gap-3 sm:gap-6 text-sm text-gray-700 text-center sm:text-end ">
-    <div style={{ fontFamily: "MyFont" }}>
+    <div style={{ fontFamily: "libre bodoni" }}>
       <h1 className="text-[#C5A184] text-[16px] sm:text-[24px] leading-5">
         With Well Documented <br />
         Science Based Assurance of <br />

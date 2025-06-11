@@ -114,13 +114,15 @@ const NewNavbar = () => {
           style={{ fontFamily: "MyFontNavbar" }}
           className="absolute top-4 right-44 hidden lg:flex w-fit bg-transparent text-[#848688] gap-12 items-center justify-start text-[25px] z-50"
         >
-          <h2 className={`cursor-pointer ${location.pathname === "/about" ? "invisible" : ""}`}  onClick={() => navigate("/about")}>
+          <h2 className={`cursor-pointer ${location.pathname === "/about" || location.pathname === "/about2" ? "invisible" : ""}`}
+  onClick={() => navigate("/about")}>
             About Parallel Clinic
           </h2>
           <h2 className={`cursor-pointer ${location.pathname === "/medicalconditions" ? "invisible" : ""}`} onClick={() => navigate("/medicalconditions")}>
             Medical Conditions
           </h2>
-          <h2 className={`cursor-pointer ${location.pathname === "/joinparallelclinic" ? "invisible" : ""}`} onClick={() => navigate("/joinparallelclinic")}>
+          <h2 className={`cursor-pointer ${location.pathname.includes("/joinparallelclinic") ? "invisible" : ""}`}
+  onClick={() => navigate("/joinparallelclinic")}>
             Join Parallel Clinic Team
           </h2>
         </div>

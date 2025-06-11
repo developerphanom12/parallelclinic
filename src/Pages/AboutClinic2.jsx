@@ -153,7 +153,7 @@ const AboutClinic2 = () => {
             <div style={{ fontFamily: "libre bodoni" }} className="text-[#A37159] flex sm:fixed sm:top-16 top-12 justify-center items-center w-full ">
                 <h1 className="sm:text-[48px] text-[33px] leading-none">About <span className="text-[#C5A184]">Parallel Clinic</span></h1>
             </div>
-            <div className="sm:h-[60vh] md:h-[70vh] lg:h-[80vh] mt-4 sm:overflow-y-scroll sm:overflow-x-hidden hide-scrollbar relative">
+            <div className="sm:h-[60vh] md:h-[70vh] lg:h-[80vh] mt-6 sm:overflow-y-scroll sm:overflow-x-hidden hide-scrollbar relative">
 
                 {/* Middle Section - FAQs from AboutClinic */}
                 <div className="flex flex-col w-full px-6 sm:px-16 gap-2 flex-grow ">

@@ -8,7 +8,8 @@ import axios from "axios";
 import * as Yup from "yup";
 import NewPlayerGlobal from "../components/NewPlayerGlobal";
 import AboutLogo from "../assets/AboutLogo.png";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import { GoArrowLeft } from "react-icons/go";
 
 
 // Form validation schema
@@ -93,6 +94,7 @@ const JoinClinic4 = () => {
           const [validationErrors, setValidationErrors] = useState({});
           const id = useParams()
           const [loading, setLoading] = useState(true);
+          const navigate = useNavigate()
 
      
     // Form state
@@ -255,13 +257,15 @@ const JoinClinic4 = () => {
             >
               {jobData?.map((section, index) => (
                 <div key={index} className=" ">
-                  <h2 className="text-[#A37159] text-[20px] font-semibold flex items-start gap-2">
+                  <h2 className="text-[#A37159] text-[20px] font-semibold flex items-start gap-1 ">
+                                         <GoArrowLeft size={28} onClick={()=>navigate("/joinparallelclinic")} className="cursor-pointer" />
+                    
                     <span className="">{section?.index}</span>
                     <span style={{ fontFamily: "libre bodoni" }} className="flex-1">{section?.title}</span>
                   </h2>
-                  <h3  className="ml-8 text-[#676F75] text-[18px]"> {section?.SubHead}</h3>
-                  <h3 className="ml-8 text-[#676F75] text-[18px]"> {section?.desc}</h3>
-                  <ul className="ml-8 text-[#676F75] text-[16px]">
+                  <h3  className=" text-[#676F75] text-[18px]"> {section?.SubHead}</h3>
+                  <h3 className=" text-[#676F75] text-[18px]"> {section?.desc}</h3>
+                  <ul className=" text-[#676F75] text-[16px]">
                     {section?.items?.map((item, i) => (
                       <li key={i}>
                         <span className="mr-2">
@@ -291,7 +295,7 @@ const JoinClinic4 = () => {
             </p> */}
 
           {/* Apply Now Button */}
-          <div className="mt-6 flex justify-start">
+          <div className="mt-6 flex justify-start ">
             <button
               onClick={() => setShowForm(true)}
               className="bg-[#A37159] hover:bg-[#C5A184] text-white py-2 px-4 rounded-md transition-all duration-300 cursor-pointer"
