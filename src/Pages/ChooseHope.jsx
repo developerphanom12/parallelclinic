@@ -150,10 +150,10 @@ const ChooseHope = () => {
       {/* Consult Doctors Text - Left Bottom */}
      <div className="absolute bottom-1 lg:bottom-10 w-full px-6 sm:px-16 flex flex-col lg:flex-row justify-between items-center  gap-6 sm:gap-0 ">
   {/* Left Text */}
-  <div className="text-[#A37159] text-center sm:text-left">
+  <div className="text-[#A37159] text-center lg:text-left">
     <h2 style={{ fontFamily: "libre bodoni" }} className="sm:text-[24px] text-[18px]">
       Consult Parallel Clinic Doctors
-      <br />
+      <br className="hidden lg:block"/>
       Without Leaving Your House
     </h2>
   </div>

@@ -4,7 +4,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import menuGif from "../assets/p2.gif";
 import logoClinic from "../assets/Parallel_logo.png";
 import NavbarMobile from "./NavbarMobile";
-import NameLogo from "../assets/NameLogo.png";
+import NameLogo from "../assets/NameLogo.jpg";
 
 const NewNavbar = () => {
   const [showMenu, setShowMenu] = useState(false);
@@ -32,7 +32,7 @@ const NewNavbar = () => {
                 onClick={() => navigate("/")}
               />
             </div>
-            <div className="hidden lg:block">
+            <div className="hidden lg:block w-[30vw]">
               <img
                 src={NameLogo}
                 className="scale-75 cursor-pointer"

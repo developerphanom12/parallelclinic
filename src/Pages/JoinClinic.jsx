@@ -356,25 +356,27 @@ const JoinClinic = () => {
     <div className="relative">
       <div
         ref={requirementsRef}
-        className="h-auto lg:overflow-y-auto pb-10 sm:pl-[5%]"
+        className="h-auto lg:overflow-y-auto pb-10 sm:pl-[6%] w-full lg:w-[90%]"
       >
         {displayData?.map((section, index) => (
           <div key={index} className="pb-2">
             <div 
-              className="text-[#A37159] text-[20px] font-semibold flex items-start justify-between cursor-pointer"
+              className="text-[#A37159] text-[20px] font-semibold flex items-start gap-1 justify-between cursor-pointer"
               onClick={() => toggleSection(index)}
             >
-              <h2 style={{ fontFamily: "libre bodoni" }} className="flex items-start gap-2">
+              <h2 style={{ fontFamily: "libre bodoni" }} className="flex items-start gap-2 w-[93%]">
                 <span className="">{section?.index}</span>
                 <span className="flex-1">{section?.title}</span>
               </h2>
              
+              <div className="w-[7%] ">
 
               {openSections[index] ? (
-                <FaChevronUp size={20} className="text-[#A37159] " />
+                <FaChevronUp size={20} className="text-[#A37159] lg:mr-[15%] " />
               ) : (
-                <FaChevronDown size={20} className="text-[#A37159]" />
+                <FaChevronDown size={20} className="text-[#A37159] lg:mr-[15%]  " />
               )}
+              </div>
               
             </div>
             
@@ -418,19 +420,19 @@ const JoinClinic = () => {
     <h4 className=" text-[#A37159] text-[24px]">Conventional / Allopathic Doctors</h4>
       <div onClick={()=>navigate("/joinparallelclinic/clinicdirector")} className="flex gap-2 items-center cursor-pointer">
         <img src={currentLogo} alt="icon" />
-        <ul className="hover:text-[#A37159] text-[#848688] text-[24px] pt-1">Clinic Director</ul>
+        <ul className="hover:text-[#A37159] hover:text-[25px] text-[#848688] text-[24px] pt-1">Clinic Director</ul>
       </div>
       <div onClick={()=>navigate("/joinparallelclinic/medicalconsultants")} className="flex gap-2 items-center cursor-pointer">
         <img src={currentLogo} alt="icon" />
-        <ul className="hover:text-[#A37159] text-[#848688] text-[24px] pt-1">Medical Consultants</ul>
+        <ul className="hover:text-[#A37159] hover:text-[25px] text-[#848688] text-[24px] pt-1">Medical Consultants</ul>
       </div>
       <div onClick={()=>navigate("/joinparallelclinic/medicalteleconsultants")} className="flex gap-2 items-center cursor-pointer">
         <img src={currentLogo} alt="icon" />
-        <ul className="hover:text-[#A37159] text-[#848688] text-[24px] pt-1">Medical Tele-Consultants</ul>
+        <ul className="hover:text-[#A37159] hover:text-[25px] text-[#848688] text-[24px] pt-1">Medical Tele-Consultants</ul>
       </div>
       <div onClick={()=>navigate("/joinparallelclinic/pharmacists")} className="flex gap-2 items-center cursor-pointer">
         <img src={currentLogo} alt="icon" />
-        <ul className="hover:text-[#A37159] text-[#848688] text-[24px] pt-1">Pharmacists</ul>
+        <ul className="hover:text-[#A37159] hover:text-[25px] text-[#848688] text-[24px] pt-1">Pharmacists</ul>
       </div>
       {/* <ul></ul>
       <ul></ul>
