@@ -5,16 +5,46 @@
   <meta charset="UTF-8" />
   <link rel="icon" type="image/svg+xml" href="/assets/Parallel_logo-HBFgU9Ja.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Libre+Bodoni:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,100..1000&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Bodoni:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Parallel Clinic</title>
-  <script type="module" crossorigin src="/assets/index-DtDtJp17.js"></script>
-  <link rel="stylesheet" crossorigin href="/assets/index-CEi6TcNB.css">
+
+  <!-- Disable text selection -->
+  <style>
+    body {
+      user-select: none;
+      -webkit-user-select: none;
+      -ms-user-select: none;
+    }
+  </style>
+
+  <!-- Disable right-click and keyboard shortcuts -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Disable right click
+      document.addEventListener('contextmenu', (e) => e.preventDefault());
+
+      // Disable common copy/inspect shortcuts
+      document.addEventListener('keydown', (e) => {
+        if (
+          (e.ctrlKey && (e.key === 'u' || e.key === 'c' || e.key === 's' || e.key === 'a')) || // Ctrl+U, C, S, A
+          (e.metaKey && (e.key === 'u' || e.key === 'c' || e.key === 's' || e.key === 'a')) || // Cmd+U, C, S, A
+          (e.key === 'F12') || // Dev tools
+          (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J')) // Ctrl+Shift+I or J
+        ) {
+          e.preventDefault();
+        }
+      });
+    });
+  </script>
+  <script type="module" crossorigin src="/assets/index-D-oQmda1.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-Bd7aPAx2.css">
 </head>
 
 <body>
-  <div id="root"></div>
+  <div id="root"></div>
 </body>
 
 </html>
