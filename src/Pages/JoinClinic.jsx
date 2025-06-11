@@ -74,39 +74,46 @@ const jobData = [
   {
     title:
       "Attributes We Are Looking For",
-    SubHead: "We are looking for mature persons with",
+    // SubHead: "We are looking for mature persons with",
     items: [
-      "Outstanding articulation and communication skills",
-      "Outstanding MS Office capabilities",
-      "An eye for detail, attitude for compliance, with a temperament to understand and communicate nuanced issues",
-      "Experience of literature search, writing scientific research documents, publications, and blogs would be highly valued",
-    ],
+  "Outstanding articulation and communication skills",
+  "Proficiency in using professional video conferences (We are an online clinic!)",
+  "Outstanding MS Office capabilities",
+  "An eye for detail, attitude for compliance, with a temperament to understand and communicate nuanced issues",
+  "Experience of literature search, writing scientific research documents, publications, and blogs would be highly valued",
+],
+
   },
   {
     title: "Practice Personalized Molecular Medicine",
 
-    items: [
-      "Managing large, long term Effectiveness Clinical Trials for natural medicines to create a scientific evidence base in line with US FDA systems",
-      "Being part of a team that’s on the forefront of developing unique prescription medicines",
-      "Learning thought-leadership skills",
-      "Authoring publications and presenting in international fora",
-    ],
+   items: [
+  "Parallel Clinic’s therapeutic doctrine is founded on Physicians & Patients working in parallel with personalized, molecular-targeted, precision medicine.",
+  "Our molecular-targeted approach is based on a very deep understanding of the molecular pathophysiology of some selected diseases that we treat.",
+  "The Natural Pharmaceutical Ingredients (NPIs) used to treat are identified based on their well-characterized ingredients which target the specific diseases stages at molecular level.",
+  "The safety and efficacy of these NPI is well elucidated in many scientific journals of international repute - providing them an irrefutable evidence-base, backed by at least decades of human use experience.",
+  "Parallel Clinic is making medicine personal & precise. Unlike the one-size-fits-all conventional medicine."
+]
+
   },
   {
     title: "Professional Growth Opportunities",
-    items: [
-      "shall match the best available in the industry, based on qualifications, experience and skills.  Besides, Parallel Clinic offers highly lucrative performance-linked incentives (depending upon personal & professional attributes). ",
-      "All positions offer long-term growth opportunities and expect a minimum 2 years engagement commitment. ",
-      "Please send your resume by Email to JoinOurTeam@Parallel.Clinic ",
-    ],
+   items: [
+  "Managing large, long term Effectiveness Clinical Trials for natural medicines to create a scientific evidence base in line with US FDA systems",
+  "Being part of a team that’s on the forefront of developing unique prescription medicines",
+  "Learning thought-leadership skills",
+  "Authoring publications and presenting in international fora"
+]
+
+
   },
   {
     title: "Professional Compensation",
-    items: [
-      "shall match the best available in the industry, based on qualifications, experience and skills.  Besides, Parallel Clinic offers highly lucrative performance-linked incentives (depending upon personal & professional attributes). ",
-      "All positions offer long-term growth opportunities and expect a minimum 2 years engagement commitment. ",
-      "Please send your resume by Email to JoinOurTeam@Parallel.Clinic ",
-    ],
+   items: [
+  "Best available in the industry, based on qualifications, experience, and skills",
+  "Besides, Parallel Clinic offers highly lucrative performance-linked incentives based upon personal & professional attributes."
+]
+
   },
   {
     title: "Clinic Director ",
@@ -408,6 +415,15 @@ const JoinClinic = () => {
             )}
           </div>
         ))}
+
+       <p style={{ fontFamily: "libre bodoni" }} className="text-[#A37159] sm:pl-2 sm:pr-6 mt-2 ">
+  All positions offer long-term growth opportunities and expect a minimum 2 years’ engagement commitment. <br />
+  Please send your resume by Email to{" "}
+  <a href="mailto:JoinOurTeam@ParallelClinic.com" className="underline">
+    JoinOurTeam@ParallelClinic.com
+  </a>
+</p>
+
       </div>
     
     </div>
