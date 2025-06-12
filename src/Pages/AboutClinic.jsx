@@ -30,10 +30,10 @@ const AboutClinic = () => {
       {/* <div
         className="w-12 h-12 border border-[#C5A184] rounded-full fixed top-0 left-0 z-[999] pointer-events-none"
       /> */}
-      <div style={{ fontFamily: "libre bodoni" }} className="text-[#A37159] flex sm:fixed sm:top-16 top-12 justify-center items-center w-full ">
+      <div className="sm:h-[60v] lg:h-[70vh] lg:overflow-y-hidden pb-10 hide-scrollbar relative">
+      <div style={{ fontFamily: "libre bodoni" }} className="text-[#A37159] flex justify-center items-center w-full mb-4 ">
         <h1 className="sm:text-[48px] text-[33px] leading-none">About <span className="text-[#C5A184]">Parallel Clinic</span></h1>
       </div>
-      <div className="sm:h-[60vh] md:h-[70vh]  sm:mt-10 mt-4 sm:overflow-y-hidden pb-10 hide-scrollbar relative">
 
         {/* Top Section from AboutClinic2 */}
         <div className="w-[100vw] flex flex-col items-center justify-center">
@@ -70,24 +70,21 @@ const AboutClinic = () => {
 
             <div onClick={()=>navigate("/about2")} className="text-[#A37159] flex justify-self-center sm:items-center items-start sm:mt-4 mt-6 cursor-pointer ">
               {/* <img src={currentLogo} className="w-8 h-8 sm:mr-4 " alt="About Logo" /> */}
-              <h2 style={{ fontFamily: "libre bodoni" }} className="hover:text-[#A37159] text-[rgb(132,134,136)] text-2xl sm:text-[28px] font-light sm:pt-2 mr-2">Information Hub: Your Questions. Our Answers. FAQs.</h2>
+              <h2 style={{ fontFamily: "libre bodoni" }} className=" text-[#406587] text-2xl sm:text-[28px] font-bold sm:pt-2 mr-2">Information Hub: Your Questions. Our Answers. FAQs.</h2>
               {/* <img src={currentLogo} className="w-8 h-8 sm:mr-4 " alt="About Logo" /> */}
-              <FaArrowRight size={26} />
+              <FaArrowRight className="text-[#406587] " size={28} />
             </div>
           </div>
         </div>
       </div>
       {/* Bottom Text */}
-      <div className="sm:fixed relative sm:bottom-0 sm:left-0 w-full px-4 sm:px-0 flex flex-col items-center text-center mt-10 pb-20 sm:pb-0 sm:mb-0 sm:mt-0 bg-[#FDF8E5] ">
+      {/* <div className="sm:fixed relative sm:bottom-0 sm:left-0 w-full px-4 sm:px-0 flex flex-col items-center text-center mt-10 pb-20 sm:pb-0 sm:mb-0 sm:mt-0 bg-[#FDF8E5] ">
         <h2 style={{ fontFamily: "libre bodoni" }} className="text-[#A37159] text-2xl sm:text-[28px] font-semibold leading-tight mt-2">
           Making Your Medicine Personal & Precise.
         </h2>
         <h2 style={{ fontFamily: "libre bodoni" }} className="text-[#A37159] text-2xl sm:text-[24px] sm:w-[60%] lg:w-full font-bold leading-tight">
           World Class Personalized Targeted Precision Medicine using Natural Pharmaceutical Ingredients
         </h2>
-        {/* <h2 style={{ fontFamily: "libre bodoni" }} className="text-[#A37159] text-2xl sm:text-[23px] font-bold leading-tight">
-          using Natural Pharmaceutical Ingredients
-        </h2> */}
         <p style={{ fontFamily: "roboto flex" }} className="text-[#676F75] text-base sm:text-[18px] leading-tight sm:w-[60%] lg:w-full">
           Founded on a Clear Understanding of Molecular Basis of Pathophysiology of Medical Conditions
         </p>
@@ -95,9 +92,23 @@ const AboutClinic = () => {
           Using Botanical Medicines with Well Documented Molecular Level Mechanisms of Actions
         </p>
         <div className="absolute sm:bottom-4 bottom-0 right-8 text-sm text-gray-700">
-          {/* <FaHeadphones size={50} className="text-[#DAA57B]" /> */}
+          <FaHeadphones size={50} className="text-[#DAA57B]" />
           <NewPlayerGlobal />
         </div>
+      </div> */}
+      <div className="lg:fixed relative lg:bottom-0 sm:left-0 w-full px-4 lg:px-0 flex flex-col items-center text-center mt-10 sm:pb-0 sm:mb-0 sm:mt-0 bg-[#FDF8E5] ">
+        <h2 style={{ fontFamily: "libre bodoni" }} className="text-[#A37159] text-[20px] sm:text-[28px] font-semibold leading-tight mt-2">
+          Making Your Medicine Personal & Precise.
+        </h2>
+        <h2 style={{ fontFamily: "libre bodoni" }} className="text-[#A37159] text-[18px] sm:text-[24px] sm:w-[100%] font-bold leading-tight">
+          World Class Personalized Targeted Precision Medicine using Natural Pharmaceutical Ingredients
+        </h2>
+        <p style={{ fontFamily: "roboto flex" }} className="text-[#676F75] text-base sm:text-[18px] leading-tight sm:w-[60%] lg:w-full">
+          Founded on a Clear Understanding of Molecular Basis of Pathophysiology of Medical Conditions
+        </p>
+        <p style={{ fontFamily: "roboto flex" }}  className="text-[#676F75] text-base sm:text-[18px] leading-tight sm:w-[60%] lg:w-full">
+          Using Botanical Medicines with Well Documented Molecular Level Mechanisms of Actions
+        </p>
       </div>
     </div>
   );

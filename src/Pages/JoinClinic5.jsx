@@ -102,11 +102,11 @@ const JoinClinic5 = () => {
         fullName: "",
         email: "",
         contactNumber: "",
-        position: "Clinic Director",
+        position: "Medical Director",
         message: "",
     });
     const [resumeFile, setResumeFile] = useState(null);
-    const [position, setPosition] = useState("Clinic Director");
+    const [position, setPosition] = useState("Medical Director");
     
       // Validate form data
       const validateForm = async () => {
@@ -241,7 +241,7 @@ const JoinClinic5 = () => {
     <div className="relative w-full bg-[#FDF8E5]  pl-[5%] lgin-h-[84vh] flex flex-col overflow-y-hidden">
       
       {/* Heading */}
-      <div className="text-[#A37159]  w-[80%] sm:w-full ">
+      <div className="text-[#A37159]  w-[80%] sm:w-full mb-3 ">
         <h1 className="sm:text-[48px] text-[33px] leading-none whitespace-nowrap">
           Join <br className="block sm:hidden" />
           <span className="text-[#C5A184]">Parallel Clinic Team</span>
@@ -258,7 +258,7 @@ const JoinClinic5 = () => {
             >
               {jobData?.map((section, index) => (
                 <div key={index} className=" ">
-                  <h2 className="text-[#A37159] text-[20px] font-semibold flex items-start gap-1 ">
+                  <h2 className="text-[#A37159] text-[20px] font-semibold flex items-start gap-1 mb-1">
                                          <GoArrowLeft size={28} onClick={()=>navigate("/joinparallelclinic")} className="cursor-pointer" />
                     
                     <span className="">{section?.index}</span>
@@ -276,6 +276,7 @@ const JoinClinic5 = () => {
                       </li>
                     ))}
                   </ul>
+                  <h3 style={{fontFamily: "libre bodoni"}} className=" text-[#A37159] text-[18px] mt-4">The position is Gurugram based.</h3>
                 </div>
               ))}
             </div>
@@ -309,26 +310,19 @@ const JoinClinic5 = () => {
      
 
       {/* Bottom Text */}
-      <div className="lg:fixed lg:bottom-0 sm:left-0 w-full px-4 sm:px-0 flex flex-col items-center text-center space-y-0.5 mt-10 sm:mt-0 mb-30 sm:mb-0 ">
-        <h2 style={{ fontFamily: "libre bodoni" }} className="text-[#A37159] text-2xl sm:text-[23px] sm:w-[90%] w-[100%] font-bold mt-2">
+      <div className="sm:fixed sm:bottom-0 sm:left-0 w-full px-4 sm:px-0 flex flex-col items-center text-center space-y-0.5 mt-10 sm:mt-0 sm:mb-0 ">
+        <h2 style={{ fontFamily: "libre bodoni" }} className="text-[#A37159] text-2xl sm:text-[23px] font-bold mt-2">
           Practice World Class Personalized, Molecular-Targeted Precision
           Medicine using Natural Pharmaceutical Ingredients
         </h2>
-        {/* <h2 style={{ fontFamily: "libre bodoni" }} className="text-[#A37159] text-2xl sm:text-[23px] font-bold">
-          
-        </h2> */}
-        <p style={{ fontFamily: "roboto flex" }} className="text-[#676F75] text-base sm:text-[16px] sm:w-[60%] lg:w-full">
+        <p style={{ fontFamily: "roboto flex" }} className="text-[#676F75] text-base sm:text-[16px] lg:w-full">
           Founded on a Deep Understanding of Molecular Basis of Pathophysiology
           of Medical Conditions
         </p>
-        <p style={{ fontFamily: "roboto flex" }} className="text-[#676F75] text-base sm:text-[16px] sm:w-[60%] lg:w-full">
+        <p style={{ fontFamily: "roboto flex" }} className="text-[#676F75] text-base sm:text-[16px] lg:w-full">
           Using Botanical Medicines with Well Documented Molecular Level
           Mechanisms of Actions
         </p>
-        <div className="absolute bottom-4 right-8 text-sm text-gray-700">
-          {/* <FaHeadphones size={50} className="text-[#DAA57B]" /> */}
-          <NewPlayerGlobal />
-        </div>
       </div>
 
       {/* Application Form Popup */}
@@ -464,7 +458,7 @@ const JoinClinic5 = () => {
                         : "border-[#C5A184] focus:ring-[#A37159]"
                         } rounded-md focus:outline-none focus:ring-1 text-sm`}
                     >
-                      <option value="Clinic Director">Clinic Director</option>
+                      <option value="Medical Director">Medical Director</option>
                       <option value="Medical Consultant">
                         Medical Consultant
                       </option>

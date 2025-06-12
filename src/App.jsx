@@ -18,8 +18,9 @@ function App() {
   return (
     <Layout>
       <Routes>
-        <Route path='/' element={<Home/>} />
-        <Route path='/choose' element={<ChooseHope/>} />
+        {/* <Route path='/' element={<Home/>} /> */}
+        {/* <Route path='/choose' element={<ChooseHope/>} /> */}
+        <Route path='/' element={<AboutClinic/>} />
         <Route path='/about' element={<AboutClinic/>} />
         <Route path='/about2' element={<AboutClinic2/>} />
         <Route path='/medicalconditions' element={<MedicalCondition/>} />

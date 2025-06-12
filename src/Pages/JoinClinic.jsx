@@ -116,7 +116,7 @@ const jobData = [
 
   },
   {
-    title: "Clinic Director ",
+    title: "Medical Director ",
     SubHead: "Role Description:",
     items: [
       "To manage and supervise everyday operations of the clinic with a focus on improving the quality of patient care by ensuring the facilities are well-staffed. ",
@@ -177,7 +177,7 @@ const JoinClinic = () => {
   }, []);
 
   const toggleSection = (sectionIndex) => {
-  setOpenSections(prev => ({[sectionIndex]: !prev[sectionIndex]
+  setOpenSections(prev => ({...prev ,[sectionIndex]: !prev[sectionIndex]
   }));
 };
 
@@ -186,7 +186,7 @@ const JoinClinic = () => {
           fullName: "",
           email: "",
           contactNumber: "",
-          position: "Clinic Director",
+          position: "Medical Director",
           message: "",
         });
         const [resumeFile, setResumeFile] = useState(null);
@@ -194,7 +194,7 @@ const JoinClinic = () => {
 //   const handleClick = (btnIndex) => {
 //     if (btnIndex === 1) {
 //       setDisplayData([jobData[3]]);
-//       setFormData((prev) => ({ ...prev, position: "Clinic Director" }));
+//       setFormData((prev) => ({ ...prev, position: "Medical Director" }));
 //     } else if (btnIndex === 2) {
 //       setDisplayData([jobData[4]]);
 //       setFormData((prev) => ({ ...prev, position: "Medical Consultant" }));
@@ -349,7 +349,7 @@ const JoinClinic = () => {
     <div className="relative w-full bg-[#FDF8E5] lgin-h-[84vh] flex flex-col overflow-y-hidden">
       
       {/* Heading */}
-      <div className="text-[#A37159]  pl-[5%] w-[80%] sm:w-full ">
+      <div className="text-[#A37159] mt-[10px] pl-[5%] w-[80%] sm:w-full ">
         <h1 className="sm:text-[48px] text-[33px] leading-none whitespace-nowrap">
           Join <br className="block sm:hidden" />
           <span className="text-[#C5A184]">Parallel Clinic Team</span>
@@ -363,7 +363,7 @@ const JoinClinic = () => {
     <div className="relative">
       <div
         ref={requirementsRef}
-        className="h-auto lg:overflow-y-auto pb-10 sm:pl-[6%] w-full lg:w-[90%]"
+        className="h-auto lg:overflow-y-auto sm:pl-[6%] w-full lg:w-[90%]"
       >
         {displayData?.map((section, index) => (
           <div key={index} className="pb-2">
@@ -396,14 +396,14 @@ const JoinClinic = () => {
                 )}
                 
                 {section?.desc && (
-                  <h3 style={{ fontFamily: "roboto flex" }} className="text-[#676F75] text-[18px] mb-2">
+                  <h3 style={{ fontFamily: "roboto flex" }} className="text-[#676F75] text-[18px] mb-2 pr-2">
                     {section?.desc}
                   </h3>
                 )}
                 
-                <ul style={{ fontFamily: "roboto flex" }} className="text-[#676F75] text-[18px]">
+                <ul style={{ fontFamily: "roboto flex" }} className="text-[#676F75] text-[18px] pr-2">
                   {section?.items?.map((item, i) => (
-                    <li key={i} className="mb-2 flex">
+                    <li key={i} className=" flex">
                       <span className="mr-2 ">
                         {String.fromCharCode(97 + i)}.
                       </span>
@@ -419,7 +419,7 @@ const JoinClinic = () => {
        <p style={{ fontFamily: "libre bodoni" }} className="text-[#A37159] sm:pl-2 sm:pr-6 mt-2 ">
   All positions offer long-term growth opportunities and expect a minimum 2 years’ engagement commitment. <br />
   Please send your resume by Email to{" "}
-  <a href="mailto:JoinOurTeam@ParallelClinic.com" className="underline">
+  <a href="mailto:JoinOurTeam@ParallelClinic.com" className="">
     JoinOurTeam@ParallelClinic.com
   </a>
 </p>
@@ -436,7 +436,7 @@ const JoinClinic = () => {
     <h4 className=" text-[#A37159] text-[24px]">Conventional / Allopathic Doctors</h4>
       <div onClick={()=>navigate("/joinparallelclinic/clinicdirector")} className="flex gap-2 items-center cursor-pointer">
         <img src={currentLogo} alt="icon" />
-        <ul className="hover:text-[#A37159] hover:text-[25px] text-[#848688] text-[24px] pt-1">Clinic Director</ul>
+        <ul className="hover:text-[#A37159] hover:text-[25px] text-[#848688] text-[24px] pt-1">Medical Director</ul>
       </div>
       <div onClick={()=>navigate("/joinparallelclinic/medicalconsultants")} className="flex gap-2 items-center cursor-pointer">
         <img src={currentLogo} alt="icon" />
@@ -458,26 +458,22 @@ const JoinClinic = () => {
      
 
       {/* Bottom Text */}
-      <div className="lg:fixed lg:bottom-0 sm:left-0 w-full px-4 sm:px-0 flex flex-col items-center text-center space-y-0.5 mt-2 sm:mt-0 mb-30 sm:mb-0 ">
-        <h2 style={{ fontFamily: "libre bodoni" }} className="text-[#A37159] text-2xl sm:text-[23px] sm:w-[90%] w-[100%] font-bold mt-2">
+      <div className="sm:fixed sm:bottom-0 sm:left-0 w-full px-4 sm:px-0 flex flex-col items-center text-center space-y-0.5 mt-2 sm:mt-0  sm:mb-0 ">
+        <h2 style={{ fontFamily: "libre bodoni" }} className="text-[#A37159] text-2xl sm:text-[23px] font-bold mt-2">
           Practice World Class Personalized, Molecular-Targeted Precision
           Medicine using Natural Pharmaceutical Ingredients
         </h2>
         {/* <h2 style={{ fontFamily: "libre bodoni" }} className="text-[#A37159] text-2xl sm:text-[23px] font-bold">
           
         </h2> */}
-        <p style={{ fontFamily: "roboto flex" }} className="text-[#676F75] text-base sm:text-[16px] sm:w-[60%] lg:w-full">
+        <p style={{ fontFamily: "roboto flex" }} className="text-[#676F75] text-base sm:text-[16px]  lg:w-full">
           Founded on a Deep Understanding of Molecular Basis of Pathophysiology
           of Medical Conditions
         </p>
-        <p style={{ fontFamily: "roboto flex" }} className="text-[#676F75] text-base sm:text-[16px] sm:w-[60%] lg:w-full">
+        <p style={{ fontFamily: "roboto flex" }} className="text-[#676F75] text-base sm:text-[16px]  lg:w-full">
           Using Botanical Medicines with Well Documented Molecular Level
           Mechanisms of Actions
         </p>
-        <div className="absolute bottom-4 right-8 text-sm text-gray-700">
-          {/* <FaHeadphones size={50} className="text-[#DAA57B]" /> */}
-          <NewPlayerGlobal />
-        </div>
       </div>
 
       {/* Application Form Popup */}
@@ -613,7 +609,7 @@ const JoinClinic = () => {
                         : "border-[#C5A184] focus:ring-[#A37159]"
                         } rounded-md focus:outline-none focus:ring-1 text-sm`}
                     >
-                      <option value="Clinic Director">Clinic Director</option>
+                      <option value="Medical Director">Medical Director</option>
                       <option value="Medical Consultant">
                         Medical Consultant
                       </option>

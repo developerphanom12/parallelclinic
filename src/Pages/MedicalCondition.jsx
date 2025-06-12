@@ -140,11 +140,11 @@ const MedicalCondition = () => {
   return (
     <div className="relative w-full bg-[#FDF8E5] sm:min-h-[84vh] flex flex-col">
       {/* Content */}
-<div className="w-full px-2 sm:px-16 hide-scrollbar relative flex flex-col sm:fixed sm:top-20 top-12 sm:h-[calc(100vh-5rem)] sm:overflow-y-auto">
+<div className="w-full px-4 sm:px-16 hide-scrollbar relative flex flex-col sm:fixed sm:top-20 top-12 sm:h-[calc(100vh-5rem)] sm:overflow-y-auto">
       <Heading firstText="Medical Conditions" secondText="Managed by Parallel Clinic" />
 
         {/* Medical Conditions List */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-16 gap-y-4 px-4 sm:px-8 sm:mb-0 mt-2">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-16 gap-y-4 sm:mb-0 mt-2">
           {/* Left Column */}
           <div>
             {leftColumn.map((section, index) => (
@@ -196,12 +196,12 @@ const MedicalCondition = () => {
         {/* <NewPlayerGlobal/>
       </div> */}
 
-     <div className="sm:fixed sm:bottom-0 sm:left-0  w-full">
+     {/* <div className="sm:fixed sm:bottom-0 sm:left-0  w-full">
   <div className="flex justify-end text-sm text-gray-700 p-2">
-    {/* <FaHeadphones size={50} className="text-[#DAA57B]" /> */}
     <NewPlayerGlobal />
   </div>
-</div>
+</div> */}
+    {/* <FaHeadphones size={50} className="text-[#DAA57B]" /> */}
 
 
     </div>

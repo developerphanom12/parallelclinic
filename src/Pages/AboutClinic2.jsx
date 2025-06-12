@@ -138,22 +138,28 @@ const faqs = [
 ];
 
 const AboutClinic2 = () => {
-      const [openIndex, setOpenIndex] = useState(null);
+      const [openIndices, setOpenIndices] = useState([]);
       const navigate = useNavigate()
     
-      const toggleAnswer = (index) => {
-        setOpenIndex(openIndex === index ? null : index);
-      };
+     const toggleAnswer = (index) => {
+  if (openIndices.includes(index)) {
+    setOpenIndices(openIndices.filter((i) => i !== index)); // close it
+  } else {
+    setOpenIndices([...openIndices, index]); // open it
+  }
+};
+
+
 
 
     return (
         <div className="relative w-full bg-[#FDF8E5] min-h-[84vh] flex flex-col">
             {/* Cursor */}
             {/* <div className="w-12 h-12 border border-[#C5A184] rounded-full fixed top-0 left-0 z-[999] pointer-events-none"/> */}
-            <div style={{ fontFamily: "libre bodoni" }} className="text-[#A37159] flex sm:fixed sm:top-16 top-12 justify-center items-center w-full ">
+            <div style={{ fontFamily: "libre bodoni" }} className="text-[#A37159] flex sm:fixed sm:top-16 md:top-18 top-12 justify-center items-center w-full ">
                 <h1 className="sm:text-[48px] text-[33px] leading-none">About <span className="text-[#C5A184]">Parallel Clinic</span></h1>
             </div>
-            <div className="sm:h-[60vh] md:h-[70vh] lg:h-[80vh] mt-6 sm:overflow-y-scroll sm:overflow-x-hidden hide-scrollbar relative">
+            <div className="sm:h-[60vh] md:h-[70vh] lg:h-[80vh] mt-12 sm:overflow-y-scroll sm:overflow-x-hidden hide-scrollbar relative">
 
                 {/* Middle Section - FAQs from AboutClinic */}
                 <div className="flex flex-col w-full px-6 sm:px-16 gap-2 flex-grow ">
@@ -166,38 +172,38 @@ const AboutClinic2 = () => {
                     <div className="w-auto items-center justify-center ">
                         <div className="text-[#A37159] flex sm:justify-self-center items-start sm:items-center gap-2  sm:w-[60vw] pl-[1%]">
                            <GoArrowLeft size={30} onClick={()=>navigate("/about")} className="cursor-pointer" />
-                           <h2 style={{ fontFamily: "libre bodoni" }} className="text-[#A37159] text-2xl sm:text-3xl font-light sm:pt-2 ">Information Hub: Your Questions. Our Answers.</h2>
+                           <h2 style={{ fontFamily: "libre bodoni" }} className="text-[#A37159] text-2xl sm:text-3xl font-light sm:pt-2 ">Information Hub: Your Questions. Our Answers. FAQs.</h2>
                         </div>
                     </div>
 
                     <div className="lg:w-full flex sm:flex-row flex-col gap-7 mt-6 lg:mt-0 text-[#5C8A8A] text-[18px] pb-2 ">
-                        <div className="flex-1 flex flex-col h-[50vh] overflow-y-auto justify-center items-center sm:w-[50vw]  ">
-                            <div className="md:px-6  sm:h-[50vh] sm:w-[60vw] hide-scrollbar ">
+                        <div className="flex-1 flex flex-col lg:h-[50vh] overflow-y-auto justify-center items-center sm:w-[50vw]  ">
+                            <div className="md:px-6  sm:h-[50vh] sm:w-[60vw] hide-scrollbar mt-2 ">
                                 {faqs?.map((faq, index) => (
                                     <div key={index} className="py-2 sm:py-[4px]">
                                         <div
-                                            className={`cursor-pointer text-[#5C8A8A] text-[18px] ${openIndex === index ? "text-[#A37159]" : ""} hover:text-[#A37159] transition flex justify-between w-[100%]`}
+                                            className={`cursor-pointer text-[#5C8A8A] text-[18px] ${openIndices.includes(index) ? "text-[#A37159]" : ""} hover:text-[#A37159] transition flex justify-between w-[100%]`}
                                             onClick={() => toggleAnswer(index)}
                                         >
                                             <div style={{ fontFamily: "roboto flex" }}>
                                                 {index + 1}. {faq.question}
                                             </div>
                                             <div className="w-[7%]  flex justify-end items-center ">
-                                                {openIndex === index ? (
+                                                {openIndices.includes(index) ? (
                                                     <RiArrowDropDownLine size={30} className="transform rotate-180" />
                                                 ) : (
                                                     <RiArrowDropDownLine size={30} className="" />
                                                 )}
                                             </div>
                                         </div>
-                                        {openIndex === index && (
+                                        {openIndices.includes(index) && (
                                             <div className="sm:pr-[10%] text-[#676F75]" style={{ marginTop: "8px", color: "#374151", fontSize: "16px" , fontFamily: "roboto flex" ,}}>
                                                 {Array.isArray(faq.answer) ? (
                                                     faq.answer.map((para, i) => (
-                                                        <p className="text-[#676F75]" key={i} style={{ marginBottom: "20px", marginLeft: "20px" }}>{para}</p>
+                                                        <p className="text-[#676F75]" key={i} style={{ marginBottom: "5px", marginLeft: "20px" }}>{para}</p>
                                                     ))
                                                 ) : (
-                                                    <p className="text-[#676F75]" style={{ marginBottom: "20px", marginLeft: "20px" }}>{faq.answer}</p>
+                                                    <p className="text-[#676F75]" style={{ marginBottom: "5px", marginLeft: "20px" }}>{faq.answer}</p>
                                                 )}
                                             </div>
                                         )}
@@ -210,26 +216,21 @@ const AboutClinic2 = () => {
             </div>
 
             {/* Bottom Text */}
-            <div className="sm:fixed relative sm:bottom-0 sm:left-0 w-full px-4 sm:px-0 flex flex-col items-center text-center mt-10 pb-20 sm:pb-0 sm:mb-0 sm:mt-0 bg-[#FDF8E5] ">
+            <div className="sm:fixed relative sm:bottom-0 sm:left-0 w-full px-4 sm:px-0 flex flex-col items-center text-center mt-10 sm:pb-0 sm:mb-0 sm:mt-0 bg-[#FDF8E5] ">
                 <h2 style={{ fontFamily: "libre bodoni" }} className="text-[#A37159] text-2xl sm:text-[28px] font-semibold leading-tight mt-2">
                     Making Your Medicine Personal & Precise.
                 </h2>
-                <h2 style={{ fontFamily: "libre bodoni" }} className="text-[#A37159] text-2xl sm:text-[24px] sm:w-[60%] lg:w-full font-bold leading-tight">
+                <h2 style={{ fontFamily: "libre bodoni" }} className="text-[#A37159] text-2xl sm:text-[24px]  font-bold leading-tight">
                     World Class Personalized Targeted Precision Medicine using Natural Pharmaceutical Ingredients
                 </h2>
-                {/* <h2 style={{ fontFamily: "libre bodoni" }} className="text-[#A37159] text-2xl sm:text-[23px] font-bold leading-tight">
-                 using Natural Pharmaceutical Ingredients
-               </h2> */}
-                <p style={{ fontFamily: "roboto flex" }} className="text-[#676F75] text-base sm:text-[18px] leading-tight sm:w-[60%] lg:w-full">
+                
+                <p style={{ fontFamily: "roboto flex" }} className="text-[#676F75] text-base sm:text-[18px] leading-tight  lg:w-full">
                     Founded on a Clear Understanding of Molecular Basis of Pathophysiology of Medical Conditions
                 </p>
-                <p style={{ fontFamily: "roboto flex" }} className="text-[#676F75] text-base sm:text-[18px] leading-tight sm:w-[60%] lg:w-full">
+                <p style={{ fontFamily: "roboto flex" }} className="text-[#676F75] text-base sm:text-[18px] leading-tight  lg:w-full">
                     Using Botanical Medicines with Well Documented Molecular Level Mechanisms of Actions
                 </p>
-                <div className="absolute sm:bottom-4 bottom-0 right-8 text-sm text-gray-700">
-                    {/* <FaHeadphones size={50} className="text-[#DAA57B]" /> */}
-                    <NewPlayerGlobal />
-                </div>
+               
             </div>
         </div>
     )
