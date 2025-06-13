@@ -349,7 +349,7 @@ const JoinClinic = () => {
     <div className="relative w-full bg-[#FDF8E5] lgin-h-[84vh] flex flex-col overflow-y-hidden">
       
       {/* Heading */}
-      <div className="text-[#A37159] mt-[10px] pl-[5%] w-[80%] sm:w-full ">
+      <div className="text-[#A37159] mt-[10px] pl-[5%] w-[80%] flex justify-center items-center mb-4 sm:w-full ">
         <h1 className="sm:text-[48px] text-[33px] leading-none whitespace-nowrap">
           Join <br className="block sm:hidden" />
           <span className="text-[#C5A184]">Parallel Clinic Team</span>

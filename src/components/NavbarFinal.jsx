@@ -23,7 +23,7 @@ const NavbarFinal = () => {
             <div className="flex justify-between items-center h-full px-4  relative">
               {/* Logo - Visible on mobile and tablet */}
 
-                 <div className="hidden xl:block w-[30vw]">
+                 <div className="hidden xl:block w-[24vw]">
                   <img
                     src={NameLogo}
                     className="scale-75 cursor-pointer"

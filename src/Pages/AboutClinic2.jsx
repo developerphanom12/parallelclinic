@@ -156,7 +156,7 @@ const AboutClinic2 = () => {
         <div className="relative w-full bg-[#FDF8E5] min-h-[84vh] flex flex-col">
             {/* Cursor */}
             {/* <div className="w-12 h-12 border border-[#C5A184] rounded-full fixed top-0 left-0 z-[999] pointer-events-none"/> */}
-            <div style={{ fontFamily: "libre bodoni" }} className="text-[#A37159] flex sm:fixed sm:top-16 md:top-18 top-12 justify-center items-center w-full ">
+            <div style={{ fontFamily: "libre bodoni" }} className="text-[#A37159] flex sm:fixed sm:top-16 md:top-21 top-12 justify-center items-center w-full ">
                 <h1 className="sm:text-[48px] text-[33px] leading-none">About <span className="text-[#C5A184]">Parallel Clinic</span></h1>
             </div>
             <div className="sm:h-[60vh] md:h-[70vh] lg:h-[80vh] mt-12 sm:overflow-y-scroll sm:overflow-x-hidden hide-scrollbar relative">
@@ -169,7 +169,7 @@ const AboutClinic2 = () => {
                             <h2 style={{ fontFamily: "libre bodoni" }} className="text-[#A37159] text-2xl sm:text-3xl font-light pt-2 ">Information Hub: Your Questions. Our Answers.</h2>
                         </div>
                     </div> */}
-                    <div className="w-auto items-center justify-center ">
+                    <div className="w-auto items-center justify-center mt-2 ">
                         <div className="text-[#A37159] flex sm:justify-self-center items-start sm:items-center gap-2  sm:w-[60vw] pl-[1%]">
                            <GoArrowLeft size={30} onClick={()=>navigate("/about")} className="cursor-pointer" />
                            <h2 style={{ fontFamily: "libre bodoni" }} className="text-[#A37159] text-2xl sm:text-3xl font-light sm:pt-2 ">Information Hub: Your Questions. Our Answers. FAQs.</h2>

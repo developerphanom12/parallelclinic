@@ -96,7 +96,7 @@ const AboutClinic = () => {
           <NewPlayerGlobal />
         </div>
       </div> */}
-      <div className="lg:fixed relative lg:bottom-0 sm:left-0 w-full px-4 lg:px-0 flex flex-col items-center text-center mt-10 sm:pb-0 sm:mb-0 sm:mt-0 bg-[#FDF8E5] ">
+      <div className="sm:fixed relative sm:bottom-0 sm:left-0 w-full px-4 lg:px-0 flex flex-col items-center text-center mt-10 sm:pb-0 sm:mb-0 sm:mt-0 bg-[#FDF8E5] ">
         <h2 style={{ fontFamily: "libre bodoni" }} className="text-[#A37159] text-[20px] sm:text-[28px] font-semibold leading-tight mt-2">
           Making Your Medicine Personal & Precise.
         </h2>
